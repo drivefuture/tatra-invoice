@@ -294,7 +294,7 @@ relationship OneToOne {
 relationship ManyToOne {
 	Invoice{company required} to Company,
 	Invoice{customer required} to Customer,
-    Company{userAccount} to UserAccount
+    Company{userAccount} to UserAccount{currentCompany}
 }
 
 relationship OneToMany {
