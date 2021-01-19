@@ -301,7 +301,14 @@ export const CompanyUpdate = (props: ICompanyUpdateProps) => {
                 <Label for="company-userAccount">
                   <Translate contentKey="tatraInvoiceApp.company.userAccount">User Account</Translate>
                 </Label>
-                <AvInput id="company-userAccount" type="select" className="form-control" name="userAccount.id">
+                <AvInput
+                  id="company-userAccount"
+                  type="select"
+                  multiple
+                  className="form-control"
+                  name="userAccounts"
+                  value={companyEntity.userAccounts && companyEntity.userAccounts.map(e => e.id)}
+                >
                   <option value="" key="0" />
                   {userAccounts
                     ? userAccounts.map(otherEntity => (
@@ -316,14 +323,7 @@ export const CompanyUpdate = (props: ICompanyUpdateProps) => {
                 <Label for="company-userAccount">
                   <Translate contentKey="tatraInvoiceApp.company.userAccount">User Account</Translate>
                 </Label>
-                <AvInput
-                  id="company-userAccount"
-                  type="select"
-                  multiple
-                  className="form-control"
-                  name="userAccounts"
-                  value={companyEntity.userAccounts && companyEntity.userAccounts.map(e => e.id)}
-                >
+                <AvInput id="company-userAccount" type="select" className="form-control" name="userAccount.id">
                   <option value="" key="0" />
                   {userAccounts
                     ? userAccounts.map(otherEntity => (

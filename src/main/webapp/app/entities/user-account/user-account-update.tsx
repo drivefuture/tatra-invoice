@@ -20,6 +20,7 @@ export interface IUserAccountUpdateProps extends StateProps, DispatchProps, Rout
 
 export const UserAccountUpdate = (props: IUserAccountUpdateProps) => {
   const [userId, setUserId] = useState('0');
+  const [currentCompanyId, setCurrentCompanyId] = useState('0');
   const [companyId, setCompanyId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
