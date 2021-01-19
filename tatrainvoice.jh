@@ -1,0 +1,208 @@
+/**
+ * Invoice entity.
+ * Faktura
+ * @author DriveFuture s.r.o. team
+ */
+entity Invoice {
+	number String, /** Číslo dokumentu */
+    issueDate Instant required, /** Datum vystavení */
+    paymentMethod PaymentMethod required, /** Způsob platby */
+    duePeriod Integer required, /** Splatnost ve dnech */
+    dueDate Instant required, /** Datum splatnosti */
+    paymentDate Instant, /** Datum úhrady */
+	taxPoint Instant, /** Datum zdanitelného plnění */
+    totalAmount BigDecimal, /** Celková částka */
+    currency String required, /** Měna */
+    variableSymbol String, /** VS */
+    constantSymbol String, /** KS */
+    specialSymbol String, /* SS */
+    orderNumber String, /* Číslo objednávky */
+    language Language required, /** Jazyk faktury */
+    comment TextBlob, /** Netisknutelná poznámka */
+    beforeInvoiceItemsText TextBlob, /** Text před položkami na faktuře */
+    invoiceFooterText TextBlob, /** Text v patičce faktury */
+    pdfFile Blob, /** Pdf soubor */
+    createdDate Instant, /** Datum vytvoření */
+    updatedDate Instant /** Datum úpravy */
+}
+
+/**
+ * Invoice entity.
+ * Položka faktury
+ * @author DriveFuture s.r.o. team
+ */
+entity InvoiceItem {
+	sequence Integer required, /** Pořadí */
+    quantity Double required, /** Počet */
+    measureUnit String required, /** Měrná jednotka */
+    description String required, /** Popis */
+    measureUnitPrice BigDecimal required /** Cena za měrnú jednotku */
+}
+
+/**
+ * Company entity.
+ * Společnost
+ * @author DriveFuture s.r.o. team
+ */
+entity Company {
+  	name String, /** Název společnosti */ 
+    firstName String, /** Jméno */
+    lastName String, /** Příjmení */
+    street String, /** Ulice */
+    city String, /** Město */
+    postalCode String, /** PSČ */
+    country String, /** Země */
+    registrationNumber String,
+    vatNumber String, /** DIČ */
+    registeredMark String, /** Spisová značka */
+    supplementaryText TextBlob, /** Doplňkový text */
+    bankAccountNumber String, /** Číslo účtu */
+    iban String, /** IBAN */
+    email String required, /** E-mail */
+    telephone String, /** Telefon */
+    webUrl String, /** Url webu */
+    createdDate Instant, /** Datum vytvoření */
+    updatedDate Instant /** Datum úpravy */
+}
+
+/**
+ * InvoiceDesignSettings entity.
+ * Nastavení vzhledu faktury
+ * @author DriveFuture s.r.o. team
+ */
+entity InvoiceDesignSettings {
+	logo ImageBlob, /** Datum vytvoření */
+    signatureAndStamp ImageBlob /** Logo a razítko */
+}
+
+/**
+ * Customer entity.
+ * Zákazník
+ * @author DriveFuture s.r.o. team
+ */
+entity Customer {
+	email String required, /** E-mail */
+    emailCopy String, /** Kopie E-mailu */
+    emailBlindCopy String, /** Slepá kopie E-mailu */
+    telephone String, /** Telefon */
+    invoiceDuePeriod Integer required, /** Splatnost faktury ve dnech */
+    invoiceLanguage Language, /** Jazyk faktury */
+    comment TextBlob, /** Netisknutelná poznámka */
+    supplementaryText TextBlob, /** Doplňkový text */
+    beforeInvoiceItemsText TextBlob, /** Text před položkami na faktuře */
+    invoiceFooterText TextBlob, /** Text v patičce faktury */
+    createdDate Instant, /** Datum vytvoření */
+    updatedDate Instant /** Datum úpravy */
+}
+
+/**
+ * CustomerInvoiceData entity.
+ * Fakturační údaje zákazníka
+ * @author DriveFuture s.r.o. team
+ */
+entity CustomerInvoiceData {
+	companyName String, /** Název společnosti */ 
+    ownName String required, /** Vlastní název */ 
+    firstName String, /** Jméno */
+    lastName String, /** Příjmení */
+    street String, /** Ulice */
+    city String, /** Město */
+    postalCode String, /** PSČ */
+    country String, /** Země */
+    registrationNumber String, /** IČ */
+    vatNumber String, /** DIČ */
+    bankAccountNumber String, /** Číslo účtu */
+    iban String, /** IBAN */
+    webUrl String /** Url webu */
+}
+
+/**
+ * CustomerDeliveryData entity.
+ * Dodací údaje zákazníka
+ * @author DriveFuture s.r.o. team
+ */
+entity CustomerDeliveryData {
+	companyName String, /** Název společnosti */
+    firstName String, /** Jméno */
+    lastName String, /** Příjmení */
+    street String, /** Ulice */
+    city String, /** Město */
+    postalCode String, /** PSČ */
+    country String, /** Země */
+    telephone String /** Telefon */
+}
+
+/**
+ * InvoiceDesignTemplate entity.
+ * Šablona vzhledu faktury 
+ * @author DriveFuture s.r.o. team
+ */
+entity InvoiceDesignTemplate {
+    name String required,
+    description TextBlob,
+    image ImageBlob,
+    jrxmlTemplateFile Blob required,
+    createdDate Instant, /** Datum vytvoření */
+    updatedDate Instant /** Datum úpravy */
+}
+
+/**
+ * UserAccount entity.
+ * Uživatelský účet
+ * @author DriveFuture s.r.o. team
+ */
+entity UserAccount {	
+  plan Plan required /** Plán*/
+}
+
+/**
+ * Plan enum.
+ * Plán
+ * @author DriveFuture s.r.o. team
+ */
+enum Plan {
+    BASIC, PRO
+}
+
+/**
+ * PaymentMethod enum.
+ * Způsoby úhrady
+ * @author DriveFuture s.r.o. team
+ */
+enum PaymentMethod {
+    BANK_TRANSFER, CASH, CASH_ON_DELIVERY
+}
+
+/**
+ * Language enum.
+ * Jazyky
+ * @author DriveFuture s.r.o. team
+ */
+enum Language {
+    CZECH, SLOVAK, POLISH, RUSSIAN, ENGLISH, GERMAN
+}
+
+relationship OneToOne {
+	Customer{customerInvoiceData(ownName) required} to CustomerInvoiceData,
+    Customer{deliveryData(companyName)} to CustomerDeliveryData,
+    Company{invoiceDesignSettings} to InvoiceDesignSettings,
+    InvoiceDesignSettings{template(name) required} to InvoiceDesignTemplate,
+    UserAccount{currentCompany} to Company,
+    UserAccount{user} to User with jpaDerivedIdentifier
+}
+
+relationship ManyToOne {
+	Invoice{company required} to Company,
+	Invoice{customer required} to Customer
+}
+
+relationship OneToMany {
+	Invoice{item(description)} to InvoiceItem{invoice}
+}
+
+relationship ManyToMany {
+    Company{userAccount} to UserAccount{company(name)}
+}
+
+paginate Company, Customer with pagination
+paginate Invoice with infinite-scroll
