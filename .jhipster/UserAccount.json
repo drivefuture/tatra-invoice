@@ -34,7 +34,7 @@
       "otherEntityName": "company",
       "otherEntityRelationshipName": "userAccount",
       "relationshipName": "company",
-      "otherEntityField": "name",
+      "otherEntityField": "id",
       "ownerSide": false
     }
   ],
