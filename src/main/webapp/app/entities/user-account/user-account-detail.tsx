@@ -38,6 +38,10 @@ export const UserAccountDetail = (props: IUserAccountDetailProps) => {
             <Translate contentKey="tatraInvoiceApp.userAccount.user">User</Translate>
           </dt>
           <dd>{userAccountEntity.user ? userAccountEntity.user.id : ''}</dd>
+          <dt>
+            <Translate contentKey="tatraInvoiceApp.userAccount.currentCompany">Current Company</Translate>
+          </dt>
+          <dd>{userAccountEntity.currentCompany ? userAccountEntity.currentCompany.name : ''}</dd>
         </dl>
         <Button tag={Link} to="/user-account" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

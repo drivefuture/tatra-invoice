@@ -118,6 +118,21 @@ export const UserAccountUpdate = (props: IUserAccountUpdateProps) => {
                     : null}
                 </AvInput>
               </AvGroup>
+              <AvGroup>
+                <Label for="user-account-currentCompany">
+                  <Translate contentKey="tatraInvoiceApp.userAccount.currentCompany">Current Company</Translate>
+                </Label>
+                <AvInput id="user-account-currentCompany" type="select" className="form-control" name="currentCompany.id">
+                  <option value="" key="0" />
+                  {companies
+                    ? companies.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.name}
+                        </option>
+                      ))
+                    : null}
+                </AvInput>
+              </AvGroup>
               <Button tag={Link} id="cancel-save" to="/user-account" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

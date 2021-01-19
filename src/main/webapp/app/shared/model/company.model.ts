@@ -24,7 +24,6 @@ export interface ICompany {
   updatedDate?: string;
   invoiceDesignSettings?: IInvoiceDesignSettings;
   userAccounts?: IUserAccount[];
-  userAccount?: IUserAccount;
 }
 
 export const defaultValue: Readonly<ICompany> = {};
