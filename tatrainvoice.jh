@@ -302,7 +302,7 @@ relationship OneToMany {
 }
 
 relationship ManyToMany {
-    Company{userAccount} to UserAccount{company(name)}
+    Company{userAccount} to UserAccount{company}
 }
 
 paginate Company, Customer with pagination
