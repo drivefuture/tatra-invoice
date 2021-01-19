@@ -1,8 +1,7 @@
 package cz.drivefuture.tatrainvoice.repository;
 
 import cz.drivefuture.tatrainvoice.domain.UserAccount;
-import java.util.Optional;
-import org.springframework.cache.annotation.Cacheable;
+
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -11,9 +10,4 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserAccountRepository extends JpaRepository<UserAccount, Long> {
-    String USERS_ACCOUNTS_BY_LOGIN_CACHE = "usersAccountsByLogin";
-
-    @EntityGraph(attributePaths = { "currentCompany", "companies", "user", "user.authorities" })
-    //@Cacheable(cacheNames = USERS_ACCOUNTS_BY_LOGIN_CACHE)
-    Optional<UserAccount> findOneWithCompaniesAndUserWithUserAuthoritiesByUserLogin(String login);
 }
