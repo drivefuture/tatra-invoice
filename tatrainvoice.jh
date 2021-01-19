@@ -288,7 +288,8 @@ relationship OneToOne {
     Customer{deliveryData(companyName)} to CustomerDeliveryData,
     Company{invoiceDesignSettings} to InvoiceDesignSettings,
     InvoiceDesignSettings{template(name) required} to InvoiceDesignTemplate,
-    UserAccount{user} to User with jpaDerivedIdentifier
+    UserAccount{user} to User with jpaDerivedIdentifier,
+    UserAccount{currentCompany(name)} to Company
 }
 
 relationship ManyToOne {
@@ -297,8 +298,7 @@ relationship ManyToOne {
 }
 
 relationship OneToMany {
-	Invoice{item(description)} to InvoiceItem{invoice},
-    UserAccount{currentCompany(name)} to Company
+	Invoice{item(description)} to InvoiceItem{invoice}
 }
 
 relationship ManyToMany {
