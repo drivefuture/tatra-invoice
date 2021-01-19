@@ -18,6 +18,9 @@
             <column name="plan" type="varchar(255)" remarks="Plán">
                 <constraints nullable="false" />
             </column>
+            <column name="current_company_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_user_account_current_company_id" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

@@ -1,6 +1,5 @@
 package cz.drivefuture.tatrainvoice.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Cache;
@@ -170,10 +169,6 @@ public class Company implements Serializable {
                joinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "user_account_id", referencedColumnName = "id"))
     private Set<UserAccount> userAccounts = new HashSet<>();
-
-    @ManyToOne
-    @JsonIgnoreProperties(value = "currentCompanies", allowSetters = true)
-    private UserAccount userAccount;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -454,19 +449,6 @@ public class Company implements Serializable {
 
     public void setUserAccounts(Set<UserAccount> userAccounts) {
         this.userAccounts = userAccounts;
-    }
-
-    public UserAccount getUserAccount() {
-        return userAccount;
-    }
-
-    public Company userAccount(UserAccount userAccount) {
-        this.userAccount = userAccount;
-        return this;
-    }
-
-    public void setUserAccount(UserAccount userAccount) {
-        this.userAccount = userAccount;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

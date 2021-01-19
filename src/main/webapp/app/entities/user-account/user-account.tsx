@@ -42,6 +42,9 @@ export const UserAccount = (props: IUserAccountProps) => {
                 <th>
                   <Translate contentKey="tatraInvoiceApp.userAccount.user">User</Translate>
                 </th>
+                <th>
+                  <Translate contentKey="tatraInvoiceApp.userAccount.currentCompany">Current Company</Translate>
+                </th>
                 <th />
               </tr>
             </thead>
@@ -57,6 +60,13 @@ export const UserAccount = (props: IUserAccountProps) => {
                     <Translate contentKey={`tatraInvoiceApp.Plan.${userAccount.plan}`} />
                   </td>
                   <td>{userAccount.user ? userAccount.user.id : ''}</td>
+                  <td>
+                    {userAccount.currentCompany ? (
+                      <Link to={`company/${userAccount.currentCompany.id}`}>{userAccount.currentCompany.name}</Link>
+                    ) : (
+                      ''
+                    )}
+                  </td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${userAccount.id}`} color="info" size="sm">
