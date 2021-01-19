@@ -106,19 +106,19 @@
       "ownerSide": true
     },
     {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "userAccount",
-      "otherEntityRelationshipName": "company",
-      "relationshipName": "userAccount",
-      "otherEntityField": "id"
-    },
-    {
       "relationshipType": "many-to-many",
       "otherEntityName": "userAccount",
       "otherEntityRelationshipName": "company",
       "relationshipName": "userAccount",
       "otherEntityField": "id",
       "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "userAccount",
+      "otherEntityRelationshipName": "currentCompany",
+      "relationshipName": "userAccount",
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20210119002928",

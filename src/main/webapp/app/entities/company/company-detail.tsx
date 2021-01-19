@@ -198,10 +198,6 @@ export const CompanyDetail = (props: ICompanyDetailProps) => {
           <dt>
             <Translate contentKey="tatraInvoiceApp.company.userAccount">User Account</Translate>
           </dt>
-          <dd>{companyEntity.userAccount ? companyEntity.userAccount.id : ''}</dd>
-          <dt>
-            <Translate contentKey="tatraInvoiceApp.company.userAccount">User Account</Translate>
-          </dt>
           <dd>
             {companyEntity.userAccounts
               ? companyEntity.userAccounts.map((val, i) => (
@@ -212,6 +208,10 @@ export const CompanyDetail = (props: ICompanyDetailProps) => {
                 ))
               : null}
           </dd>
+          <dt>
+            <Translate contentKey="tatraInvoiceApp.company.userAccount">User Account</Translate>
+          </dt>
+          <dd>{companyEntity.userAccount ? companyEntity.userAccount.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/company" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

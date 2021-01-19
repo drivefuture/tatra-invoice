@@ -23,8 +23,8 @@ export interface ICompany {
   createdDate?: string;
   updatedDate?: string;
   invoiceDesignSettings?: IInvoiceDesignSettings;
-  userAccount?: IUserAccount;
   userAccounts?: IUserAccount[];
+  userAccount?: IUserAccount;
 }
 
 export const defaultValue: Readonly<ICompany> = {};

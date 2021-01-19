@@ -18,6 +18,7 @@
       },
       "plan": "Plan",
       "user": "User",
+      "currentCompany": "Current Company",
       "company": "Company",
       "help": {
         "plan": "Plán"

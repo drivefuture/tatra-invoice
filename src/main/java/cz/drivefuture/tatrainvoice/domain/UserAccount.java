@@ -44,6 +44,10 @@ public class UserAccount implements Serializable {
     @JoinColumn(name = "id")
     private User user;
 
+    @OneToMany(mappedBy = "userAccount")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<Company> currentCompanies = new HashSet<>();
+
     @ManyToMany(mappedBy = "userAccounts")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnore
@@ -82,6 +86,31 @@ public class UserAccount implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Company> getCurrentCompanies() {
+        return currentCompanies;
+    }
+
+    public UserAccount currentCompanies(Set<Company> companies) {
+        this.currentCompanies = companies;
+        return this;
+    }
+
+    public UserAccount addCurrentCompany(Company company) {
+        this.currentCompanies.add(company);
+        company.setUserAccount(this);
+        return this;
+    }
+
+    public UserAccount removeCurrentCompany(Company company) {
+        this.currentCompanies.remove(company);
+        company.setUserAccount(null);
+        return this;
+    }
+
+    public void setCurrentCompanies(Set<Company> companies) {
+        this.currentCompanies = companies;
     }
 
     public Set<Company> getCompanies() {

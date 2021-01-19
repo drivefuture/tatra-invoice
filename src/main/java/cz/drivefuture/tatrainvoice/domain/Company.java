@@ -164,16 +164,16 @@ public class Company implements Serializable {
     @JoinColumn(unique = true)
     private InvoiceDesignSettings invoiceDesignSettings;
 
-    @ManyToOne
-    @JsonIgnoreProperties(value = "companies", allowSetters = true)
-    private UserAccount userAccount;
-
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JoinTable(name = "company_user_account",
                joinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "user_account_id", referencedColumnName = "id"))
     private Set<UserAccount> userAccounts = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "currentCompanies", allowSetters = true)
+    private UserAccount userAccount;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -431,19 +431,6 @@ public class Company implements Serializable {
         this.invoiceDesignSettings = invoiceDesignSettings;
     }
 
-    public UserAccount getUserAccount() {
-        return userAccount;
-    }
-
-    public Company userAccount(UserAccount userAccount) {
-        this.userAccount = userAccount;
-        return this;
-    }
-
-    public void setUserAccount(UserAccount userAccount) {
-        this.userAccount = userAccount;
-    }
-
     public Set<UserAccount> getUserAccounts() {
         return userAccounts;
     }
@@ -467,6 +454,19 @@ public class Company implements Serializable {
 
     public void setUserAccounts(Set<UserAccount> userAccounts) {
         this.userAccounts = userAccounts;
+    }
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public Company userAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+        return this;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

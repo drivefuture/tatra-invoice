@@ -59,6 +59,7 @@ public class CacheConfiguration {
             createCache(cm, cz.drivefuture.tatrainvoice.domain.InvoiceDesignTemplate.class.getName());
             createCache(cm, cz.drivefuture.tatrainvoice.domain.UserAccount.class.getName());
             createCache(cm, cz.drivefuture.tatrainvoice.domain.UserAccount.class.getName() + ".companies");
+            createCache(cm, cz.drivefuture.tatrainvoice.domain.UserAccount.class.getName() + ".currentCompanies");
             // jhipster-needle-ehcache-add-entry
         };
     }

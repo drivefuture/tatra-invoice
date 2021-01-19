@@ -14,12 +14,6 @@
                                  referencedColumnNames="id"
                                  referencedTableName="invoice_design_settings"/>
 
-        <addForeignKeyConstraint baseColumnNames="user_account_id"
-                                 baseTableName="company"
-                                 constraintName="fk_company_user_account_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="user_account"/>
-
         <addForeignKeyConstraint baseColumnNames="company_id"
                                  baseTableName="company_user_account"
                                  constraintName="fk_company_user_account_company_id"
@@ -32,5 +26,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="user_account"/>
         
+        <addForeignKeyConstraint baseColumnNames="user_account_id"
+                                 baseTableName="company"
+                                 constraintName="fk_company_user_account_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_account"/>
+
     </changeSet>
 </databaseChangeLog>

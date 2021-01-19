@@ -6,6 +6,7 @@ export interface IUserAccount {
   id?: number;
   plan?: Plan;
   user?: IUser;
+  currentCompanies?: ICompany[];
   companies?: ICompany[];
 }
 
