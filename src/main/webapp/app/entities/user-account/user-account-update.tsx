@@ -122,8 +122,14 @@ export const UserAccountUpdate = (props: IUserAccountUpdateProps) => {
                 <Label for="user-account-currentCompany">
                   <Translate contentKey="tatraInvoiceApp.userAccount.currentCompany">Current Company</Translate>
                 </Label>
-                <AvInput id="user-account-currentCompany" type="select" className="form-control" name="currentCompany.id">
-                  <option value="" key="0" />
+                <AvInput
+                  id="user-account-currentCompany"
+                  type="select"
+                  className="form-control"
+                  name="currentCompany.id"
+                  value={isNew ? companies[0] && companies[0].id : userAccountEntity.currentCompany?.id}
+                  required
+                >
                   {companies
                     ? companies.map(otherEntity => (
                         <option value={otherEntity.id} key={otherEntity.id}>
@@ -132,6 +138,9 @@ export const UserAccountUpdate = (props: IUserAccountUpdateProps) => {
                       ))
                     : null}
                 </AvInput>
+                <AvFeedback>
+                  <Translate contentKey="entity.validation.required">This field is required.</Translate>
+                </AvFeedback>
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/user-account" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />

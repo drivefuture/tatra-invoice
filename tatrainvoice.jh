@@ -288,13 +288,13 @@ relationship OneToOne {
     Customer{deliveryData(companyName)} to CustomerDeliveryData,
     Company{invoiceDesignSettings} to InvoiceDesignSettings,
     InvoiceDesignSettings{template(name) required} to InvoiceDesignTemplate,
-    UserAccount{user} to User with jpaDerivedIdentifier,
-    UserAccount{currentCompany(name)} to Company
+    UserAccount{user} to User with jpaDerivedIdentifier
 }
 
 relationship ManyToOne {
 	Invoice{company required} to Company,
 	Invoice{customer required} to Customer
+    UserAccount{currentCompany(name) required} to Company
 }
 
 relationship OneToMany {

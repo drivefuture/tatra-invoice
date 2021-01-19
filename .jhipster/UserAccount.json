@@ -22,12 +22,12 @@
       "useJPADerivedIdentifier": true
     },
     {
-      "relationshipType": "one-to-one",
+      "relationshipType": "many-to-one",
       "otherEntityName": "company",
       "otherEntityRelationshipName": "userAccount",
+      "relationshipValidateRules": "required",
       "relationshipName": "currentCompany",
-      "otherEntityField": "name",
-      "ownerSide": true
+      "otherEntityField": "name"
     },
     {
       "relationshipType": "many-to-many",
