@@ -1,0 +1,65 @@
+{
+  "name": "InvoiceItem",
+  "fields": [
+    {
+      "fieldName": "sequence",
+      "fieldType": "Integer",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "Double",
+      "javadoc": "Pořadí",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "measureUnit",
+      "fieldType": "String",
+      "javadoc": "Počet",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "javadoc": "Měrná jednotka",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "measureUnitPrice",
+      "fieldType": "BigDecimal",
+      "javadoc": "Popis",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "invoice",
+      "otherEntityRelationshipName": "item",
+      "relationshipName": "invoice",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210119002828",
+  "javadoc": "Invoice entity.\\nPoložka faktury\\n@author DriveFuture s.r.o. team",
+  "entityTableName": "invoice_item",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

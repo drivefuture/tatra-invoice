@@ -1,0 +1,33 @@
+{
+  "tatraInvoiceApp": {
+    "invoiceItem": {
+      "home": {
+        "title": "Invoice Items",
+        "createLabel": "Invoice Item erstellen",
+        "createOrEditLabel": "Invoice Item erstellen oder bearbeiten",
+        "notFound": "No Invoice Items found"
+      },
+      "created": "Invoice Item erstellt mit ID {{ param }}",
+      "updated": "Invoice Item aktualisiert mit ID {{ param }}",
+      "deleted": "Invoice Item gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Invoice Item {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Invoice Item"
+      },
+      "sequence": "Sequence",
+      "quantity": "Quantity",
+      "measureUnit": "Measure Unit",
+      "description": "Description",
+      "measureUnitPrice": "Measure Unit Price",
+      "invoice": "Invoice",
+      "help": {
+        "quantity": "Pořadí",
+        "measureUnit": "Počet",
+        "description": "Měrná jednotka",
+        "measureUnitPrice": "Popis"
+      }
+    }
+  }
+}

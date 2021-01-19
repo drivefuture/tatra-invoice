@@ -1,0 +1,38 @@
+{
+  "tatraInvoiceApp": {
+    "customerDeliveryData": {
+      "home": {
+        "title": "Customer Delivery Data",
+        "createLabel": "Customer Delivery Data erstellen",
+        "createOrEditLabel": "Customer Delivery Data erstellen oder bearbeiten",
+        "notFound": "No Customer Delivery Data found"
+      },
+      "created": "Customer Delivery Data erstellt mit ID {{ param }}",
+      "updated": "Customer Delivery Data aktualisiert mit ID {{ param }}",
+      "deleted": "Customer Delivery Data gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Customer Delivery Data {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Customer Delivery Data"
+      },
+      "companyName": "Company Name",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "street": "Street",
+      "city": "City",
+      "postalCode": "Postal Code",
+      "country": "Country",
+      "telephone": "Telephone",
+      "help": {
+        "firstName": "Název společnosti",
+        "lastName": "Jméno",
+        "street": "Příjmení",
+        "city": "Ulice",
+        "postalCode": "Město",
+        "country": "PSČ",
+        "telephone": "Země"
+      }
+    }
+  }
+}

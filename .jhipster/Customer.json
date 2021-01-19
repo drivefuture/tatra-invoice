@@ -1,0 +1,106 @@
+{
+  "name": "Customer",
+  "fields": [
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "emailCopy",
+      "fieldType": "String",
+      "javadoc": "E-mail"
+    },
+    {
+      "fieldName": "emailBlindCopy",
+      "fieldType": "String",
+      "javadoc": "Kopie E-mailu"
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "String",
+      "javadoc": "Slepá kopie E-mailu"
+    },
+    {
+      "fieldName": "invoiceDuePeriod",
+      "fieldType": "Integer",
+      "javadoc": "Telefon",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "invoiceLanguage",
+      "fieldType": "Language",
+      "javadoc": "Splatnost faktury ve dnech",
+      "fieldValues": "CZECH,SLOVAK,POLISH,RUSSIAN,ENGLISH,GERMAN"
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "byte[]",
+      "javadoc": "Jazyk faktury",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "supplementaryText",
+      "fieldType": "byte[]",
+      "javadoc": "Netisknutelná poznámka",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "beforeInvoiceItemsText",
+      "fieldType": "byte[]",
+      "javadoc": "Doplňkový text",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "invoiceFooterText",
+      "fieldType": "byte[]",
+      "javadoc": "Text před položkami na faktuře",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "javadoc": "Text v patičce faktury"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant",
+      "javadoc": "Datum vytvoření"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "customerInvoiceData",
+      "otherEntityRelationshipName": "customer",
+      "relationshipValidateRules": "required",
+      "relationshipName": "customerInvoiceData",
+      "otherEntityField": "ownName",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "customerDeliveryData",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "deliveryData",
+      "otherEntityField": "companyName",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20210119003128",
+  "javadoc": "Customer entity.\\nZákazník\\n@author DriveFuture s.r.o. team",
+  "entityTableName": "customer",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

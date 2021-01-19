@@ -7,6 +7,15 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Сущности",
+        "invoice": "Invoice",
+        "invoiceItem": "Invoice Item",
+        "company": "Company",
+        "invoiceDesignSettings": "Invoice Design Settings",
+        "customer": "Customer",
+        "customerInvoiceData": "Customer Invoice Data",
+        "customerDeliveryData": "Customer Delivery Data",
+        "invoiceDesignTemplate": "Invoice Design Template",
+        "userAccount": "User Account",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

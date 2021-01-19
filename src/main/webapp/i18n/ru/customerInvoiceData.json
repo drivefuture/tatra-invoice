@@ -1,0 +1,48 @@
+{
+  "tatraInvoiceApp": {
+    "customerInvoiceData": {
+      "home": {
+        "title": "Customer Invoice Data",
+        "createLabel": "Создать новый Customer Invoice Data",
+        "createOrEditLabel": "Создать или отредактировать Customer Invoice Data",
+        "notFound": "No Customer Invoice Data found"
+      },
+      "created": "Новый Customer Invoice Data создан с идентификатором {{ param }}",
+      "updated": "Customer Invoice Data обновлен с идентификатором {{ param }}",
+      "deleted": "Customer Invoice Data удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Customer Invoice Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Customer Invoice Data"
+      },
+      "companyName": "Company Name",
+      "ownName": "Own Name",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "street": "Street",
+      "city": "City",
+      "postalCode": "Postal Code",
+      "country": "Country",
+      "registrationNumber": "Registration Number",
+      "vatNumber": "Vat Number",
+      "bankAccountNumber": "Bank Account Number",
+      "iban": "Iban",
+      "webUrl": "Web Url",
+      "help": {
+        "ownName": "Název společnosti",
+        "firstName": "Vlastní název",
+        "lastName": "Jméno",
+        "street": "Příjmení",
+        "city": "Ulice",
+        "postalCode": "Město",
+        "country": "PSČ",
+        "registrationNumber": "Země",
+        "vatNumber": "IČ",
+        "bankAccountNumber": "DIČ",
+        "iban": "Číslo účtu",
+        "webUrl": "IBAN"
+      }
+    }
+  }
+}

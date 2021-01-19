@@ -1,0 +1,30 @@
+{
+  "tatraInvoiceApp": {
+    "invoiceDesignTemplate": {
+      "home": {
+        "title": "Invoice Design Templates",
+        "createLabel": "Invoice Design Template erstellen",
+        "createOrEditLabel": "Invoice Design Template erstellen oder bearbeiten",
+        "notFound": "No Invoice Design Templates found"
+      },
+      "created": "Invoice Design Template erstellt mit ID {{ param }}",
+      "updated": "Invoice Design Template aktualisiert mit ID {{ param }}",
+      "deleted": "Invoice Design Template gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Invoice Design Template {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Invoice Design Template"
+      },
+      "name": "Name",
+      "description": "Description",
+      "image": "Image",
+      "jrxmlTemplateFile": "Jrxml Template File",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "help": {
+        "updatedDate": "Datum vytvoření"
+      }
+    }
+  }
+}

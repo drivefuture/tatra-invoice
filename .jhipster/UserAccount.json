@@ -1,0 +1,53 @@
+{
+  "name": "UserAccount",
+  "fields": [
+    {
+      "fieldName": "plan",
+      "fieldType": "Plan",
+      "javadoc": "Plán",
+      "fieldValues": "BASIC,PRO",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "company",
+      "otherEntityRelationshipName": "userAccount",
+      "relationshipName": "currentCompany",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "userAccount",
+      "relationshipName": "user",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "useJPADerivedIdentifier": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "company",
+      "otherEntityRelationshipName": "userAccount",
+      "relationshipName": "company",
+      "otherEntityField": "name",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20210119003528",
+  "javadoc": "UserAccount entity.\\nUživatelský účet\\n@author DriveFuture s.r.o. team",
+  "entityTableName": "user_account",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

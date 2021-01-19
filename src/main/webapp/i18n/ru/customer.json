@@ -1,0 +1,48 @@
+{
+  "tatraInvoiceApp": {
+    "customer": {
+      "home": {
+        "title": "Customers",
+        "createLabel": "Создать новый Customer",
+        "createOrEditLabel": "Создать или отредактировать Customer",
+        "notFound": "No Customers found"
+      },
+      "created": "Новый Customer создан с идентификатором {{ param }}",
+      "updated": "Customer обновлен с идентификатором {{ param }}",
+      "deleted": "Customer удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Customer {{ id }}?"
+      },
+      "detail": {
+        "title": "Customer"
+      },
+      "email": "Email",
+      "emailCopy": "Email Copy",
+      "emailBlindCopy": "Email Blind Copy",
+      "telephone": "Telephone",
+      "invoiceDuePeriod": "Invoice Due Period",
+      "invoiceLanguage": "Invoice Language",
+      "comment": "Comment",
+      "supplementaryText": "Supplementary Text",
+      "beforeInvoiceItemsText": "Before Invoice Items Text",
+      "invoiceFooterText": "Invoice Footer Text",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "customerInvoiceData": "Customer Invoice Data",
+      "deliveryData": "Delivery Data",
+      "help": {
+        "emailCopy": "E-mail",
+        "emailBlindCopy": "Kopie E-mailu",
+        "telephone": "Slepá kopie E-mailu",
+        "invoiceDuePeriod": "Telefon",
+        "invoiceLanguage": "Splatnost faktury ve dnech",
+        "comment": "Jazyk faktury",
+        "supplementaryText": "Netisknutelná poznámka",
+        "beforeInvoiceItemsText": "Doplňkový text",
+        "invoiceFooterText": "Text před položkami na faktuře",
+        "createdDate": "Text v patičce faktury",
+        "updatedDate": "Datum vytvoření"
+      }
+    }
+  }
+}

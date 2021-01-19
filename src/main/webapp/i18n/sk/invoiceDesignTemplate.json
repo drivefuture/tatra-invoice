@@ -1,0 +1,30 @@
+{
+  "tatraInvoiceApp": {
+    "invoiceDesignTemplate": {
+      "home": {
+        "title": "Invoice Design Templates",
+        "createLabel": "Pridať Invoice Design Template",
+        "createOrEditLabel": "Pridať alebo upraviť Invoice Design Template",
+        "notFound": "No Invoice Design Templates found"
+      },
+      "created": "Bol vytvorený potomok entity Invoice Design Template s identifikátorom {{ param }}",
+      "updated": "Potomok entity Invoice Design Template s identifikátorom {{ param }} bol upravený.",
+      "deleted": "Potomok entity Invoice Design Template s identifikátorom {{ param }} bol vymazaný.",
+      "delete": {
+        "question": "Ste si istý, že chcete vymazať Invoice Design Template {{ id }}?"
+      },
+      "detail": {
+        "title": "Invoice Design Template"
+      },
+      "name": "Name",
+      "description": "Description",
+      "image": "Image",
+      "jrxmlTemplateFile": "Jrxml Template File",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "help": {
+        "updatedDate": "Datum vytvoření"
+      }
+    }
+  }
+}

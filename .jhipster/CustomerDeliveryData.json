@@ -1,0 +1,57 @@
+{
+  "name": "CustomerDeliveryData",
+  "fields": [
+    {
+      "fieldName": "companyName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "javadoc": "Název společnosti"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "javadoc": "Jméno"
+    },
+    {
+      "fieldName": "street",
+      "fieldType": "String",
+      "javadoc": "Příjmení"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String",
+      "javadoc": "Ulice"
+    },
+    {
+      "fieldName": "postalCode",
+      "fieldType": "String",
+      "javadoc": "Město"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "String",
+      "javadoc": "PSČ"
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "String",
+      "javadoc": "Země"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210119003328",
+  "javadoc": "CustomerDeliveryData entity.\\nDodací údaje zákazníka\\n@author DriveFuture s.r.o. team",
+  "entityTableName": "customer_delivery_data",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

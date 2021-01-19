@@ -1,0 +1,33 @@
+{
+  "tatraInvoiceApp": {
+    "invoiceItem": {
+      "home": {
+        "title": "Invoice Items",
+        "createLabel": "Pridať Invoice Item",
+        "createOrEditLabel": "Pridať alebo upraviť Invoice Item",
+        "notFound": "No Invoice Items found"
+      },
+      "created": "Bol vytvorený potomok entity Invoice Item s identifikátorom {{ param }}",
+      "updated": "Potomok entity Invoice Item s identifikátorom {{ param }} bol upravený.",
+      "deleted": "Potomok entity Invoice Item s identifikátorom {{ param }} bol vymazaný.",
+      "delete": {
+        "question": "Ste si istý, že chcete vymazať Invoice Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Invoice Item"
+      },
+      "sequence": "Sequence",
+      "quantity": "Quantity",
+      "measureUnit": "Measure Unit",
+      "description": "Description",
+      "measureUnitPrice": "Measure Unit Price",
+      "invoice": "Invoice",
+      "help": {
+        "quantity": "Pořadí",
+        "measureUnit": "Počet",
+        "description": "Měrná jednotka",
+        "measureUnitPrice": "Popis"
+      }
+    }
+  }
+}

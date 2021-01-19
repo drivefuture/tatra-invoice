@@ -1,0 +1,28 @@
+{
+  "tatraInvoiceApp": {
+    "userAccount": {
+      "home": {
+        "title": "User Accounts",
+        "createLabel": "Pridať User Account",
+        "createOrEditLabel": "Pridať alebo upraviť User Account",
+        "notFound": "No User Accounts found"
+      },
+      "created": "Bol vytvorený potomok entity User Account s identifikátorom {{ param }}",
+      "updated": "Potomok entity User Account s identifikátorom {{ param }} bol upravený.",
+      "deleted": "Potomok entity User Account s identifikátorom {{ param }} bol vymazaný.",
+      "delete": {
+        "question": "Ste si istý, že chcete vymazať User Account {{ id }}?"
+      },
+      "detail": {
+        "title": "User Account"
+      },
+      "plan": "Plan",
+      "currentCompany": "Current Company",
+      "user": "User",
+      "company": "Company",
+      "help": {
+        "plan": "Plán"
+      }
+    }
+  }
+}
