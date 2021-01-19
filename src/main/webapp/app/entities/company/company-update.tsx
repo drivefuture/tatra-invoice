@@ -21,7 +21,6 @@ export interface ICompanyUpdateProps extends StateProps, DispatchProps, RouteCom
 export const CompanyUpdate = (props: ICompanyUpdateProps) => {
   const [idsuserAccount, setIdsuserAccount] = useState([]);
   const [invoiceDesignSettingsId, setInvoiceDesignSettingsId] = useState('0');
-  const [userAccountId, setUserAccountId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
   const { companyEntity, invoiceDesignSettings, userAccounts, loading, updating } = props;
@@ -309,21 +308,6 @@ export const CompanyUpdate = (props: ICompanyUpdateProps) => {
                   name="userAccounts"
                   value={companyEntity.userAccounts && companyEntity.userAccounts.map(e => e.id)}
                 >
-                  <option value="" key="0" />
-                  {userAccounts
-                    ? userAccounts.map(otherEntity => (
-                        <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
-                        </option>
-                      ))
-                    : null}
-                </AvInput>
-              </AvGroup>
-              <AvGroup>
-                <Label for="company-userAccount">
-                  <Translate contentKey="tatraInvoiceApp.company.userAccount">User Account</Translate>
-                </Label>
-                <AvInput id="company-userAccount" type="select" className="form-control" name="userAccount.id">
                   <option value="" key="0" />
                   {userAccounts
                     ? userAccounts.map(otherEntity => (

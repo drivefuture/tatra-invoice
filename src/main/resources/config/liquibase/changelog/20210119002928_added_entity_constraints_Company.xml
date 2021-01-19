@@ -26,11 +26,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="user_account"/>
         
-        <addForeignKeyConstraint baseColumnNames="user_account_id"
-                                 baseTableName="company"
-                                 constraintName="fk_company_user_account_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="user_account"/>
-
     </changeSet>
 </databaseChangeLog>

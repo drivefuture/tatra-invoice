@@ -72,9 +72,6 @@
             <column name="invoice_design_settings_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_company_invoice_design_settings_id" />
             </column>
-            <column name="user_account_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="company" columnName="created_date" columnDataType="datetime"/>

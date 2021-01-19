@@ -153,9 +153,6 @@ export const Company = (props: ICompanyProps) => {
                   <Translate contentKey="tatraInvoiceApp.company.invoiceDesignSettings">Invoice Design Settings</Translate>{' '}
                   <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="tatraInvoiceApp.company.userAccount">User Account</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
                 <th />
               </tr>
             </thead>
@@ -192,7 +189,6 @@ export const Company = (props: ICompanyProps) => {
                       ''
                     )}
                   </td>
-                  <td>{company.userAccount ? <Link to={`user-account/${company.userAccount.id}`}>{company.userAccount.id}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${company.id}`} color="info" size="sm">
