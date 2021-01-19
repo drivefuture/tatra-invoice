@@ -1,16 +1,19 @@
 package cz.drivefuture.tatrainvoice.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
 
 /**
  * Company entity.\nSpolečnost\n@author DriveFuture s.r.o. team
@@ -20,6 +23,7 @@ import org.hibernate.annotations.Type;
 @Table(name = "company")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Company implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -27,124 +31,132 @@ public class Company implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
-
     /**
      * Název společnosti
      */
     @ApiModelProperty(value = "Název společnosti")
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "name")
+    private String name;
 
     /**
      * Jméno
      */
     @ApiModelProperty(value = "Jméno")
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "first_name")
+    private String firstName;
 
     /**
      * Příjmení
      */
     @ApiModelProperty(value = "Příjmení")
-    @Column(name = "street")
-    private String street;
+    @Column(name = "last_name")
+    private String lastName;
 
     /**
      * Ulice
      */
     @ApiModelProperty(value = "Ulice")
-    @Column(name = "city")
-    private String city;
+    @Column(name = "street")
+    private String street;
 
     /**
      * Město
      */
     @ApiModelProperty(value = "Město")
-    @Column(name = "postal_code")
-    private String postalCode;
+    @Column(name = "city")
+    private String city;
 
     /**
      * PSČ
      */
     @ApiModelProperty(value = "PSČ")
-    @Column(name = "country")
-    private String country;
+    @Column(name = "postal_code")
+    private String postalCode;
 
     /**
      * Země
      */
     @ApiModelProperty(value = "Země")
+    @Column(name = "country")
+    private String country;
+
+    /**
+     * IČ
+     */
+    @ApiModelProperty(value = "IČ")
     @Column(name = "registration_number")
     private String registrationNumber;
-
-    @Column(name = "vat_number")
-    private String vatNumber;
 
     /**
      * DIČ
      */
     @ApiModelProperty(value = "DIČ")
-    @Column(name = "registered_mark")
-    private String registeredMark;
+    @Column(name = "vat_number")
+    private String vatNumber;
 
     /**
      * Spisová značka
      */
     @ApiModelProperty(value = "Spisová značka")
+    @Column(name = "registered_mark")
+    private String registeredMark;
+
+    /**
+     * Doplňkový text
+     */
+    @ApiModelProperty(value = "Doplňkový text")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "supplementary_text")
     private String supplementaryText;
 
     /**
-     * Doplňkový text
+     * Číslo účtu
      */
-    @ApiModelProperty(value = "Doplňkový text")
+    @ApiModelProperty(value = "Číslo účtu")
     @Column(name = "bank_account_number")
     private String bankAccountNumber;
 
     /**
-     * Číslo účtu
+     * IBAN
      */
-    @ApiModelProperty(value = "Číslo účtu")
+    @ApiModelProperty(value = "IBAN")
     @Column(name = "iban")
     private String iban;
 
     /**
-     * IBAN
-     */
-    @NotNull
-    @ApiModelProperty(value = "IBAN", required = true)
-    @Column(name = "email", nullable = false)
-    private String email;
-
-    /**
      * E-mail
      */
-    @ApiModelProperty(value = "E-mail")
-    @Column(name = "telephone")
-    private String telephone;
+    @NotNull
+    @ApiModelProperty(value = "E-mail", required = true)
+    @Column(name = "email", nullable = false)
+    private String email;
 
     /**
      * Telefon
      */
     @ApiModelProperty(value = "Telefon")
-    @Column(name = "web_url")
-    private String webUrl;
+    @Column(name = "telephone")
+    private String telephone;
 
     /**
      * Url webu
      */
     @ApiModelProperty(value = "Url webu")
-    @Column(name = "created_date")
-    private Instant createdDate;
+    @Column(name = "web_url")
+    private String webUrl;
 
     /**
      * Datum vytvoření
      */
     @ApiModelProperty(value = "Datum vytvoření")
+    @Column(name = "created_date")
+    private Instant createdDate;
+
+    /**
+     * Datum úpravy
+     */
+    @ApiModelProperty(value = "Datum úpravy")
     @Column(name = "updated_date")
     private Instant updatedDate;
 
@@ -152,13 +164,15 @@ public class Company implements Serializable {
     @JoinColumn(unique = true)
     private InvoiceDesignSettings invoiceDesignSettings;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToOne
+    @JsonIgnoreProperties(value = "companies", allowSetters = true)
+    private UserAccount userAccount;
+
+    @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(
-        name = "company_user_account",
-        joinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(name = "user_account_id", referencedColumnName = "id")
-    )
+    @JoinTable(name = "company_user_account",
+               joinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "user_account_id", referencedColumnName = "id"))
     private Set<UserAccount> userAccounts = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -417,6 +431,19 @@ public class Company implements Serializable {
         this.invoiceDesignSettings = invoiceDesignSettings;
     }
 
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public Company userAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+        return this;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+    }
+
     public Set<UserAccount> getUserAccounts() {
         return userAccounts;
     }
@@ -441,7 +468,6 @@ public class Company implements Serializable {
     public void setUserAccounts(Set<UserAccount> userAccounts) {
         this.userAccounts = userAccounts;
     }
-
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override

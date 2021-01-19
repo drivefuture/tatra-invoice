@@ -14,6 +14,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -68,6 +70,12 @@ public class CustomerInvoiceDataResourceIT {
     private static final String DEFAULT_WEB_URL = "AAAAAAAAAA";
     private static final String UPDATED_WEB_URL = "BBBBBBBBBB";
 
+    private static final Instant DEFAULT_CREATED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Instant DEFAULT_UPDATED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_UPDATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     @Autowired
     private CustomerInvoiceDataRepository customerInvoiceDataRepository;
 
@@ -99,7 +107,9 @@ public class CustomerInvoiceDataResourceIT {
             .vatNumber(DEFAULT_VAT_NUMBER)
             .bankAccountNumber(DEFAULT_BANK_ACCOUNT_NUMBER)
             .iban(DEFAULT_IBAN)
-            .webUrl(DEFAULT_WEB_URL);
+            .webUrl(DEFAULT_WEB_URL)
+            .createdDate(DEFAULT_CREATED_DATE)
+            .updatedDate(DEFAULT_UPDATED_DATE);
         return customerInvoiceData;
     }
     /**
@@ -122,7 +132,9 @@ public class CustomerInvoiceDataResourceIT {
             .vatNumber(UPDATED_VAT_NUMBER)
             .bankAccountNumber(UPDATED_BANK_ACCOUNT_NUMBER)
             .iban(UPDATED_IBAN)
-            .webUrl(UPDATED_WEB_URL);
+            .webUrl(UPDATED_WEB_URL)
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
         return customerInvoiceData;
     }
 
@@ -158,6 +170,8 @@ public class CustomerInvoiceDataResourceIT {
         assertThat(testCustomerInvoiceData.getBankAccountNumber()).isEqualTo(DEFAULT_BANK_ACCOUNT_NUMBER);
         assertThat(testCustomerInvoiceData.getIban()).isEqualTo(DEFAULT_IBAN);
         assertThat(testCustomerInvoiceData.getWebUrl()).isEqualTo(DEFAULT_WEB_URL);
+        assertThat(testCustomerInvoiceData.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testCustomerInvoiceData.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
     }
 
     @Test
@@ -222,7 +236,9 @@ public class CustomerInvoiceDataResourceIT {
             .andExpect(jsonPath("$.[*].vatNumber").value(hasItem(DEFAULT_VAT_NUMBER)))
             .andExpect(jsonPath("$.[*].bankAccountNumber").value(hasItem(DEFAULT_BANK_ACCOUNT_NUMBER)))
             .andExpect(jsonPath("$.[*].iban").value(hasItem(DEFAULT_IBAN)))
-            .andExpect(jsonPath("$.[*].webUrl").value(hasItem(DEFAULT_WEB_URL)));
+            .andExpect(jsonPath("$.[*].webUrl").value(hasItem(DEFAULT_WEB_URL)))
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(DEFAULT_UPDATED_DATE.toString())));
     }
     
     @Test
@@ -248,7 +264,9 @@ public class CustomerInvoiceDataResourceIT {
             .andExpect(jsonPath("$.vatNumber").value(DEFAULT_VAT_NUMBER))
             .andExpect(jsonPath("$.bankAccountNumber").value(DEFAULT_BANK_ACCOUNT_NUMBER))
             .andExpect(jsonPath("$.iban").value(DEFAULT_IBAN))
-            .andExpect(jsonPath("$.webUrl").value(DEFAULT_WEB_URL));
+            .andExpect(jsonPath("$.webUrl").value(DEFAULT_WEB_URL))
+            .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
+            .andExpect(jsonPath("$.updatedDate").value(DEFAULT_UPDATED_DATE.toString()));
     }
     @Test
     @Transactional
@@ -283,7 +301,9 @@ public class CustomerInvoiceDataResourceIT {
             .vatNumber(UPDATED_VAT_NUMBER)
             .bankAccountNumber(UPDATED_BANK_ACCOUNT_NUMBER)
             .iban(UPDATED_IBAN)
-            .webUrl(UPDATED_WEB_URL);
+            .webUrl(UPDATED_WEB_URL)
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
 
         restCustomerInvoiceDataMockMvc.perform(put("/api/customer-invoice-data")
             .contentType(MediaType.APPLICATION_JSON)
@@ -307,6 +327,8 @@ public class CustomerInvoiceDataResourceIT {
         assertThat(testCustomerInvoiceData.getBankAccountNumber()).isEqualTo(UPDATED_BANK_ACCOUNT_NUMBER);
         assertThat(testCustomerInvoiceData.getIban()).isEqualTo(UPDATED_IBAN);
         assertThat(testCustomerInvoiceData.getWebUrl()).isEqualTo(UPDATED_WEB_URL);
+        assertThat(testCustomerInvoiceData.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testCustomerInvoiceData.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
     }
 
     @Test

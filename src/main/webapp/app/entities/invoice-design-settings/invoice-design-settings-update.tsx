@@ -53,6 +53,9 @@ export const InvoiceDesignSettingsUpdate = (props: IInvoiceDesignSettingsUpdateP
   }, [props.updateSuccess]);
 
   const saveEntity = (event, errors, values) => {
+    values.createdDate = convertDateTimeToServer(values.createdDate);
+    values.updatedDate = convertDateTimeToServer(values.updatedDate);
+
     if (errors.length === 0) {
       const entity = {
         ...invoiceDesignSettingsEntity,
@@ -123,6 +126,10 @@ export const InvoiceDesignSettingsUpdate = (props: IInvoiceDesignSettingsUpdateP
                   <input id="file_logo" type="file" onChange={onBlobChange(true, 'logo')} accept="image/*" />
                   <AvInput type="hidden" name="logo" value={logo} />
                 </AvGroup>
+
+                <UncontrolledTooltip target="logoLabel">
+                  <Translate contentKey="tatraInvoiceApp.invoiceDesignSettings.help.logo" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <AvGroup>
@@ -158,6 +165,38 @@ export const InvoiceDesignSettingsUpdate = (props: IInvoiceDesignSettingsUpdateP
 
                 <UncontrolledTooltip target="signatureAndStampLabel">
                   <Translate contentKey="tatraInvoiceApp.invoiceDesignSettings.help.signatureAndStamp" />
+                </UncontrolledTooltip>
+              </AvGroup>
+              <AvGroup>
+                <Label id="createdDateLabel" for="invoice-design-settings-createdDate">
+                  <Translate contentKey="tatraInvoiceApp.invoiceDesignSettings.createdDate">Created Date</Translate>
+                </Label>
+                <AvInput
+                  id="invoice-design-settings-createdDate"
+                  type="datetime-local"
+                  className="form-control"
+                  name="createdDate"
+                  placeholder={'YYYY-MM-DD HH:mm'}
+                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.invoiceDesignSettingsEntity.createdDate)}
+                />
+                <UncontrolledTooltip target="createdDateLabel">
+                  <Translate contentKey="tatraInvoiceApp.invoiceDesignSettings.help.createdDate" />
+                </UncontrolledTooltip>
+              </AvGroup>
+              <AvGroup>
+                <Label id="updatedDateLabel" for="invoice-design-settings-updatedDate">
+                  <Translate contentKey="tatraInvoiceApp.invoiceDesignSettings.updatedDate">Updated Date</Translate>
+                </Label>
+                <AvInput
+                  id="invoice-design-settings-updatedDate"
+                  type="datetime-local"
+                  className="form-control"
+                  name="updatedDate"
+                  placeholder={'YYYY-MM-DD HH:mm'}
+                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.invoiceDesignSettingsEntity.updatedDate)}
+                />
+                <UncontrolledTooltip target="updatedDateLabel">
+                  <Translate contentKey="tatraInvoiceApp.invoiceDesignSettings.help.updatedDate" />
                 </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>

@@ -24,14 +24,19 @@
       "postalCode": "Postal Code",
       "country": "Country",
       "telephone": "Telephone",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
       "help": {
-        "firstName": "Název společnosti",
-        "lastName": "Jméno",
-        "street": "Příjmení",
-        "city": "Ulice",
-        "postalCode": "Město",
-        "country": "PSČ",
-        "telephone": "Země"
+        "companyName": "Název společnosti",
+        "firstName": "Jméno",
+        "lastName": "Příjmení",
+        "street": "Ulice",
+        "city": "Město",
+        "postalCode": "PSČ",
+        "country": "Země",
+        "telephone": "Telefon",
+        "createdDate": "Datum vytvoření",
+        "updatedDate": "Datum úpravy"
       }
     }
   }

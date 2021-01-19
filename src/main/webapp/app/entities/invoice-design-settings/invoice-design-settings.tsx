@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-import { openFile, byteSize, Translate, ICrudGetAllAction } from 'react-jhipster';
+import { openFile, byteSize, Translate, ICrudGetAllAction, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -41,6 +41,12 @@ export const InvoiceDesignSettings = (props: IInvoiceDesignSettingsProps) => {
                 </th>
                 <th>
                   <Translate contentKey="tatraInvoiceApp.invoiceDesignSettings.signatureAndStamp">Signature And Stamp</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="tatraInvoiceApp.invoiceDesignSettings.createdDate">Created Date</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="tatraInvoiceApp.invoiceDesignSettings.updatedDate">Updated Date</Translate>
                 </th>
                 <th>
                   <Translate contentKey="tatraInvoiceApp.invoiceDesignSettings.template">Template</Translate>
@@ -92,6 +98,16 @@ export const InvoiceDesignSettings = (props: IInvoiceDesignSettingsProps) => {
                           {invoiceDesignSettings.signatureAndStampContentType}, {byteSize(invoiceDesignSettings.signatureAndStamp)}
                         </span>
                       </div>
+                    ) : null}
+                  </td>
+                  <td>
+                    {invoiceDesignSettings.createdDate ? (
+                      <TextFormat type="date" value={invoiceDesignSettings.createdDate} format={APP_DATE_FORMAT} />
+                    ) : null}
+                  </td>
+                  <td>
+                    {invoiceDesignSettings.updatedDate ? (
+                      <TextFormat type="date" value={invoiceDesignSettings.updatedDate} format={APP_DATE_FORMAT} />
                     ) : null}
                   </td>
                   <td>

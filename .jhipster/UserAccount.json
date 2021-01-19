@@ -14,14 +14,6 @@
   "relationships": [
     {
       "relationshipType": "one-to-one",
-      "otherEntityName": "company",
-      "otherEntityRelationshipName": "userAccount",
-      "relationshipName": "currentCompany",
-      "otherEntityField": "id",
-      "ownerSide": true
-    },
-    {
-      "relationshipType": "one-to-one",
       "otherEntityName": "user",
       "otherEntityRelationshipName": "userAccount",
       "relationshipName": "user",

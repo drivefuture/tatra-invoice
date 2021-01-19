@@ -1,3 +1,4 @@
+import { Moment } from 'moment';
 import { IInvoiceDesignTemplate } from 'app/shared/model/invoice-design-template.model';
 
 export interface IInvoiceDesignSettings {
@@ -6,6 +7,8 @@ export interface IInvoiceDesignSettings {
   logo?: any;
   signatureAndStampContentType?: string;
   signatureAndStamp?: any;
+  createdDate?: string;
+  updatedDate?: string;
   template?: IInvoiceDesignTemplate;
 }
 

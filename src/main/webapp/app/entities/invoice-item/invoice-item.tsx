@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-import { Translate, ICrudGetAllAction } from 'react-jhipster';
+import { Translate, ICrudGetAllAction, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -52,6 +52,12 @@ export const InvoiceItem = (props: IInvoiceItemProps) => {
                   <Translate contentKey="tatraInvoiceApp.invoiceItem.measureUnitPrice">Measure Unit Price</Translate>
                 </th>
                 <th>
+                  <Translate contentKey="tatraInvoiceApp.invoiceItem.createdDate">Created Date</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="tatraInvoiceApp.invoiceItem.updatedDate">Updated Date</Translate>
+                </th>
+                <th>
                   <Translate contentKey="tatraInvoiceApp.invoiceItem.invoice">Invoice</Translate>
                 </th>
                 <th />
@@ -70,6 +76,12 @@ export const InvoiceItem = (props: IInvoiceItemProps) => {
                   <td>{invoiceItem.measureUnit}</td>
                   <td>{invoiceItem.description}</td>
                   <td>{invoiceItem.measureUnitPrice}</td>
+                  <td>
+                    {invoiceItem.createdDate ? <TextFormat type="date" value={invoiceItem.createdDate} format={APP_DATE_FORMAT} /> : null}
+                  </td>
+                  <td>
+                    {invoiceItem.updatedDate ? <TextFormat type="date" value={invoiceItem.updatedDate} format={APP_DATE_FORMAT} /> : null}
+                  </td>
                   <td>{invoiceItem.invoice ? <Link to={`invoice/${invoiceItem.invoice.id}`}>{invoiceItem.invoice.id}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">

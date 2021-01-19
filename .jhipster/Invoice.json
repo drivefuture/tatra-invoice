@@ -3,12 +3,13 @@
   "fields": [
     {
       "fieldName": "number",
-      "fieldType": "String"
+      "fieldType": "String",
+      "javadoc": "Číslo dokumentu"
     },
     {
       "fieldName": "issueDate",
       "fieldType": "Instant",
-      "javadoc": "Číslo dokumentu",
+      "javadoc": "Datum vystavení",
       "fieldValidateRules": [
         "required"
       ]
@@ -16,7 +17,7 @@
     {
       "fieldName": "paymentMethod",
       "fieldType": "PaymentMethod",
-      "javadoc": "Datum vystavení",
+      "javadoc": "Způsob platby",
       "fieldValues": "BANK_TRANSFER,CASH,CASH_ON_DELIVERY",
       "fieldValidateRules": [
         "required"
@@ -25,7 +26,7 @@
     {
       "fieldName": "duePeriod",
       "fieldType": "Integer",
-      "javadoc": "Způsob platby",
+      "javadoc": "Splatnost ve dnech",
       "fieldValidateRules": [
         "required"
       ]
@@ -33,7 +34,7 @@
     {
       "fieldName": "dueDate",
       "fieldType": "Instant",
-      "javadoc": "Splatnost ve dnech",
+      "javadoc": "Datum splatnosti",
       "fieldValidateRules": [
         "required"
       ]
@@ -41,22 +42,22 @@
     {
       "fieldName": "paymentDate",
       "fieldType": "Instant",
-      "javadoc": "Datum splatnosti"
+      "javadoc": "Datum úhrady"
     },
     {
       "fieldName": "taxPoint",
       "fieldType": "Instant",
-      "javadoc": "Datum úhrady"
+      "javadoc": "Datum zdanitelného plnění"
     },
     {
       "fieldName": "totalAmount",
       "fieldType": "BigDecimal",
-      "javadoc": "Datum zdanitelného plnění"
+      "javadoc": "Celková částka"
     },
     {
       "fieldName": "currency",
       "fieldType": "String",
-      "javadoc": "Celková částka",
+      "javadoc": "Měna",
       "fieldValidateRules": [
         "required"
       ]
@@ -64,17 +65,16 @@
     {
       "fieldName": "variableSymbol",
       "fieldType": "String",
-      "javadoc": "Měna"
+      "javadoc": "VS"
     },
     {
       "fieldName": "constantSymbol",
       "fieldType": "String",
-      "javadoc": "VS"
+      "javadoc": "KS"
     },
     {
       "fieldName": "specialSymbol",
-      "fieldType": "String",
-      "javadoc": "KS"
+      "fieldType": "String"
     },
     {
       "fieldName": "orderNumber",
@@ -83,6 +83,7 @@
     {
       "fieldName": "language",
       "fieldType": "Language",
+      "javadoc": "Jazyk faktury",
       "fieldValues": "CZECH,SLOVAK,POLISH,RUSSIAN,ENGLISH,GERMAN",
       "fieldValidateRules": [
         "required"
@@ -91,36 +92,36 @@
     {
       "fieldName": "comment",
       "fieldType": "byte[]",
-      "javadoc": "Jazyk faktury",
+      "javadoc": "Netisknutelná poznámka",
       "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "beforeInvoiceItemsText",
       "fieldType": "byte[]",
-      "javadoc": "Netisknutelná poznámka",
+      "javadoc": "Text před položkami na faktuře",
       "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "invoiceFooterText",
       "fieldType": "byte[]",
-      "javadoc": "Text před položkami na faktuře",
+      "javadoc": "Text v patičce faktury",
       "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "pdfFile",
       "fieldType": "byte[]",
-      "javadoc": "Text v patičce faktury",
+      "javadoc": "Pdf soubor",
       "fieldTypeBlobContent": "any"
     },
     {
       "fieldName": "createdDate",
       "fieldType": "Instant",
-      "javadoc": "Pdf soubor"
+      "javadoc": "Datum vytvoření"
     },
     {
       "fieldName": "updatedDate",
       "fieldType": "Instant",
-      "javadoc": "Datum vytvoření"
+      "javadoc": "Datum úpravy"
     }
   ],
   "relationships": [

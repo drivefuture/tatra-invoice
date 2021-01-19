@@ -3,72 +3,74 @@
   "fields": [
     {
       "fieldName": "name",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "firstName",
       "fieldType": "String",
       "javadoc": "Název společnosti"
     },
     {
-      "fieldName": "lastName",
+      "fieldName": "firstName",
       "fieldType": "String",
       "javadoc": "Jméno"
     },
     {
-      "fieldName": "street",
+      "fieldName": "lastName",
       "fieldType": "String",
       "javadoc": "Příjmení"
     },
     {
-      "fieldName": "city",
+      "fieldName": "street",
       "fieldType": "String",
       "javadoc": "Ulice"
     },
     {
-      "fieldName": "postalCode",
+      "fieldName": "city",
       "fieldType": "String",
       "javadoc": "Město"
     },
     {
-      "fieldName": "country",
+      "fieldName": "postalCode",
       "fieldType": "String",
       "javadoc": "PSČ"
     },
     {
-      "fieldName": "registrationNumber",
+      "fieldName": "country",
       "fieldType": "String",
       "javadoc": "Země"
     },
     {
-      "fieldName": "vatNumber",
-      "fieldType": "String"
+      "fieldName": "registrationNumber",
+      "fieldType": "String",
+      "javadoc": "IČ"
     },
     {
-      "fieldName": "registeredMark",
+      "fieldName": "vatNumber",
       "fieldType": "String",
       "javadoc": "DIČ"
     },
     {
+      "fieldName": "registeredMark",
+      "fieldType": "String",
+      "javadoc": "Spisová značka"
+    },
+    {
       "fieldName": "supplementaryText",
       "fieldType": "byte[]",
-      "javadoc": "Spisová značka",
+      "javadoc": "Doplňkový text",
       "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "bankAccountNumber",
       "fieldType": "String",
-      "javadoc": "Doplňkový text"
+      "javadoc": "Číslo účtu"
     },
     {
       "fieldName": "iban",
       "fieldType": "String",
-      "javadoc": "Číslo účtu"
+      "javadoc": "IBAN"
     },
     {
       "fieldName": "email",
       "fieldType": "String",
-      "javadoc": "IBAN",
+      "javadoc": "E-mail",
       "fieldValidateRules": [
         "required"
       ]
@@ -76,22 +78,22 @@
     {
       "fieldName": "telephone",
       "fieldType": "String",
-      "javadoc": "E-mail"
+      "javadoc": "Telefon"
     },
     {
       "fieldName": "webUrl",
       "fieldType": "String",
-      "javadoc": "Telefon"
+      "javadoc": "Url webu"
     },
     {
       "fieldName": "createdDate",
       "fieldType": "Instant",
-      "javadoc": "Url webu"
+      "javadoc": "Datum vytvoření"
     },
     {
       "fieldName": "updatedDate",
       "fieldType": "Instant",
-      "javadoc": "Datum vytvoření"
+      "javadoc": "Datum úpravy"
     }
   ],
   "relationships": [
@@ -102,6 +104,13 @@
       "relationshipName": "invoiceDesignSettings",
       "otherEntityField": "id",
       "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "userAccount",
+      "otherEntityRelationshipName": "company",
+      "relationshipName": "userAccount",
+      "otherEntityField": "id"
     },
     {
       "relationshipType": "many-to-many",

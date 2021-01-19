@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, UncontrolledTooltip, Row, Col } from 'reactstrap';
-import { Translate, ICrudGetAction } from 'react-jhipster';
+import { Translate, ICrudGetAction, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -29,6 +29,9 @@ export const InvoiceItemDetail = (props: IInvoiceItemDetailProps) => {
             <span id="sequence">
               <Translate contentKey="tatraInvoiceApp.invoiceItem.sequence">Sequence</Translate>
             </span>
+            <UncontrolledTooltip target="sequence">
+              <Translate contentKey="tatraInvoiceApp.invoiceItem.help.sequence" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{invoiceItemEntity.sequence}</dd>
           <dt>
@@ -67,6 +70,32 @@ export const InvoiceItemDetail = (props: IInvoiceItemDetailProps) => {
             </UncontrolledTooltip>
           </dt>
           <dd>{invoiceItemEntity.measureUnitPrice}</dd>
+          <dt>
+            <span id="createdDate">
+              <Translate contentKey="tatraInvoiceApp.invoiceItem.createdDate">Created Date</Translate>
+            </span>
+            <UncontrolledTooltip target="createdDate">
+              <Translate contentKey="tatraInvoiceApp.invoiceItem.help.createdDate" />
+            </UncontrolledTooltip>
+          </dt>
+          <dd>
+            {invoiceItemEntity.createdDate ? (
+              <TextFormat value={invoiceItemEntity.createdDate} type="date" format={APP_DATE_FORMAT} />
+            ) : null}
+          </dd>
+          <dt>
+            <span id="updatedDate">
+              <Translate contentKey="tatraInvoiceApp.invoiceItem.updatedDate">Updated Date</Translate>
+            </span>
+            <UncontrolledTooltip target="updatedDate">
+              <Translate contentKey="tatraInvoiceApp.invoiceItem.help.updatedDate" />
+            </UncontrolledTooltip>
+          </dt>
+          <dd>
+            {invoiceItemEntity.updatedDate ? (
+              <TextFormat value={invoiceItemEntity.updatedDate} type="date" format={APP_DATE_FORMAT} />
+            ) : null}
+          </dd>
           <dt>
             <Translate contentKey="tatraInvoiceApp.invoiceItem.invoice">Invoice</Translate>
           </dt>

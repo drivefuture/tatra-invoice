@@ -109,6 +109,9 @@ export const CustomerUpdate = (props: ICustomerUpdateProps) => {
                     required: { value: true, errorMessage: translate('entity.validation.required') },
                   }}
                 />
+                <UncontrolledTooltip target="emailLabel">
+                  <Translate contentKey="tatraInvoiceApp.customer.help.email" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="emailCopyLabel" for="customer-emailCopy">

@@ -4,6 +4,7 @@
     {
       "fieldName": "sequence",
       "fieldType": "Integer",
+      "javadoc": "Pořadí",
       "fieldValidateRules": [
         "required"
       ]
@@ -11,7 +12,7 @@
     {
       "fieldName": "quantity",
       "fieldType": "Double",
-      "javadoc": "Pořadí",
+      "javadoc": "Počet",
       "fieldValidateRules": [
         "required"
       ]
@@ -19,7 +20,7 @@
     {
       "fieldName": "measureUnit",
       "fieldType": "String",
-      "javadoc": "Počet",
+      "javadoc": "Měrná jednotka",
       "fieldValidateRules": [
         "required"
       ]
@@ -27,7 +28,7 @@
     {
       "fieldName": "description",
       "fieldType": "String",
-      "javadoc": "Měrná jednotka",
+      "javadoc": "Popis",
       "fieldValidateRules": [
         "required"
       ]
@@ -35,10 +36,20 @@
     {
       "fieldName": "measureUnitPrice",
       "fieldType": "BigDecimal",
-      "javadoc": "Popis",
+      "javadoc": "Cena za měrnú jednotku",
       "fieldValidateRules": [
         "required"
       ]
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "javadoc": "Datum vytvoření"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant",
+      "javadoc": "Datum úpravy"
     }
   ],
   "relationships": [

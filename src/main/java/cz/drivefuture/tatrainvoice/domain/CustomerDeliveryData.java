@@ -8,6 +8,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 
 /**
  * CustomerDeliveryData entity.\nDodací údaje zákazníka\n@author DriveFuture s.r.o. team
@@ -25,57 +26,75 @@ public class CustomerDeliveryData implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "company_name")
-    private String companyName;
-
     /**
      * Název společnosti
      */
     @ApiModelProperty(value = "Název společnosti")
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "company_name")
+    private String companyName;
 
     /**
      * Jméno
      */
     @ApiModelProperty(value = "Jméno")
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "first_name")
+    private String firstName;
 
     /**
      * Příjmení
      */
     @ApiModelProperty(value = "Příjmení")
-    @Column(name = "street")
-    private String street;
+    @Column(name = "last_name")
+    private String lastName;
 
     /**
      * Ulice
      */
     @ApiModelProperty(value = "Ulice")
-    @Column(name = "city")
-    private String city;
+    @Column(name = "street")
+    private String street;
 
     /**
      * Město
      */
     @ApiModelProperty(value = "Město")
-    @Column(name = "postal_code")
-    private String postalCode;
+    @Column(name = "city")
+    private String city;
 
     /**
      * PSČ
      */
     @ApiModelProperty(value = "PSČ")
-    @Column(name = "country")
-    private String country;
+    @Column(name = "postal_code")
+    private String postalCode;
 
     /**
      * Země
      */
     @ApiModelProperty(value = "Země")
+    @Column(name = "country")
+    private String country;
+
+    /**
+     * Telefon
+     */
+    @ApiModelProperty(value = "Telefon")
     @Column(name = "telephone")
     private String telephone;
+
+    /**
+     * Datum vytvoření
+     */
+    @ApiModelProperty(value = "Datum vytvoření")
+    @Column(name = "created_date")
+    private Instant createdDate;
+
+    /**
+     * Datum úpravy
+     */
+    @ApiModelProperty(value = "Datum úpravy")
+    @Column(name = "updated_date")
+    private Instant updatedDate;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -189,6 +208,32 @@ public class CustomerDeliveryData implements Serializable {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
+    public Instant getCreatedDate() {
+        return createdDate;
+    }
+
+    public CustomerDeliveryData createdDate(Instant createdDate) {
+        this.createdDate = createdDate;
+        return this;
+    }
+
+    public void setCreatedDate(Instant createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Instant getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public CustomerDeliveryData updatedDate(Instant updatedDate) {
+        this.updatedDate = updatedDate;
+        return this;
+    }
+
+    public void setUpdatedDate(Instant updatedDate) {
+        this.updatedDate = updatedDate;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -220,6 +265,8 @@ public class CustomerDeliveryData implements Serializable {
             ", postalCode='" + getPostalCode() + "'" +
             ", country='" + getCountry() + "'" +
             ", telephone='" + getTelephone() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 }

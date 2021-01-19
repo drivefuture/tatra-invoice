@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-import { Translate, ICrudGetAllAction } from 'react-jhipster';
+import { Translate, ICrudGetAllAction, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -75,6 +75,12 @@ export const CustomerInvoiceData = (props: ICustomerInvoiceDataProps) => {
                 <th>
                   <Translate contentKey="tatraInvoiceApp.customerInvoiceData.webUrl">Web Url</Translate>
                 </th>
+                <th>
+                  <Translate contentKey="tatraInvoiceApp.customerInvoiceData.createdDate">Created Date</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="tatraInvoiceApp.customerInvoiceData.updatedDate">Updated Date</Translate>
+                </th>
                 <th />
               </tr>
             </thead>
@@ -99,6 +105,16 @@ export const CustomerInvoiceData = (props: ICustomerInvoiceDataProps) => {
                   <td>{customerInvoiceData.bankAccountNumber}</td>
                   <td>{customerInvoiceData.iban}</td>
                   <td>{customerInvoiceData.webUrl}</td>
+                  <td>
+                    {customerInvoiceData.createdDate ? (
+                      <TextFormat type="date" value={customerInvoiceData.createdDate} format={APP_DATE_FORMAT} />
+                    ) : null}
+                  </td>
+                  <td>
+                    {customerInvoiceData.updatedDate ? (
+                      <TextFormat type="date" value={customerInvoiceData.updatedDate} format={APP_DATE_FORMAT} />
+                    ) : null}
+                  </td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${customerInvoiceData.id}`} color="info" size="sm">

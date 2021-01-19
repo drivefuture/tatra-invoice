@@ -3,42 +3,53 @@
   "fields": [
     {
       "fieldName": "companyName",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "firstName",
       "fieldType": "String",
       "javadoc": "Název společnosti"
     },
     {
-      "fieldName": "lastName",
+      "fieldName": "firstName",
       "fieldType": "String",
       "javadoc": "Jméno"
     },
     {
-      "fieldName": "street",
+      "fieldName": "lastName",
       "fieldType": "String",
       "javadoc": "Příjmení"
     },
     {
-      "fieldName": "city",
+      "fieldName": "street",
       "fieldType": "String",
       "javadoc": "Ulice"
     },
     {
-      "fieldName": "postalCode",
+      "fieldName": "city",
       "fieldType": "String",
       "javadoc": "Město"
     },
     {
-      "fieldName": "country",
+      "fieldName": "postalCode",
       "fieldType": "String",
       "javadoc": "PSČ"
     },
     {
-      "fieldName": "telephone",
+      "fieldName": "country",
       "fieldType": "String",
       "javadoc": "Země"
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "String",
+      "javadoc": "Telefon"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "javadoc": "Datum vytvoření"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant",
+      "javadoc": "Datum úpravy"
     }
   ],
   "relationships": [],

@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 
 /**
  * InvoiceDesignSettings entity.\nNastavení vzhledu faktury\n@author DriveFuture s.r.o. team
@@ -26,6 +27,10 @@ public class InvoiceDesignSettings implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    /**
+     * Logo
+     */
+    @ApiModelProperty(value = "Logo")
     @Lob
     @Column(name = "logo")
     private byte[] logo;
@@ -34,15 +39,29 @@ public class InvoiceDesignSettings implements Serializable {
     private String logoContentType;
 
     /**
-     * Datum vytvoření
+     * Podpis a razítko
      */
-    @ApiModelProperty(value = "Datum vytvoření")
+    @ApiModelProperty(value = "Podpis a razítko")
     @Lob
     @Column(name = "signature_and_stamp")
     private byte[] signatureAndStamp;
 
     @Column(name = "signature_and_stamp_content_type")
     private String signatureAndStampContentType;
+
+    /**
+     * Datum vytvoření
+     */
+    @ApiModelProperty(value = "Datum vytvoření")
+    @Column(name = "created_date")
+    private Instant createdDate;
+
+    /**
+     * Datum úpravy
+     */
+    @ApiModelProperty(value = "Datum úpravy")
+    @Column(name = "updated_date")
+    private Instant updatedDate;
 
     @OneToOne(optional = false)
     @NotNull
@@ -110,6 +129,32 @@ public class InvoiceDesignSettings implements Serializable {
         this.signatureAndStampContentType = signatureAndStampContentType;
     }
 
+    public Instant getCreatedDate() {
+        return createdDate;
+    }
+
+    public InvoiceDesignSettings createdDate(Instant createdDate) {
+        this.createdDate = createdDate;
+        return this;
+    }
+
+    public void setCreatedDate(Instant createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Instant getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public InvoiceDesignSettings updatedDate(Instant updatedDate) {
+        this.updatedDate = updatedDate;
+        return this;
+    }
+
+    public void setUpdatedDate(Instant updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
     public InvoiceDesignTemplate getTemplate() {
         return template;
     }
@@ -149,6 +194,8 @@ public class InvoiceDesignSettings implements Serializable {
             ", logoContentType='" + getLogoContentType() + "'" +
             ", signatureAndStamp='" + getSignatureAndStamp() + "'" +
             ", signatureAndStampContentType='" + getSignatureAndStampContentType() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 }

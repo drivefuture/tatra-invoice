@@ -28,15 +28,27 @@ public class InvoiceDesignTemplate implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    /**
+     * Název šablony
+     */
     @NotNull
+    @ApiModelProperty(value = "Název šablony", required = true)
     @Column(name = "name", nullable = false)
     private String name;
 
+    /**
+     * Popis
+     */
+    @ApiModelProperty(value = "Popis")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "description")
     private String description;
 
+    /**
+     * Obrázek
+     */
+    @ApiModelProperty(value = "Obrázek")
     @Lob
     @Column(name = "image")
     private byte[] image;
@@ -44,7 +56,11 @@ public class InvoiceDesignTemplate implements Serializable {
     @Column(name = "image_content_type")
     private String imageContentType;
 
+    /**
+     * Jasperreport soubor
+     */
     
+    @ApiModelProperty(value = "Jasperreport soubor", required = true)
     @Lob
     @Column(name = "jrxml_template_file", nullable = false)
     private byte[] jrxmlTemplateFile;
@@ -52,13 +68,17 @@ public class InvoiceDesignTemplate implements Serializable {
     @Column(name = "jrxml_template_file_content_type", nullable = false)
     private String jrxmlTemplateFileContentType;
 
-    @Column(name = "created_date")
-    private Instant createdDate;
-
     /**
      * Datum vytvoření
      */
     @ApiModelProperty(value = "Datum vytvoření")
+    @Column(name = "created_date")
+    private Instant createdDate;
+
+    /**
+     * Datum úpravy
+     */
+    @ApiModelProperty(value = "Datum úpravy")
     @Column(name = "updated_date")
     private Instant updatedDate;
 

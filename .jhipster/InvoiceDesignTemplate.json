@@ -4,6 +4,7 @@
     {
       "fieldName": "name",
       "fieldType": "String",
+      "javadoc": "Název šablony",
       "fieldValidateRules": [
         "required"
       ]
@@ -11,16 +12,19 @@
     {
       "fieldName": "description",
       "fieldType": "byte[]",
+      "javadoc": "Popis",
       "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "image",
       "fieldType": "byte[]",
+      "javadoc": "Obrázek",
       "fieldTypeBlobContent": "image"
     },
     {
       "fieldName": "jrxmlTemplateFile",
       "fieldType": "byte[]",
+      "javadoc": "Jasperreport soubor",
       "fieldTypeBlobContent": "any",
       "fieldValidateRules": [
         "required"
@@ -28,12 +32,13 @@
     },
     {
       "fieldName": "createdDate",
-      "fieldType": "Instant"
+      "fieldType": "Instant",
+      "javadoc": "Datum vytvoření"
     },
     {
       "fieldName": "updatedDate",
       "fieldType": "Instant",
-      "javadoc": "Datum vytvoření"
+      "javadoc": "Datum úpravy"
     }
   ],
   "relationships": [],

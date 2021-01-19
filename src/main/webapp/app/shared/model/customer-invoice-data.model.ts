@@ -1,3 +1,5 @@
+import { Moment } from 'moment';
+
 export interface ICustomerInvoiceData {
   id?: number;
   companyName?: string;
@@ -13,6 +15,8 @@ export interface ICustomerInvoiceData {
   bankAccountNumber?: string;
   iban?: string;
   webUrl?: string;
+  createdDate?: string;
+  updatedDate?: string;
 }
 
 export const defaultValue: Readonly<ICustomerInvoiceData> = {};

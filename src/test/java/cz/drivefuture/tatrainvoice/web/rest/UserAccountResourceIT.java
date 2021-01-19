@@ -1,18 +1,11 @@
 package cz.drivefuture.tatrainvoice.web.rest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
 import cz.drivefuture.tatrainvoice.TatraInvoiceApp;
-import cz.drivefuture.tatrainvoice.domain.User;
 import cz.drivefuture.tatrainvoice.domain.UserAccount;
-import cz.drivefuture.tatrainvoice.domain.enumeration.Plan;
+import cz.drivefuture.tatrainvoice.domain.User;
 import cz.drivefuture.tatrainvoice.repository.UserAccountRepository;
 import cz.drivefuture.tatrainvoice.repository.UserRepository;
-import java.util.List;
-import javax.persistence.EntityManager;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +15,15 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+import javax.persistence.EntityManager;
+import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import cz.drivefuture.tatrainvoice.domain.enumeration.Plan;
 /**
  * Integration tests for the {@link UserAccountResource} REST controller.
  */
@@ -30,12 +31,12 @@ import org.springframework.transaction.annotation.Transactional;
 @AutoConfigureMockMvc
 @WithMockUser
 public class UserAccountResourceIT {
+
     private static final Plan DEFAULT_PLAN = Plan.BASIC;
     private static final Plan UPDATED_PLAN = Plan.PRO;
 
     @Autowired
     private UserAccountRepository userAccountRepository;
-
     @Autowired
     private UserRepository userRepository;
 
@@ -54,7 +55,8 @@ public class UserAccountResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static UserAccount createEntity(EntityManager em) {
-        UserAccount userAccount = new UserAccount().plan(DEFAULT_PLAN);
+        UserAccount userAccount = new UserAccount()
+            .plan(DEFAULT_PLAN);
         // Add required entity
         User user = UserResourceIT.createEntity(em);
         em.persist(user);
@@ -62,7 +64,6 @@ public class UserAccountResourceIT {
         userAccount.setUser(user);
         return userAccount;
     }
-
     /**
      * Create an updated entity for this test.
      *
@@ -70,7 +71,8 @@ public class UserAccountResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static UserAccount createUpdatedEntity(EntityManager em) {
-        UserAccount userAccount = new UserAccount().plan(UPDATED_PLAN);
+        UserAccount userAccount = new UserAccount()
+            .plan(UPDATED_PLAN);
         // Add required entity
         User user = UserResourceIT.createEntity(em);
         em.persist(user);
@@ -89,10 +91,9 @@ public class UserAccountResourceIT {
     public void createUserAccount() throws Exception {
         int databaseSizeBeforeCreate = userAccountRepository.findAll().size();
         // Create the UserAccount
-        restUserAccountMockMvc
-            .perform(
-                post("/api/user-accounts").contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(userAccount))
-            )
+        restUserAccountMockMvc.perform(post("/api/user-accounts")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(userAccount)))
             .andExpect(status().isCreated());
 
         // Validate the UserAccount in the database
@@ -114,10 +115,9 @@ public class UserAccountResourceIT {
         userAccount.setId(1L);
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        restUserAccountMockMvc
-            .perform(
-                post("/api/user-accounts").contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(userAccount))
-            )
+        restUserAccountMockMvc.perform(post("/api/user-accounts")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(userAccount)))
             .andExpect(status().isBadRequest());
 
         // Validate the UserAccount in the database
@@ -132,27 +132,30 @@ public class UserAccountResourceIT {
         userAccountRepository.saveAndFlush(userAccount);
         int databaseSizeBeforeCreate = userAccountRepository.findAll().size();
 
+        // Add a new parent entity
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+
         // Load the userAccount
         UserAccount updatedUserAccount = userAccountRepository.findById(userAccount.getId()).get();
         // Disconnect from session so that the updates on updatedUserAccount are not directly saved in db
         em.detach(updatedUserAccount);
 
         // Update the User with new association value
-        updatedUserAccount.setUser(null);
+        updatedUserAccount.setUser(user);
 
         // Update the entity
-        restUserAccountMockMvc
-            .perform(
-                put("/api/user-accounts")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(updatedUserAccount))
-            )
+        restUserAccountMockMvc.perform(put("/api/user-accounts")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(updatedUserAccount)))
             .andExpect(status().isOk());
 
         // Validate the UserAccount in the database
         List<UserAccount> userAccountList = userAccountRepository.findAll();
         assertThat(userAccountList).hasSize(databaseSizeBeforeCreate);
         UserAccount testUserAccount = userAccountList.get(userAccountList.size() - 1);
+
         // Validate the id for MapsId, the ids must be same
         // Uncomment the following line for assertion. However, please note that there is a known issue and uncommenting will fail the test.
         // Please look at https://github.com/jhipster/generator-jhipster/issues/9100. You can modify this test as necessary.
@@ -168,10 +171,10 @@ public class UserAccountResourceIT {
 
         // Create the UserAccount, which fails.
 
-        restUserAccountMockMvc
-            .perform(
-                post("/api/user-accounts").contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(userAccount))
-            )
+
+        restUserAccountMockMvc.perform(post("/api/user-accounts")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(userAccount)))
             .andExpect(status().isBadRequest());
 
         List<UserAccount> userAccountList = userAccountRepository.findAll();
@@ -185,14 +188,13 @@ public class UserAccountResourceIT {
         userAccountRepository.saveAndFlush(userAccount);
 
         // Get all the userAccountList
-        restUserAccountMockMvc
-            .perform(get("/api/user-accounts?sort=id,desc"))
+        restUserAccountMockMvc.perform(get("/api/user-accounts?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(userAccount.getId().intValue())))
             .andExpect(jsonPath("$.[*].plan").value(hasItem(DEFAULT_PLAN.toString())));
     }
-
+    
     @Test
     @Transactional
     public void getUserAccount() throws Exception {
@@ -200,19 +202,18 @@ public class UserAccountResourceIT {
         userAccountRepository.saveAndFlush(userAccount);
 
         // Get the userAccount
-        restUserAccountMockMvc
-            .perform(get("/api/user-accounts/{id}", userAccount.getId()))
+        restUserAccountMockMvc.perform(get("/api/user-accounts/{id}", userAccount.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(userAccount.getId().intValue()))
             .andExpect(jsonPath("$.plan").value(DEFAULT_PLAN.toString()));
     }
-
     @Test
     @Transactional
     public void getNonExistingUserAccount() throws Exception {
         // Get the userAccount
-        restUserAccountMockMvc.perform(get("/api/user-accounts/{id}", Long.MAX_VALUE)).andExpect(status().isNotFound());
+        restUserAccountMockMvc.perform(get("/api/user-accounts/{id}", Long.MAX_VALUE))
+            .andExpect(status().isNotFound());
     }
 
     @Test
@@ -227,14 +228,12 @@ public class UserAccountResourceIT {
         UserAccount updatedUserAccount = userAccountRepository.findById(userAccount.getId()).get();
         // Disconnect from session so that the updates on updatedUserAccount are not directly saved in db
         em.detach(updatedUserAccount);
-        updatedUserAccount.plan(UPDATED_PLAN);
+        updatedUserAccount
+            .plan(UPDATED_PLAN);
 
-        restUserAccountMockMvc
-            .perform(
-                put("/api/user-accounts")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(updatedUserAccount))
-            )
+        restUserAccountMockMvc.perform(put("/api/user-accounts")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(updatedUserAccount)))
             .andExpect(status().isOk());
 
         // Validate the UserAccount in the database
@@ -250,10 +249,9 @@ public class UserAccountResourceIT {
         int databaseSizeBeforeUpdate = userAccountRepository.findAll().size();
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restUserAccountMockMvc
-            .perform(
-                put("/api/user-accounts").contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(userAccount))
-            )
+        restUserAccountMockMvc.perform(put("/api/user-accounts")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(userAccount)))
             .andExpect(status().isBadRequest());
 
         // Validate the UserAccount in the database
@@ -270,8 +268,8 @@ public class UserAccountResourceIT {
         int databaseSizeBeforeDelete = userAccountRepository.findAll().size();
 
         // Delete the userAccount
-        restUserAccountMockMvc
-            .perform(delete("/api/user-accounts/{id}", userAccount.getId()).accept(MediaType.APPLICATION_JSON))
+        restUserAccountMockMvc.perform(delete("/api/user-accounts/{id}", userAccount.getId())
+            .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item

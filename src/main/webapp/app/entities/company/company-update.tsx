@@ -21,6 +21,7 @@ export interface ICompanyUpdateProps extends StateProps, DispatchProps, RouteCom
 export const CompanyUpdate = (props: ICompanyUpdateProps) => {
   const [idsuserAccount, setIdsuserAccount] = useState([]);
   const [invoiceDesignSettingsId, setInvoiceDesignSettingsId] = useState('0');
+  const [userAccountId, setUserAccountId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
   const { companyEntity, invoiceDesignSettings, userAccounts, loading, updating } = props;
@@ -103,6 +104,9 @@ export const CompanyUpdate = (props: ICompanyUpdateProps) => {
                   <Translate contentKey="tatraInvoiceApp.company.name">Name</Translate>
                 </Label>
                 <AvField id="company-name" type="text" name="name" />
+                <UncontrolledTooltip target="nameLabel">
+                  <Translate contentKey="tatraInvoiceApp.company.help.name" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="firstNameLabel" for="company-firstName">
@@ -172,6 +176,9 @@ export const CompanyUpdate = (props: ICompanyUpdateProps) => {
                   <Translate contentKey="tatraInvoiceApp.company.vatNumber">Vat Number</Translate>
                 </Label>
                 <AvField id="company-vatNumber" type="text" name="vatNumber" />
+                <UncontrolledTooltip target="vatNumberLabel">
+                  <Translate contentKey="tatraInvoiceApp.company.help.vatNumber" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="registeredMarkLabel" for="company-registeredMark">
@@ -283,6 +290,21 @@ export const CompanyUpdate = (props: ICompanyUpdateProps) => {
                   <option value="" key="0" />
                   {invoiceDesignSettings
                     ? invoiceDesignSettings.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </AvInput>
+              </AvGroup>
+              <AvGroup>
+                <Label for="company-userAccount">
+                  <Translate contentKey="tatraInvoiceApp.company.userAccount">User Account</Translate>
+                </Label>
+                <AvInput id="company-userAccount" type="select" className="form-control" name="userAccount.id">
+                  <option value="" key="0" />
+                  {userAccounts
+                    ? userAccounts.map(otherEntity => (
                         <option value={otherEntity.id} key={otherEntity.id}>
                           {otherEntity.id}
                         </option>

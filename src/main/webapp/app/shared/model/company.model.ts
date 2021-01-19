@@ -23,6 +23,7 @@ export interface ICompany {
   createdDate?: string;
   updatedDate?: string;
   invoiceDesignSettings?: IInvoiceDesignSettings;
+  userAccount?: IUserAccount;
   userAccounts?: IUserAccount[];
 }
 

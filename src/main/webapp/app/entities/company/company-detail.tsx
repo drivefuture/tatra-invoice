@@ -29,6 +29,9 @@ export const CompanyDetail = (props: ICompanyDetailProps) => {
             <span id="name">
               <Translate contentKey="tatraInvoiceApp.company.name">Name</Translate>
             </span>
+            <UncontrolledTooltip target="name">
+              <Translate contentKey="tatraInvoiceApp.company.help.name" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{companyEntity.name}</dd>
           <dt>
@@ -98,6 +101,9 @@ export const CompanyDetail = (props: ICompanyDetailProps) => {
             <span id="vatNumber">
               <Translate contentKey="tatraInvoiceApp.company.vatNumber">Vat Number</Translate>
             </span>
+            <UncontrolledTooltip target="vatNumber">
+              <Translate contentKey="tatraInvoiceApp.company.help.vatNumber" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{companyEntity.vatNumber}</dd>
           <dt>
@@ -189,6 +195,10 @@ export const CompanyDetail = (props: ICompanyDetailProps) => {
             <Translate contentKey="tatraInvoiceApp.company.invoiceDesignSettings">Invoice Design Settings</Translate>
           </dt>
           <dd>{companyEntity.invoiceDesignSettings ? companyEntity.invoiceDesignSettings.id : ''}</dd>
+          <dt>
+            <Translate contentKey="tatraInvoiceApp.company.userAccount">User Account</Translate>
+          </dt>
+          <dd>{companyEntity.userAccount ? companyEntity.userAccount.id : ''}</dd>
           <dt>
             <Translate contentKey="tatraInvoiceApp.company.userAccount">User Account</Translate>
           </dt>

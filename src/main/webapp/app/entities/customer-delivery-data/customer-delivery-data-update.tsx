@@ -38,6 +38,9 @@ export const CustomerDeliveryDataUpdate = (props: ICustomerDeliveryDataUpdatePro
   }, [props.updateSuccess]);
 
   const saveEntity = (event, errors, values) => {
+    values.createdDate = convertDateTimeToServer(values.createdDate);
+    values.updatedDate = convertDateTimeToServer(values.updatedDate);
+
     if (errors.length === 0) {
       const entity = {
         ...customerDeliveryDataEntity,
@@ -82,6 +85,9 @@ export const CustomerDeliveryDataUpdate = (props: ICustomerDeliveryDataUpdatePro
                   <Translate contentKey="tatraInvoiceApp.customerDeliveryData.companyName">Company Name</Translate>
                 </Label>
                 <AvField id="customer-delivery-data-companyName" type="text" name="companyName" />
+                <UncontrolledTooltip target="companyNameLabel">
+                  <Translate contentKey="tatraInvoiceApp.customerDeliveryData.help.companyName" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="firstNameLabel" for="customer-delivery-data-firstName">
@@ -144,6 +150,38 @@ export const CustomerDeliveryDataUpdate = (props: ICustomerDeliveryDataUpdatePro
                 <AvField id="customer-delivery-data-telephone" type="text" name="telephone" />
                 <UncontrolledTooltip target="telephoneLabel">
                   <Translate contentKey="tatraInvoiceApp.customerDeliveryData.help.telephone" />
+                </UncontrolledTooltip>
+              </AvGroup>
+              <AvGroup>
+                <Label id="createdDateLabel" for="customer-delivery-data-createdDate">
+                  <Translate contentKey="tatraInvoiceApp.customerDeliveryData.createdDate">Created Date</Translate>
+                </Label>
+                <AvInput
+                  id="customer-delivery-data-createdDate"
+                  type="datetime-local"
+                  className="form-control"
+                  name="createdDate"
+                  placeholder={'YYYY-MM-DD HH:mm'}
+                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.customerDeliveryDataEntity.createdDate)}
+                />
+                <UncontrolledTooltip target="createdDateLabel">
+                  <Translate contentKey="tatraInvoiceApp.customerDeliveryData.help.createdDate" />
+                </UncontrolledTooltip>
+              </AvGroup>
+              <AvGroup>
+                <Label id="updatedDateLabel" for="customer-delivery-data-updatedDate">
+                  <Translate contentKey="tatraInvoiceApp.customerDeliveryData.updatedDate">Updated Date</Translate>
+                </Label>
+                <AvInput
+                  id="customer-delivery-data-updatedDate"
+                  type="datetime-local"
+                  className="form-control"
+                  name="updatedDate"
+                  placeholder={'YYYY-MM-DD HH:mm'}
+                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.customerDeliveryDataEntity.updatedDate)}
+                />
+                <UncontrolledTooltip target="updatedDateLabel">
+                  <Translate contentKey="tatraInvoiceApp.customerDeliveryData.help.updatedDate" />
                 </UncontrolledTooltip>
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/customer-delivery-data" replace color="info">

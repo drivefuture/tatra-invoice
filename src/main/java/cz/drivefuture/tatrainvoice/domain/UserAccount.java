@@ -1,16 +1,19 @@
 package cz.drivefuture.tatrainvoice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import cz.drivefuture.tatrainvoice.domain.enumeration.Plan;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import cz.drivefuture.tatrainvoice.domain.enumeration.Plan;
 
 /**
  * UserAccount entity.\nUživatelský účet\n@author DriveFuture s.r.o. team
@@ -20,6 +23,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Table(name = "user_account")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class UserAccount implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -35,11 +39,7 @@ public class UserAccount implements Serializable {
     private Plan plan;
 
     @OneToOne
-    @JoinColumn(unique = true)
-    @JsonIgnore
-    private Company currentCompany;
 
-    @OneToOne
     @MapsId
     @JoinColumn(name = "id")
     private User user;
@@ -69,19 +69,6 @@ public class UserAccount implements Serializable {
 
     public void setPlan(Plan plan) {
         this.plan = plan;
-    }
-
-    public Company getCurrentCompany() {
-        return currentCompany;
-    }
-
-    public UserAccount currentCompany(Company company) {
-        this.currentCompany = company;
-        return this;
-    }
-
-    public void setCurrentCompany(Company company) {
-        this.currentCompany = company;
     }
 
     public User getUser() {
@@ -121,7 +108,6 @@ public class UserAccount implements Serializable {
     public void setCompanies(Set<Company> companies) {
         this.companies = companies;
     }
-
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override

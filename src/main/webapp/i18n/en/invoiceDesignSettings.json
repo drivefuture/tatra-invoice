@@ -18,9 +18,14 @@
       },
       "logo": "Logo",
       "signatureAndStamp": "Signature And Stamp",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
       "template": "Template",
       "help": {
-        "signatureAndStamp": "Datum vytvoření"
+        "logo": "Logo",
+        "signatureAndStamp": "Podpis a razítko",
+        "createdDate": "Datum vytvoření",
+        "updatedDate": "Datum úpravy"
       }
     }
   }

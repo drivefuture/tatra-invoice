@@ -2,26 +2,28 @@ package cz.drivefuture.tatrainvoice.web.rest;
 
 import cz.drivefuture.tatrainvoice.domain.Company;
 import cz.drivefuture.tatrainvoice.repository.CompanyRepository;
-import cz.drivefuture.tatrainvoice.repository.InvoiceRepository;
 import cz.drivefuture.tatrainvoice.web.rest.errors.BadRequestAlertException;
+
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
-import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * REST controller for managing {@link cz.drivefuture.tatrainvoice.domain.Company}.
@@ -30,6 +32,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RequestMapping("/api")
 @Transactional
 public class CompanyResource {
+
     private final Logger log = LoggerFactory.getLogger(CompanyResource.class);
 
     private static final String ENTITY_NAME = "company";
@@ -39,11 +42,8 @@ public class CompanyResource {
 
     private final CompanyRepository companyRepository;
 
-    private final InvoiceRepository invoiceRepository;
-
-    public CompanyResource(CompanyRepository companyRepository, InvoiceRepository invoiceRepository) {
+    public CompanyResource(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
-        this.invoiceRepository = invoiceRepository;
     }
 
     /**
@@ -60,8 +60,7 @@ public class CompanyResource {
             throw new BadRequestAlertException("A new company cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Company result = companyRepository.save(company);
-        return ResponseEntity
-            .created(new URI("/api/companies/" + result.getId()))
+        return ResponseEntity.created(new URI("/api/companies/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
@@ -82,8 +81,7 @@ public class CompanyResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         Company result = companyRepository.save(company);
-        return ResponseEntity
-            .ok()
+        return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, company.getId().toString()))
             .body(result);
     }
@@ -96,10 +94,7 @@ public class CompanyResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of companies in body.
      */
     @GetMapping("/companies")
-    public ResponseEntity<List<Company>> getAllCompanies(
-        Pageable pageable,
-        @RequestParam(required = false, defaultValue = "false") boolean eagerload
-    ) {
+    public ResponseEntity<List<Company>> getAllCompanies(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get a page of Companies");
         Page<Company> page;
         if (eagerload) {
@@ -133,12 +128,7 @@ public class CompanyResource {
     @DeleteMapping("/companies/{id}")
     public ResponseEntity<Void> deleteCompany(@PathVariable Long id) {
         log.debug("REST request to delete Company : {}", id);
-        // First, delete all invoices for the company
-        invoiceRepository.deleteAll(invoiceRepository.findAllByCompanyId(id));
         companyRepository.deleteById(id);
-        return ResponseEntity
-            .noContent()
-            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
-            .build();
+        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 }
