@@ -1,11 +1,13 @@
 package cz.drivefuture.tatrainvoice.web.rest;
 
 import cz.drivefuture.tatrainvoice.domain.User;
+import cz.drivefuture.tatrainvoice.domain.UserAccount;
 import cz.drivefuture.tatrainvoice.repository.UserRepository;
 import cz.drivefuture.tatrainvoice.security.SecurityUtils;
 import cz.drivefuture.tatrainvoice.service.MailService;
 import cz.drivefuture.tatrainvoice.service.UserService;
 import cz.drivefuture.tatrainvoice.service.dto.PasswordChangeDTO;
+import cz.drivefuture.tatrainvoice.service.dto.UserAccountDTO;
 import cz.drivefuture.tatrainvoice.service.dto.UserDTO;
 import cz.drivefuture.tatrainvoice.web.rest.errors.*;
 import cz.drivefuture.tatrainvoice.web.rest.vm.KeyAndPasswordVM;
@@ -27,6 +29,10 @@ import org.springframework.web.bind.annotation.*;
 public class AccountResource {
 
     private static class AccountResourceException extends RuntimeException {
+        /**
+         *
+         */
+        private static final long serialVersionUID = 1L;
 
         private AccountResourceException(String message) {
             super(message);
@@ -98,10 +104,10 @@ public class AccountResource {
      * @throws RuntimeException {@code 500 (Internal Server Error)} if the user couldn't be returned.
      */
     @GetMapping("/account")
-    public UserDTO getAccount() {
+    public UserAccountDTO getAccount() {
         return userService
-            .getUserWithAuthorities()
-            .map(UserDTO::new)
+            .getUserAccountWithCompaniesAndUserWithUserAuthorities()
+            .map(UserAccountDTO::new)
             .orElseThrow(() -> new AccountResourceException("User could not be found"));
     }
 

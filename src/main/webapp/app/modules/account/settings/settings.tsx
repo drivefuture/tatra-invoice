@@ -38,6 +38,8 @@ export const SettingsPage = (props: IUserSettingsProps) => {
               User settings for {props.account.login}
             </Translate>
           </h2>
+          <p>User plan {props.account.plan}</p>
+          <p>Current company {props.account.currentCompany.name}</p>
           <AvForm id="settings-form" onValidSubmit={handleValidSubmit}>
             {/* First name */}
             <AvField

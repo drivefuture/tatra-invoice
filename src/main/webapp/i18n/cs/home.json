@@ -1,11 +1,11 @@
 {
   "home": {
-    "title": "Vítejte, Java Hipster!",
+    "title": "Vítejte, {{accountFullName}}!",
     "subtitle": "Toto je vaše domovská stránka",
     "logged": {
-      "message": "Jste přihlášen jako \"{{username}}\"."
+      "message": "Jste přihlášen jako \"{{accountFullName}}\"."
     },
-    "question": "Pokud máte nějaké dotazy týkající se JHipster:",
+    "question": "Pokud máte nějaké dotazy týkající se aplikace Tatra Faktura:",
     "link": {
       "homepage": "Domovská stránka JHipster",
       "stackoverflow": "JHipster ve službě Stack Overflow",

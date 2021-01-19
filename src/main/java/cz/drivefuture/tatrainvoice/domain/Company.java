@@ -2,17 +2,15 @@ package cz.drivefuture.tatrainvoice.domain;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
-
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Type;
 
 /**
  * Company entity.\nSpolečnost\n@author DriveFuture s.r.o. team
@@ -22,7 +20,6 @@ import java.util.Set;
 @Table(name = "company")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Company implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -155,11 +152,13 @@ public class Company implements Serializable {
     @JoinColumn(unique = true)
     private InvoiceDesignSettings invoiceDesignSettings;
 
-    @ManyToMany
+    @ManyToMany(cascade = { CascadeType.ALL })
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "company_user_account",
-               joinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "user_account_id", referencedColumnName = "id"))
+    @JoinTable(
+        name = "company_user_account",
+        joinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "user_account_id", referencedColumnName = "id")
+    )
     private Set<UserAccount> userAccounts = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -442,6 +441,7 @@ public class Company implements Serializable {
     public void setUserAccounts(Set<UserAccount> userAccounts) {
         this.userAccounts = userAccounts;
     }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override

@@ -4,96 +4,72 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
-import { Row, Col, Alert } from 'reactstrap';
+import { Button, Row, Col, Table } from 'reactstrap';
 
 import { IRootState } from 'app/shared/reducers';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export type IHomeProp = StateProps;
 
 export const Home = (props: IHomeProp) => {
   const { account } = props;
-
+  const companyList = account.companies;
   return (
     <Row>
-      <Col md="9">
+      <Col md="12">
+      {account && account.firstName && account.lastName ? (
+        <div>
         <h2>
-          <Translate contentKey="home.title">Welcome, Java Hipster!</Translate>
+          <Translate contentKey="home.title" interpolate={{ accountFullName: account.firstName + " " + account.lastName }}>Welcome, {account.firstName + " " + account.lastName}!</Translate>
         </h2>
-        <p className="lead">
-          <Translate contentKey="home.subtitle">This is your homepage</Translate>
-        </p>
-        {account && account.login ? (
-          <div>
-            <Alert color="success">
-              <Translate contentKey="home.logged.message" interpolate={{ username: account.login }}>
-                You are logged in as user {account.login}.
-              </Translate>
-            </Alert>
-          </div>
+        <div>
+      <h2 id="company-heading">
+        <Translate contentKey="tatraInvoiceApp.company.home.title">Companies</Translate>
+        <Link to={`company/new`} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
+          <FontAwesomeIcon icon="plus" />
+          &nbsp;
+          <Translate contentKey="tatraInvoiceApp.company.home.createLabel">Create new Company</Translate>
+        </Link>
+      </h2>
+      <div className="table-responsive">
+        {companyList && companyList.length > 0 ? (
+          <Table responsive>
+            <thead>
+              <tr>
+                <th className="hand">
+                  <Translate contentKey="global.field.id">ID</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand">
+                  <Translate contentKey="tatraInvoiceApp.company.name">Name</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {companyList.map((company, i) => (
+                <tr key={`entity-${i}`}>
+                  <td>
+                    <Button tag={Link} to={`${"company"}/${company.id}`} color="link" size="sm">
+                      {company.id}
+                    </Button>
+                  </td>
+                  <td>{company.name}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         ) : (
-          <div>
-            <Alert color="warning">
-              <Translate contentKey="global.messages.info.authenticated.prefix">If you want to </Translate>
-              <Link to="/login" className="alert-link">
-                <Translate contentKey="global.messages.info.authenticated.link"> sign in</Translate>
-              </Link>
-              <Translate contentKey="global.messages.info.authenticated.suffix">
-                , you can try the default accounts:
-                <br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;)
-                <br />- User (login=&quot;user&quot; and password=&quot;user&quot;).
-              </Translate>
-            </Alert>
-
-            <Alert color="warning">
-              <Translate contentKey="global.messages.info.register.noaccount">You do not have an account yet?</Translate>&nbsp;
-              <Link to="/account/register" className="alert-link">
-                <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
-              </Link>
-            </Alert>
-          </div>
+            <div className="alert alert-warning">
+              <Translate contentKey="tatraInvoiceApp.company.home.notFound">No Companies found</Translate>
+            </div>
         )}
-        <p>
-          <Translate contentKey="home.question">If you have any question on JHipster:</Translate>
-        </p>
-
-        <ul>
-          <li>
-            <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.homepage">JHipster homepage</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.stackoverflow">JHipster on Stack Overflow</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.bugtracker">JHipster bug tracker</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.chat">JHipster public chat room</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.follow">follow @jhipster on Twitter</Translate>
-            </a>
-          </li>
-        </ul>
-
-        <p>
-          <Translate contentKey="home.like">If you like JHipster, do not forget to give us a star on</Translate>{' '}
-          <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-            Github
-          </a>
-          !
-        </p>
-      </Col>
-      <Col md="3" className="pad">
-        <span className="hipster rounded" />
+      </div>
+    </div>
+        </div>
+      ) : (
+        <h2>
+        <Translate contentKey="home.title" interpolate={{ accountFullName: "Java Hipster" }}>Welcome, Java Hipster!</Translate>
+        </h2>
+      )}
       </Col>
     </Row>
   );

@@ -3,7 +3,9 @@ package cz.drivefuture.tatrainvoice.service;
 import cz.drivefuture.tatrainvoice.config.Constants;
 import cz.drivefuture.tatrainvoice.domain.Authority;
 import cz.drivefuture.tatrainvoice.domain.User;
+import cz.drivefuture.tatrainvoice.domain.UserAccount;
 import cz.drivefuture.tatrainvoice.repository.AuthorityRepository;
+import cz.drivefuture.tatrainvoice.repository.UserAccountRepository;
 import cz.drivefuture.tatrainvoice.repository.UserRepository;
 import cz.drivefuture.tatrainvoice.security.AuthoritiesConstants;
 import cz.drivefuture.tatrainvoice.security.SecurityUtils;
@@ -33,6 +35,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final UserAccountRepository userAccountRepository;
+
     private final PasswordEncoder passwordEncoder;
 
     private final AuthorityRepository authorityRepository;
@@ -41,11 +45,13 @@ public class UserService {
 
     public UserService(
         UserRepository userRepository,
+        UserAccountRepository userAccountRepository,
         PasswordEncoder passwordEncoder,
         AuthorityRepository authorityRepository,
         CacheManager cacheManager
     ) {
         this.userRepository = userRepository;
+        this.userAccountRepository = userAccountRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
@@ -295,6 +301,18 @@ public class UserService {
     @Transactional(readOnly = true)
     public Optional<User> getUserWithAuthoritiesByLogin(String login) {
         return userRepository.findOneWithAuthoritiesByLogin(login);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<UserAccount> getUserAccountWithCompaniesAndUserWithUserAuthoritiesByUserLogin(String login) {
+        return userAccountRepository.findOneWithCompaniesAndUserWithUserAuthoritiesByUserLogin(login);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<UserAccount> getUserAccountWithCompaniesAndUserWithUserAuthorities() {
+        return SecurityUtils
+            .getCurrentUserLogin()
+            .flatMap(userAccountRepository::findOneWithCompaniesAndUserWithUserAuthoritiesByUserLogin);
     }
 
     @Transactional(readOnly = true)
