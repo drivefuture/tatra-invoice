@@ -4,6 +4,7 @@
     {
       "fieldName": "email",
       "fieldType": "String",
+      "javadoc": "E-mail",
       "fieldValidateRules": [
         "required"
       ]
@@ -11,22 +12,22 @@
     {
       "fieldName": "emailCopy",
       "fieldType": "String",
-      "javadoc": "E-mail"
+      "javadoc": "Kopie E-mailu"
     },
     {
       "fieldName": "emailBlindCopy",
       "fieldType": "String",
-      "javadoc": "Kopie E-mailu"
+      "javadoc": "Slepá kopie E-mailu"
     },
     {
       "fieldName": "telephone",
       "fieldType": "String",
-      "javadoc": "Slepá kopie E-mailu"
+      "javadoc": "Telefon"
     },
     {
       "fieldName": "invoiceDuePeriod",
       "fieldType": "Integer",
-      "javadoc": "Telefon",
+      "javadoc": "Splatnost faktury ve dnech",
       "fieldValidateRules": [
         "required"
       ]
@@ -34,42 +35,42 @@
     {
       "fieldName": "invoiceLanguage",
       "fieldType": "Language",
-      "javadoc": "Splatnost faktury ve dnech",
+      "javadoc": "Jazyk faktury",
       "fieldValues": "CZECH,SLOVAK,POLISH,RUSSIAN,ENGLISH,GERMAN"
     },
     {
       "fieldName": "comment",
       "fieldType": "byte[]",
-      "javadoc": "Jazyk faktury",
+      "javadoc": "Netisknutelná poznámka",
       "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "supplementaryText",
       "fieldType": "byte[]",
-      "javadoc": "Netisknutelná poznámka",
+      "javadoc": "Doplňkový text",
       "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "beforeInvoiceItemsText",
       "fieldType": "byte[]",
-      "javadoc": "Doplňkový text",
+      "javadoc": "Text před položkami na faktuře",
       "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "invoiceFooterText",
       "fieldType": "byte[]",
-      "javadoc": "Text před položkami na faktuře",
+      "javadoc": "Text v patičce faktury",
       "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "createdDate",
       "fieldType": "Instant",
-      "javadoc": "Text v patičce faktury"
+      "javadoc": "Datum vytvoření"
     },
     {
       "fieldName": "updatedDate",
       "fieldType": "Instant",
-      "javadoc": "Datum vytvoření"
+      "javadoc": "Datum úpravy"
     }
   ],
   "relationships": [

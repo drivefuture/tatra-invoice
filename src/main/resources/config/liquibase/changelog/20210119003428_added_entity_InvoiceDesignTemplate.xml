@@ -15,28 +15,28 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(255)">
+            <column name="name" type="varchar(255)" remarks="Název šablony">
                 <constraints nullable="false" />
             </column>
-            <column name="description" type="${clobType}">
+            <column name="description" type="${clobType}" remarks="Popis">
                 <constraints nullable="true" />
             </column>
-            <column name="image" type="longblob">
+            <column name="image" type="longblob" remarks="Obrázek">
                 <constraints nullable="true" />
             </column>
             <column name="image_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="jrxml_template_file" type="longblob">
+            <column name="jrxml_template_file" type="longblob" remarks="Jasperreport soubor">
                 <constraints nullable="false" />
             </column>
             <column name="jrxml_template_file_content_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="created_date" type="datetime">
+            <column name="created_date" type="datetime" remarks="Datum vytvoření">
                 <constraints nullable="true" />
             </column>
-            <column name="updated_date" type="datetime" remarks="Datum vytvoření">
+            <column name="updated_date" type="datetime" remarks="Datum úpravy">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->

@@ -31,17 +31,18 @@
       "customerInvoiceData": "Customer Invoice Data",
       "deliveryData": "Delivery Data",
       "help": {
-        "emailCopy": "E-mail",
-        "emailBlindCopy": "Kopie E-mailu",
-        "telephone": "Slepá kopie E-mailu",
-        "invoiceDuePeriod": "Telefon",
-        "invoiceLanguage": "Splatnost faktury ve dnech",
-        "comment": "Jazyk faktury",
-        "supplementaryText": "Netisknutelná poznámka",
-        "beforeInvoiceItemsText": "Doplňkový text",
-        "invoiceFooterText": "Text před položkami na faktuře",
-        "createdDate": "Text v patičce faktury",
-        "updatedDate": "Datum vytvoření"
+        "email": "E-mail",
+        "emailCopy": "Kopie E-mailu",
+        "emailBlindCopy": "Slepá kopie E-mailu",
+        "telephone": "Telefon",
+        "invoiceDuePeriod": "Splatnost faktury ve dnech",
+        "invoiceLanguage": "Jazyk faktury",
+        "comment": "Netisknutelná poznámka",
+        "supplementaryText": "Doplňkový text",
+        "beforeInvoiceItemsText": "Text před položkami na faktuře",
+        "invoiceFooterText": "Text v patičce faktury",
+        "createdDate": "Datum vytvoření",
+        "updatedDate": "Datum úpravy"
       }
     }
   }

@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 
 /**
  * CustomerInvoiceData entity.\nFakturační údaje zákazníka\n@author DriveFuture s.r.o. team
@@ -26,93 +27,111 @@ public class CustomerInvoiceData implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    /**
+     * Název společnosti
+     */
+    @ApiModelProperty(value = "Název společnosti")
     @Column(name = "company_name")
     private String companyName;
 
     /**
-     * Název společnosti
-     */
-    @NotNull
-    @ApiModelProperty(value = "Název společnosti", required = true)
-    @Column(name = "own_name", nullable = false)
-    private String ownName;
-
-    /**
      * Vlastní název
      */
-    @ApiModelProperty(value = "Vlastní název")
-    @Column(name = "first_name")
-    private String firstName;
+    @NotNull
+    @ApiModelProperty(value = "Vlastní název", required = true)
+    @Column(name = "own_name", nullable = false)
+    private String ownName;
 
     /**
      * Jméno
      */
     @ApiModelProperty(value = "Jméno")
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "first_name")
+    private String firstName;
 
     /**
      * Příjmení
      */
     @ApiModelProperty(value = "Příjmení")
-    @Column(name = "street")
-    private String street;
+    @Column(name = "last_name")
+    private String lastName;
 
     /**
      * Ulice
      */
     @ApiModelProperty(value = "Ulice")
-    @Column(name = "city")
-    private String city;
+    @Column(name = "street")
+    private String street;
 
     /**
      * Město
      */
     @ApiModelProperty(value = "Město")
-    @Column(name = "postal_code")
-    private String postalCode;
+    @Column(name = "city")
+    private String city;
 
     /**
      * PSČ
      */
     @ApiModelProperty(value = "PSČ")
-    @Column(name = "country")
-    private String country;
+    @Column(name = "postal_code")
+    private String postalCode;
 
     /**
      * Země
      */
     @ApiModelProperty(value = "Země")
-    @Column(name = "registration_number")
-    private String registrationNumber;
+    @Column(name = "country")
+    private String country;
 
     /**
      * IČ
      */
     @ApiModelProperty(value = "IČ")
-    @Column(name = "vat_number")
-    private String vatNumber;
+    @Column(name = "registration_number")
+    private String registrationNumber;
 
     /**
      * DIČ
      */
     @ApiModelProperty(value = "DIČ")
-    @Column(name = "bank_account_number")
-    private String bankAccountNumber;
+    @Column(name = "vat_number")
+    private String vatNumber;
 
     /**
      * Číslo účtu
      */
     @ApiModelProperty(value = "Číslo účtu")
-    @Column(name = "iban")
-    private String iban;
+    @Column(name = "bank_account_number")
+    private String bankAccountNumber;
 
     /**
      * IBAN
      */
     @ApiModelProperty(value = "IBAN")
+    @Column(name = "iban")
+    private String iban;
+
+    /**
+     * Url webu
+     */
+    @ApiModelProperty(value = "Url webu")
     @Column(name = "web_url")
     private String webUrl;
+
+    /**
+     * Datum vytvoření
+     */
+    @ApiModelProperty(value = "Datum vytvoření")
+    @Column(name = "created_date")
+    private Instant createdDate;
+
+    /**
+     * Datum úpravy
+     */
+    @ApiModelProperty(value = "Datum úpravy")
+    @Column(name = "updated_date")
+    private Instant updatedDate;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -291,6 +310,32 @@ public class CustomerInvoiceData implements Serializable {
     public void setWebUrl(String webUrl) {
         this.webUrl = webUrl;
     }
+
+    public Instant getCreatedDate() {
+        return createdDate;
+    }
+
+    public CustomerInvoiceData createdDate(Instant createdDate) {
+        this.createdDate = createdDate;
+        return this;
+    }
+
+    public void setCreatedDate(Instant createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Instant getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public CustomerInvoiceData updatedDate(Instant updatedDate) {
+        this.updatedDate = updatedDate;
+        return this;
+    }
+
+    public void setUpdatedDate(Instant updatedDate) {
+        this.updatedDate = updatedDate;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -327,6 +372,8 @@ public class CustomerInvoiceData implements Serializable {
             ", bankAccountNumber='" + getBankAccountNumber() + "'" +
             ", iban='" + getIban() + "'" +
             ", webUrl='" + getWebUrl() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 }

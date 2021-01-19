@@ -4,13 +4,24 @@
     {
       "fieldName": "logo",
       "fieldType": "byte[]",
+      "javadoc": "Logo",
       "fieldTypeBlobContent": "image"
     },
     {
       "fieldName": "signatureAndStamp",
       "fieldType": "byte[]",
-      "javadoc": "Datum vytvoření",
+      "javadoc": "Podpis a razítko",
       "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "javadoc": "Datum vytvoření"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant",
+      "javadoc": "Datum úpravy"
     }
   ],
   "relationships": [

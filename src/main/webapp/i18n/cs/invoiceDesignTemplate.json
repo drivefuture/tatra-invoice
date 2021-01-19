@@ -23,7 +23,12 @@
       "createdDate": "Created Date",
       "updatedDate": "Updated Date",
       "help": {
-        "updatedDate": "Datum vytvoření"
+        "name": "Název šablony",
+        "description": "Popis",
+        "image": "Obrázek",
+        "jrxmlTemplateFile": "Jasperreport soubor",
+        "createdDate": "Datum vytvoření",
+        "updatedDate": "Datum úpravy"
       }
     }
   }

@@ -29,6 +29,9 @@ export const CustomerDetail = (props: ICustomerDetailProps) => {
             <span id="email">
               <Translate contentKey="tatraInvoiceApp.customer.email">Email</Translate>
             </span>
+            <UncontrolledTooltip target="email">
+              <Translate contentKey="tatraInvoiceApp.customer.help.email" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{customerEntity.email}</dd>
           <dt>

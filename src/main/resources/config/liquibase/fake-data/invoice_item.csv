@@ -1,11 +1,11 @@
-id;sequence;quantity;measure_unit;description;measure_unit_price
-1;4878;19383;Shoes Manager Outdoors;Directives;81057
-2;85662;67836;maximized Savings Account Quality;Sleek Soft Bacon;1425
-3;54414;32454;Car Berkshire overriding;Principal;47627
-4;63348;35773;synergies maroon;Handmade;95539
-5;52164;96848;Home Loan Account;innovative Berkshire;68983
-6;65468;38654;Florida Ethiopian Birr;Health;10413
-7;74743;64243;value-added;Licensed;35328
-8;51015;17106;Avon;markets;19144
-9;99845;54126;multi-byte architect heuristic;compressing copying;80635
-10;12483;33390;Investor;Borders AI;90932
+id;sequence;quantity;measure_unit;description;measure_unit_price;created_date;updated_date
+1;4878;19383;Shoes Manager Outdoors;Directives;81057;2021-01-18T03:54:55;2021-01-18T08:11:36
+2;68929;27044;Savings Account Quality;Sleek Soft Bacon;1425;2021-01-18T11:24:53;2021-01-18T16:41:06
+3;93874;18213;Berkshire;Balanced Principal Point;35773;2021-01-18T08:41:59;2021-01-18T14:35:04
+4;540;20118;Ergonomic Soft Sausages Vietnam;Home Loan Account;43090;2021-01-18T16:04:09;2021-01-18T21:19:51
+5;51521;44039;withdrawal payment Chicken;access;49131;2021-01-18T21:58:30;2021-01-18T06:32:09
+6;64243;18244;Security;navigate;51015;2021-01-18T20:22:07;2021-01-18T22:34:47
+7;49069;6712;markets;Designer;94498;2021-01-18T05:02:12;2021-01-18T09:55:41
+8;39440;23196;Meadow;solution-oriented wireless Plastic;3756;2021-01-18T02:24:44;2021-01-18T09:24:14
+9;61541;50601;AI Corporate;Synergistic;30695;2021-01-18T18:59:56;2021-01-18T18:01:14
+10;72432;60404;firmware Solomon Islands;transmit wireless Delaware;46429;2021-01-18T04:09:21;2021-01-18T00:28:41

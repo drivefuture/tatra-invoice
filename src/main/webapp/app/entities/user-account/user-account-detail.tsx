@@ -35,10 +35,6 @@ export const UserAccountDetail = (props: IUserAccountDetailProps) => {
           </dt>
           <dd>{userAccountEntity.plan}</dd>
           <dt>
-            <Translate contentKey="tatraInvoiceApp.userAccount.currentCompany">Current Company</Translate>
-          </dt>
-          <dd>{userAccountEntity.currentCompany ? userAccountEntity.currentCompany.id : ''}</dd>
-          <dt>
             <Translate contentKey="tatraInvoiceApp.userAccount.user">User</Translate>
           </dt>
           <dd>{userAccountEntity.user ? userAccountEntity.user.id : ''}</dd>

@@ -30,55 +30,50 @@ public class Customer implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @NotNull
-    @Column(name = "email", nullable = false)
-    private String email;
-
     /**
      * E-mail
      */
-    @ApiModelProperty(value = "E-mail")
-    @Column(name = "email_copy")
-    private String emailCopy;
+    @NotNull
+    @ApiModelProperty(value = "E-mail", required = true)
+    @Column(name = "email", nullable = false)
+    private String email;
 
     /**
      * Kopie E-mailu
      */
     @ApiModelProperty(value = "Kopie E-mailu")
-    @Column(name = "email_blind_copy")
-    private String emailBlindCopy;
+    @Column(name = "email_copy")
+    private String emailCopy;
 
     /**
      * Slepá kopie E-mailu
      */
     @ApiModelProperty(value = "Slepá kopie E-mailu")
-    @Column(name = "telephone")
-    private String telephone;
+    @Column(name = "email_blind_copy")
+    private String emailBlindCopy;
 
     /**
      * Telefon
      */
-    @NotNull
-    @ApiModelProperty(value = "Telefon", required = true)
-    @Column(name = "invoice_due_period", nullable = false)
-    private Integer invoiceDuePeriod;
+    @ApiModelProperty(value = "Telefon")
+    @Column(name = "telephone")
+    private String telephone;
 
     /**
      * Splatnost faktury ve dnech
      */
-    @ApiModelProperty(value = "Splatnost faktury ve dnech")
-    @Enumerated(EnumType.STRING)
-    @Column(name = "invoice_language")
-    private Language invoiceLanguage;
+    @NotNull
+    @ApiModelProperty(value = "Splatnost faktury ve dnech", required = true)
+    @Column(name = "invoice_due_period", nullable = false)
+    private Integer invoiceDuePeriod;
 
     /**
      * Jazyk faktury
      */
     @ApiModelProperty(value = "Jazyk faktury")
-    @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "comment")
-    private String comment;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "invoice_language")
+    private Language invoiceLanguage;
 
     /**
      * Netisknutelná poznámka
@@ -86,8 +81,8 @@ public class Customer implements Serializable {
     @ApiModelProperty(value = "Netisknutelná poznámka")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "supplementary_text")
-    private String supplementaryText;
+    @Column(name = "comment")
+    private String comment;
 
     /**
      * Doplňkový text
@@ -95,8 +90,8 @@ public class Customer implements Serializable {
     @ApiModelProperty(value = "Doplňkový text")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "before_invoice_items_text")
-    private String beforeInvoiceItemsText;
+    @Column(name = "supplementary_text")
+    private String supplementaryText;
 
     /**
      * Text před položkami na faktuře
@@ -104,20 +99,29 @@ public class Customer implements Serializable {
     @ApiModelProperty(value = "Text před položkami na faktuře")
     @Lob
     @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "invoice_footer_text")
-    private String invoiceFooterText;
+    @Column(name = "before_invoice_items_text")
+    private String beforeInvoiceItemsText;
 
     /**
      * Text v patičce faktury
      */
     @ApiModelProperty(value = "Text v patičce faktury")
-    @Column(name = "created_date")
-    private Instant createdDate;
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "invoice_footer_text")
+    private String invoiceFooterText;
 
     /**
      * Datum vytvoření
      */
     @ApiModelProperty(value = "Datum vytvoření")
+    @Column(name = "created_date")
+    private Instant createdDate;
+
+    /**
+     * Datum úpravy
+     */
+    @ApiModelProperty(value = "Datum úpravy")
     @Column(name = "updated_date")
     private Instant updatedDate;
 

@@ -102,12 +102,18 @@ export const InvoiceDesignTemplateUpdate = (props: IInvoiceDesignTemplateUpdateP
                     required: { value: true, errorMessage: translate('entity.validation.required') },
                   }}
                 />
+                <UncontrolledTooltip target="nameLabel">
+                  <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.help.name" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="descriptionLabel" for="invoice-design-template-description">
                   <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.description">Description</Translate>
                 </Label>
                 <AvInput id="invoice-design-template-description" type="textarea" name="description" />
+                <UncontrolledTooltip target="descriptionLabel">
+                  <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.help.description" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <AvGroup>
@@ -140,6 +146,10 @@ export const InvoiceDesignTemplateUpdate = (props: IInvoiceDesignTemplateUpdateP
                   <input id="file_image" type="file" onChange={onBlobChange(true, 'image')} accept="image/*" />
                   <AvInput type="hidden" name="image" value={image} />
                 </AvGroup>
+
+                <UncontrolledTooltip target="imageLabel">
+                  <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.help.image" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <AvGroup>
@@ -179,6 +189,10 @@ export const InvoiceDesignTemplateUpdate = (props: IInvoiceDesignTemplateUpdateP
                     }}
                   />
                 </AvGroup>
+
+                <UncontrolledTooltip target="jrxmlTemplateFileLabel">
+                  <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.help.jrxmlTemplateFile" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="createdDateLabel" for="invoice-design-template-createdDate">
@@ -192,6 +206,9 @@ export const InvoiceDesignTemplateUpdate = (props: IInvoiceDesignTemplateUpdateP
                   placeholder={'YYYY-MM-DD HH:mm'}
                   value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.invoiceDesignTemplateEntity.createdDate)}
                 />
+                <UncontrolledTooltip target="createdDateLabel">
+                  <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.help.createdDate" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="updatedDateLabel" for="invoice-design-template-updatedDate">

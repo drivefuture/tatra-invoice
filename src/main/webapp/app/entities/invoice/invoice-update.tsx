@@ -104,6 +104,9 @@ export const InvoiceUpdate = (props: IInvoiceUpdateProps) => {
                   <Translate contentKey="tatraInvoiceApp.invoice.number">Number</Translate>
                 </Label>
                 <AvField id="invoice-number" type="text" name="number" />
+                <UncontrolledTooltip target="numberLabel">
+                  <Translate contentKey="tatraInvoiceApp.invoice.help.number" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="issueDateLabel" for="invoice-issueDate">
@@ -260,9 +263,6 @@ export const InvoiceUpdate = (props: IInvoiceUpdateProps) => {
                   <Translate contentKey="tatraInvoiceApp.invoice.specialSymbol">Special Symbol</Translate>
                 </Label>
                 <AvField id="invoice-specialSymbol" type="text" name="specialSymbol" />
-                <UncontrolledTooltip target="specialSymbolLabel">
-                  <Translate contentKey="tatraInvoiceApp.invoice.help.specialSymbol" />
-                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="orderNumberLabel" for="invoice-orderNumber">
@@ -288,6 +288,9 @@ export const InvoiceUpdate = (props: IInvoiceUpdateProps) => {
                   <option value="ENGLISH">{translate('tatraInvoiceApp.Language.ENGLISH')}</option>
                   <option value="GERMAN">{translate('tatraInvoiceApp.Language.GERMAN')}</option>
                 </AvInput>
+                <UncontrolledTooltip target="languageLabel">
+                  <Translate contentKey="tatraInvoiceApp.invoice.help.language" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="commentLabel" for="invoice-comment">

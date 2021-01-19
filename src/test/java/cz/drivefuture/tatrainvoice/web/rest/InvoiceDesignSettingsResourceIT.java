@@ -16,6 +16,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Base64Utils;
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -41,6 +43,12 @@ public class InvoiceDesignSettingsResourceIT {
     private static final String DEFAULT_SIGNATURE_AND_STAMP_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_SIGNATURE_AND_STAMP_CONTENT_TYPE = "image/png";
 
+    private static final Instant DEFAULT_CREATED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Instant DEFAULT_UPDATED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_UPDATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     @Autowired
     private InvoiceDesignSettingsRepository invoiceDesignSettingsRepository;
 
@@ -63,7 +71,9 @@ public class InvoiceDesignSettingsResourceIT {
             .logo(DEFAULT_LOGO)
             .logoContentType(DEFAULT_LOGO_CONTENT_TYPE)
             .signatureAndStamp(DEFAULT_SIGNATURE_AND_STAMP)
-            .signatureAndStampContentType(DEFAULT_SIGNATURE_AND_STAMP_CONTENT_TYPE);
+            .signatureAndStampContentType(DEFAULT_SIGNATURE_AND_STAMP_CONTENT_TYPE)
+            .createdDate(DEFAULT_CREATED_DATE)
+            .updatedDate(DEFAULT_UPDATED_DATE);
         // Add required entity
         InvoiceDesignTemplate invoiceDesignTemplate;
         if (TestUtil.findAll(em, InvoiceDesignTemplate.class).isEmpty()) {
@@ -87,7 +97,9 @@ public class InvoiceDesignSettingsResourceIT {
             .logo(UPDATED_LOGO)
             .logoContentType(UPDATED_LOGO_CONTENT_TYPE)
             .signatureAndStamp(UPDATED_SIGNATURE_AND_STAMP)
-            .signatureAndStampContentType(UPDATED_SIGNATURE_AND_STAMP_CONTENT_TYPE);
+            .signatureAndStampContentType(UPDATED_SIGNATURE_AND_STAMP_CONTENT_TYPE)
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
         // Add required entity
         InvoiceDesignTemplate invoiceDesignTemplate;
         if (TestUtil.findAll(em, InvoiceDesignTemplate.class).isEmpty()) {
@@ -124,6 +136,8 @@ public class InvoiceDesignSettingsResourceIT {
         assertThat(testInvoiceDesignSettings.getLogoContentType()).isEqualTo(DEFAULT_LOGO_CONTENT_TYPE);
         assertThat(testInvoiceDesignSettings.getSignatureAndStamp()).isEqualTo(DEFAULT_SIGNATURE_AND_STAMP);
         assertThat(testInvoiceDesignSettings.getSignatureAndStampContentType()).isEqualTo(DEFAULT_SIGNATURE_AND_STAMP_CONTENT_TYPE);
+        assertThat(testInvoiceDesignSettings.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testInvoiceDesignSettings.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
     }
 
     @Test
@@ -160,7 +174,9 @@ public class InvoiceDesignSettingsResourceIT {
             .andExpect(jsonPath("$.[*].logoContentType").value(hasItem(DEFAULT_LOGO_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].logo").value(hasItem(Base64Utils.encodeToString(DEFAULT_LOGO))))
             .andExpect(jsonPath("$.[*].signatureAndStampContentType").value(hasItem(DEFAULT_SIGNATURE_AND_STAMP_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].signatureAndStamp").value(hasItem(Base64Utils.encodeToString(DEFAULT_SIGNATURE_AND_STAMP))));
+            .andExpect(jsonPath("$.[*].signatureAndStamp").value(hasItem(Base64Utils.encodeToString(DEFAULT_SIGNATURE_AND_STAMP))))
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(DEFAULT_UPDATED_DATE.toString())));
     }
     
     @Test
@@ -177,7 +193,9 @@ public class InvoiceDesignSettingsResourceIT {
             .andExpect(jsonPath("$.logoContentType").value(DEFAULT_LOGO_CONTENT_TYPE))
             .andExpect(jsonPath("$.logo").value(Base64Utils.encodeToString(DEFAULT_LOGO)))
             .andExpect(jsonPath("$.signatureAndStampContentType").value(DEFAULT_SIGNATURE_AND_STAMP_CONTENT_TYPE))
-            .andExpect(jsonPath("$.signatureAndStamp").value(Base64Utils.encodeToString(DEFAULT_SIGNATURE_AND_STAMP)));
+            .andExpect(jsonPath("$.signatureAndStamp").value(Base64Utils.encodeToString(DEFAULT_SIGNATURE_AND_STAMP)))
+            .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
+            .andExpect(jsonPath("$.updatedDate").value(DEFAULT_UPDATED_DATE.toString()));
     }
     @Test
     @Transactional
@@ -203,7 +221,9 @@ public class InvoiceDesignSettingsResourceIT {
             .logo(UPDATED_LOGO)
             .logoContentType(UPDATED_LOGO_CONTENT_TYPE)
             .signatureAndStamp(UPDATED_SIGNATURE_AND_STAMP)
-            .signatureAndStampContentType(UPDATED_SIGNATURE_AND_STAMP_CONTENT_TYPE);
+            .signatureAndStampContentType(UPDATED_SIGNATURE_AND_STAMP_CONTENT_TYPE)
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
 
         restInvoiceDesignSettingsMockMvc.perform(put("/api/invoice-design-settings")
             .contentType(MediaType.APPLICATION_JSON)
@@ -218,6 +238,8 @@ public class InvoiceDesignSettingsResourceIT {
         assertThat(testInvoiceDesignSettings.getLogoContentType()).isEqualTo(UPDATED_LOGO_CONTENT_TYPE);
         assertThat(testInvoiceDesignSettings.getSignatureAndStamp()).isEqualTo(UPDATED_SIGNATURE_AND_STAMP);
         assertThat(testInvoiceDesignSettings.getSignatureAndStampContentType()).isEqualTo(UPDATED_SIGNATURE_AND_STAMP_CONTENT_TYPE);
+        assertThat(testInvoiceDesignSettings.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testInvoiceDesignSettings.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
     }
 
     @Test

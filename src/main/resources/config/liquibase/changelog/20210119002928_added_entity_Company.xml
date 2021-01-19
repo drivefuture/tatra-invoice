@@ -15,62 +15,65 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(255)">
+            <column name="name" type="varchar(255)" remarks="Název společnosti">
                 <constraints nullable="true" />
             </column>
-            <column name="first_name" type="varchar(255)" remarks="Název společnosti">
+            <column name="first_name" type="varchar(255)" remarks="Jméno">
                 <constraints nullable="true" />
             </column>
-            <column name="last_name" type="varchar(255)" remarks="Jméno">
+            <column name="last_name" type="varchar(255)" remarks="Příjmení">
                 <constraints nullable="true" />
             </column>
-            <column name="street" type="varchar(255)" remarks="Příjmení">
+            <column name="street" type="varchar(255)" remarks="Ulice">
                 <constraints nullable="true" />
             </column>
-            <column name="city" type="varchar(255)" remarks="Ulice">
+            <column name="city" type="varchar(255)" remarks="Město">
                 <constraints nullable="true" />
             </column>
-            <column name="postal_code" type="varchar(255)" remarks="Město">
+            <column name="postal_code" type="varchar(255)" remarks="PSČ">
                 <constraints nullable="true" />
             </column>
-            <column name="country" type="varchar(255)" remarks="PSČ">
+            <column name="country" type="varchar(255)" remarks="Země">
                 <constraints nullable="true" />
             </column>
-            <column name="registration_number" type="varchar(255)" remarks="Země">
+            <column name="registration_number" type="varchar(255)" remarks="IČ">
                 <constraints nullable="true" />
             </column>
-            <column name="vat_number" type="varchar(255)">
+            <column name="vat_number" type="varchar(255)" remarks="DIČ">
                 <constraints nullable="true" />
             </column>
-            <column name="registered_mark" type="varchar(255)" remarks="DIČ">
+            <column name="registered_mark" type="varchar(255)" remarks="Spisová značka">
                 <constraints nullable="true" />
             </column>
-            <column name="supplementary_text" type="${clobType}" remarks="Spisová značka">
+            <column name="supplementary_text" type="${clobType}" remarks="Doplňkový text">
                 <constraints nullable="true" />
             </column>
-            <column name="bank_account_number" type="varchar(255)" remarks="Doplňkový text">
+            <column name="bank_account_number" type="varchar(255)" remarks="Číslo účtu">
                 <constraints nullable="true" />
             </column>
-            <column name="iban" type="varchar(255)" remarks="Číslo účtu">
+            <column name="iban" type="varchar(255)" remarks="IBAN">
                 <constraints nullable="true" />
             </column>
-            <column name="email" type="varchar(255)" remarks="IBAN">
+            <column name="email" type="varchar(255)" remarks="E-mail">
                 <constraints nullable="false" />
             </column>
-            <column name="telephone" type="varchar(255)" remarks="E-mail">
+            <column name="telephone" type="varchar(255)" remarks="Telefon">
                 <constraints nullable="true" />
             </column>
-            <column name="web_url" type="varchar(255)" remarks="Telefon">
+            <column name="web_url" type="varchar(255)" remarks="Url webu">
                 <constraints nullable="true" />
             </column>
-            <column name="created_date" type="datetime" remarks="Url webu">
+            <column name="created_date" type="datetime" remarks="Datum vytvoření">
                 <constraints nullable="true" />
             </column>
-            <column name="updated_date" type="datetime" remarks="Datum vytvoření">
+            <column name="updated_date" type="datetime" remarks="Datum úpravy">
                 <constraints nullable="true" />
             </column>
             <column name="invoice_design_settings_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_company_invoice_design_settings_id" />
+            </column>
+            <column name="user_account_id" type="bigint">
+                <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>

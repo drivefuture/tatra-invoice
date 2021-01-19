@@ -15,6 +15,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,6 +47,12 @@ public class InvoiceItemResourceIT {
     private static final BigDecimal DEFAULT_MEASURE_UNIT_PRICE = new BigDecimal(1);
     private static final BigDecimal UPDATED_MEASURE_UNIT_PRICE = new BigDecimal(2);
 
+    private static final Instant DEFAULT_CREATED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Instant DEFAULT_UPDATED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_UPDATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     @Autowired
     private InvoiceItemRepository invoiceItemRepository;
 
@@ -68,7 +76,9 @@ public class InvoiceItemResourceIT {
             .quantity(DEFAULT_QUANTITY)
             .measureUnit(DEFAULT_MEASURE_UNIT)
             .description(DEFAULT_DESCRIPTION)
-            .measureUnitPrice(DEFAULT_MEASURE_UNIT_PRICE);
+            .measureUnitPrice(DEFAULT_MEASURE_UNIT_PRICE)
+            .createdDate(DEFAULT_CREATED_DATE)
+            .updatedDate(DEFAULT_UPDATED_DATE);
         return invoiceItem;
     }
     /**
@@ -83,7 +93,9 @@ public class InvoiceItemResourceIT {
             .quantity(UPDATED_QUANTITY)
             .measureUnit(UPDATED_MEASURE_UNIT)
             .description(UPDATED_DESCRIPTION)
-            .measureUnitPrice(UPDATED_MEASURE_UNIT_PRICE);
+            .measureUnitPrice(UPDATED_MEASURE_UNIT_PRICE)
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
         return invoiceItem;
     }
 
@@ -111,6 +123,8 @@ public class InvoiceItemResourceIT {
         assertThat(testInvoiceItem.getMeasureUnit()).isEqualTo(DEFAULT_MEASURE_UNIT);
         assertThat(testInvoiceItem.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testInvoiceItem.getMeasureUnitPrice()).isEqualTo(DEFAULT_MEASURE_UNIT_PRICE);
+        assertThat(testInvoiceItem.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testInvoiceItem.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
     }
 
     @Test
@@ -243,7 +257,9 @@ public class InvoiceItemResourceIT {
             .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY.doubleValue())))
             .andExpect(jsonPath("$.[*].measureUnit").value(hasItem(DEFAULT_MEASURE_UNIT)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].measureUnitPrice").value(hasItem(DEFAULT_MEASURE_UNIT_PRICE.intValue())));
+            .andExpect(jsonPath("$.[*].measureUnitPrice").value(hasItem(DEFAULT_MEASURE_UNIT_PRICE.intValue())))
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(DEFAULT_UPDATED_DATE.toString())));
     }
     
     @Test
@@ -261,7 +277,9 @@ public class InvoiceItemResourceIT {
             .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY.doubleValue()))
             .andExpect(jsonPath("$.measureUnit").value(DEFAULT_MEASURE_UNIT))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
-            .andExpect(jsonPath("$.measureUnitPrice").value(DEFAULT_MEASURE_UNIT_PRICE.intValue()));
+            .andExpect(jsonPath("$.measureUnitPrice").value(DEFAULT_MEASURE_UNIT_PRICE.intValue()))
+            .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
+            .andExpect(jsonPath("$.updatedDate").value(DEFAULT_UPDATED_DATE.toString()));
     }
     @Test
     @Transactional
@@ -288,7 +306,9 @@ public class InvoiceItemResourceIT {
             .quantity(UPDATED_QUANTITY)
             .measureUnit(UPDATED_MEASURE_UNIT)
             .description(UPDATED_DESCRIPTION)
-            .measureUnitPrice(UPDATED_MEASURE_UNIT_PRICE);
+            .measureUnitPrice(UPDATED_MEASURE_UNIT_PRICE)
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
 
         restInvoiceItemMockMvc.perform(put("/api/invoice-items")
             .contentType(MediaType.APPLICATION_JSON)
@@ -304,6 +324,8 @@ public class InvoiceItemResourceIT {
         assertThat(testInvoiceItem.getMeasureUnit()).isEqualTo(UPDATED_MEASURE_UNIT);
         assertThat(testInvoiceItem.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testInvoiceItem.getMeasureUnitPrice()).isEqualTo(UPDATED_MEASURE_UNIT_PRICE);
+        assertThat(testInvoiceItem.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testInvoiceItem.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
     }
 
     @Test

@@ -3,12 +3,13 @@
   "fields": [
     {
       "fieldName": "companyName",
-      "fieldType": "String"
+      "fieldType": "String",
+      "javadoc": "Název společnosti"
     },
     {
       "fieldName": "ownName",
       "fieldType": "String",
-      "javadoc": "Název společnosti",
+      "javadoc": "Vlastní název",
       "fieldValidateRules": [
         "required"
       ]
@@ -16,57 +17,67 @@
     {
       "fieldName": "firstName",
       "fieldType": "String",
-      "javadoc": "Vlastní název"
+      "javadoc": "Jméno"
     },
     {
       "fieldName": "lastName",
       "fieldType": "String",
-      "javadoc": "Jméno"
+      "javadoc": "Příjmení"
     },
     {
       "fieldName": "street",
       "fieldType": "String",
-      "javadoc": "Příjmení"
+      "javadoc": "Ulice"
     },
     {
       "fieldName": "city",
       "fieldType": "String",
-      "javadoc": "Ulice"
+      "javadoc": "Město"
     },
     {
       "fieldName": "postalCode",
       "fieldType": "String",
-      "javadoc": "Město"
+      "javadoc": "PSČ"
     },
     {
       "fieldName": "country",
       "fieldType": "String",
-      "javadoc": "PSČ"
+      "javadoc": "Země"
     },
     {
       "fieldName": "registrationNumber",
       "fieldType": "String",
-      "javadoc": "Země"
+      "javadoc": "IČ"
     },
     {
       "fieldName": "vatNumber",
       "fieldType": "String",
-      "javadoc": "IČ"
+      "javadoc": "DIČ"
     },
     {
       "fieldName": "bankAccountNumber",
       "fieldType": "String",
-      "javadoc": "DIČ"
+      "javadoc": "Číslo účtu"
     },
     {
       "fieldName": "iban",
       "fieldType": "String",
-      "javadoc": "Číslo účtu"
+      "javadoc": "IBAN"
     },
     {
       "fieldName": "webUrl",
       "fieldType": "String",
-      "javadoc": "IBAN"
+      "javadoc": "Url webu"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "javadoc": "Datum vytvoření"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant",
+      "javadoc": "Datum úpravy"
     }
   ],
   "relationships": [],

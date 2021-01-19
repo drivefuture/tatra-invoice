@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-import { Translate, ICrudGetAllAction } from 'react-jhipster';
+import { Translate, ICrudGetAllAction, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -60,6 +60,12 @@ export const CustomerDeliveryData = (props: ICustomerDeliveryDataProps) => {
                 <th>
                   <Translate contentKey="tatraInvoiceApp.customerDeliveryData.telephone">Telephone</Translate>
                 </th>
+                <th>
+                  <Translate contentKey="tatraInvoiceApp.customerDeliveryData.createdDate">Created Date</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="tatraInvoiceApp.customerDeliveryData.updatedDate">Updated Date</Translate>
+                </th>
                 <th />
               </tr>
             </thead>
@@ -79,6 +85,16 @@ export const CustomerDeliveryData = (props: ICustomerDeliveryDataProps) => {
                   <td>{customerDeliveryData.postalCode}</td>
                   <td>{customerDeliveryData.country}</td>
                   <td>{customerDeliveryData.telephone}</td>
+                  <td>
+                    {customerDeliveryData.createdDate ? (
+                      <TextFormat type="date" value={customerDeliveryData.createdDate} format={APP_DATE_FORMAT} />
+                    ) : null}
+                  </td>
+                  <td>
+                    {customerDeliveryData.updatedDate ? (
+                      <TextFormat type="date" value={customerDeliveryData.updatedDate} format={APP_DATE_FORMAT} />
+                    ) : null}
+                  </td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${customerDeliveryData.id}`} color="info" size="sm">

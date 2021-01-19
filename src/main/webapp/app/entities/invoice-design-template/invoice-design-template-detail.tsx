@@ -30,18 +30,27 @@ export const InvoiceDesignTemplateDetail = (props: IInvoiceDesignTemplateDetailP
             <span id="name">
               <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.name">Name</Translate>
             </span>
+            <UncontrolledTooltip target="name">
+              <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.help.name" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{invoiceDesignTemplateEntity.name}</dd>
           <dt>
             <span id="description">
               <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.description">Description</Translate>
             </span>
+            <UncontrolledTooltip target="description">
+              <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.help.description" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{invoiceDesignTemplateEntity.description}</dd>
           <dt>
             <span id="image">
               <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.image">Image</Translate>
             </span>
+            <UncontrolledTooltip target="image">
+              <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.help.image" />
+            </UncontrolledTooltip>
           </dt>
           <dd>
             {invoiceDesignTemplateEntity.image ? (
@@ -64,6 +73,9 @@ export const InvoiceDesignTemplateDetail = (props: IInvoiceDesignTemplateDetailP
             <span id="jrxmlTemplateFile">
               <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.jrxmlTemplateFile">Jrxml Template File</Translate>
             </span>
+            <UncontrolledTooltip target="jrxmlTemplateFile">
+              <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.help.jrxmlTemplateFile" />
+            </UncontrolledTooltip>
           </dt>
           <dd>
             {invoiceDesignTemplateEntity.jrxmlTemplateFile ? (
@@ -88,6 +100,9 @@ export const InvoiceDesignTemplateDetail = (props: IInvoiceDesignTemplateDetailP
             <span id="createdDate">
               <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.createdDate">Created Date</Translate>
             </span>
+            <UncontrolledTooltip target="createdDate">
+              <Translate contentKey="tatraInvoiceApp.invoiceDesignTemplate.help.createdDate" />
+            </UncontrolledTooltip>
           </dt>
           <dd>
             {invoiceDesignTemplateEntity.createdDate ? (

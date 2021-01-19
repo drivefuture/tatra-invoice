@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, UncontrolledTooltip, Row, Col } from 'reactstrap';
-import { Translate, ICrudGetAction } from 'react-jhipster';
+import { Translate, ICrudGetAction, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -30,6 +30,9 @@ export const CustomerInvoiceDataDetail = (props: ICustomerInvoiceDataDetailProps
             <span id="companyName">
               <Translate contentKey="tatraInvoiceApp.customerInvoiceData.companyName">Company Name</Translate>
             </span>
+            <UncontrolledTooltip target="companyName">
+              <Translate contentKey="tatraInvoiceApp.customerInvoiceData.help.companyName" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{customerInvoiceDataEntity.companyName}</dd>
           <dt>
@@ -140,6 +143,32 @@ export const CustomerInvoiceDataDetail = (props: ICustomerInvoiceDataDetailProps
             </UncontrolledTooltip>
           </dt>
           <dd>{customerInvoiceDataEntity.webUrl}</dd>
+          <dt>
+            <span id="createdDate">
+              <Translate contentKey="tatraInvoiceApp.customerInvoiceData.createdDate">Created Date</Translate>
+            </span>
+            <UncontrolledTooltip target="createdDate">
+              <Translate contentKey="tatraInvoiceApp.customerInvoiceData.help.createdDate" />
+            </UncontrolledTooltip>
+          </dt>
+          <dd>
+            {customerInvoiceDataEntity.createdDate ? (
+              <TextFormat value={customerInvoiceDataEntity.createdDate} type="date" format={APP_DATE_FORMAT} />
+            ) : null}
+          </dd>
+          <dt>
+            <span id="updatedDate">
+              <Translate contentKey="tatraInvoiceApp.customerInvoiceData.updatedDate">Updated Date</Translate>
+            </span>
+            <UncontrolledTooltip target="updatedDate">
+              <Translate contentKey="tatraInvoiceApp.customerInvoiceData.help.updatedDate" />
+            </UncontrolledTooltip>
+          </dt>
+          <dd>
+            {customerInvoiceDataEntity.updatedDate ? (
+              <TextFormat value={customerInvoiceDataEntity.updatedDate} type="date" format={APP_DATE_FORMAT} />
+            ) : null}
+          </dd>
         </dl>
         <Button tag={Link} to="/customer-invoice-data" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

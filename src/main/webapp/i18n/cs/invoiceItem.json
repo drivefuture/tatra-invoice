@@ -21,12 +21,17 @@
       "measureUnit": "Measure Unit",
       "description": "Description",
       "measureUnitPrice": "Measure Unit Price",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
       "invoice": "Invoice",
       "help": {
-        "quantity": "Pořadí",
-        "measureUnit": "Počet",
-        "description": "Měrná jednotka",
-        "measureUnitPrice": "Popis"
+        "sequence": "Pořadí",
+        "quantity": "Počet",
+        "measureUnit": "Měrná jednotka",
+        "description": "Popis",
+        "measureUnitPrice": "Cena za měrnú jednotku",
+        "createdDate": "Datum vytvoření",
+        "updatedDate": "Datum úpravy"
       }
     }
   }

@@ -29,19 +29,24 @@
       "bankAccountNumber": "Bank Account Number",
       "iban": "Iban",
       "webUrl": "Web Url",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
       "help": {
-        "ownName": "Název společnosti",
-        "firstName": "Vlastní název",
-        "lastName": "Jméno",
-        "street": "Příjmení",
-        "city": "Ulice",
-        "postalCode": "Město",
-        "country": "PSČ",
-        "registrationNumber": "Země",
-        "vatNumber": "IČ",
-        "bankAccountNumber": "DIČ",
-        "iban": "Číslo účtu",
-        "webUrl": "IBAN"
+        "companyName": "Název společnosti",
+        "ownName": "Vlastní název",
+        "firstName": "Jméno",
+        "lastName": "Příjmení",
+        "street": "Ulice",
+        "city": "Město",
+        "postalCode": "PSČ",
+        "country": "Země",
+        "registrationNumber": "IČ",
+        "vatNumber": "DIČ",
+        "bankAccountNumber": "Číslo účtu",
+        "iban": "IBAN",
+        "webUrl": "Url webu",
+        "createdDate": "Datum vytvoření",
+        "updatedDate": "Datum úpravy"
       }
     }
   }

@@ -1,11 +1,11 @@
-id;company_name;first_name;last_name;street;city;postal_code;country;telephone
-1;Table;Jarod;Kirlin;Mozelle Drive;Christiansentown;Borders reciprocal;Vietnam;(322) 571-5514
-2;Brand;Elmore;Wilderman;Sunny Pines;East Edmund;connecting Chief;Panama;1-104-303-7407 x77537
-3;Djibouti Franc Chicken Customer;Mervin;Rath;Stokes Squares;West Gerard;synthesize Island Borders;Honduras;(297) 813-7487
-4;productivity back-end;Therese;Considine;Hane Cliffs;New Elmer;Arkansas out-of-the-box International;Hungary;1-985-560-2573
-5;tan;Ewell;Heller;Kuhic Summit;Lubowitztown;Chair feed;Faroe Islands;(858) 615-0031
-6;Quality quantifying Borders;Luther;Roberts;Prohaska Tunnel;Estaville;Berkshire;Russian Federation;1-345-952-3455 x2436
-7;uniform;Aidan;Koepp;Kub Squares;West Jordanland;Clothing;French Polynesia;061.230.9634 x1008
-8;THX Utah Delaware;Margarete;Ledner;Deangelo Pines;Jazlynland;needs-based Data;China;114-276-0032
-9;synthesizing redefine Rhode Island;Dexter;Steuber;Pearl View;Jamarbury;Borders;Bahrain;552-790-4237
-10;Pizza Keyboard;Ibrahim;Stehr;Harold Prairie;Linwoodshire;deliverables;Burkina Faso;1-554-966-9992
+id;company_name;first_name;last_name;street;city;postal_code;country;telephone;created_date;updated_date
+1;Table;Jarod;Kirlin;Mozelle Drive;Christiansentown;Borders reciprocal;Vietnam;(322) 571-5514;2021-01-18T23:57:32;2021-01-18T02:16:05
+2;time-frame;Leanna;Walter;Gorczany Underpass;West Robb;Chief CFP Franc;Cambodia;(430) 374-0777;2021-01-18T11:50:10;2021-01-18T17:06:53
+3;feed mint green East Caribbean Dollar;Kimberly;Rath;Davion Road;Jenkinsburgh;Syrian Pound Tenge;Guernsey;(530) 297-8137 x487;2021-01-18T14:16:48;2021-01-18T16:55:19
+4;back-end Corporate Gorgeous;Eriberto;Kiehn;Prohaska Plains;Arelyborough;International monetize Accountability;Moldova;1-602-573-1153 x380;2021-01-18T12:52:10;2021-01-18T01:01:00
+5;Sleek Wooden Chair feed;Doyle;Bradtke;Robert Turnpike;Bobbystad;Garden;Chad;1-968-656-6783 x7732;2021-01-18T20:08:41;2021-01-18T12:19:11
+6;monitor magnetic;Keshaun;Zboncak;Halvorson Parks;South Kiara;Junctions;Namibia;1-290-480-4045;2021-01-18T20:56:35;2021-01-18T22:45:15
+7;Guinea Franc;Nick;Bailey;Erdman Pines;North Summer;brand Chair Sports;Timor-Leste;(658) 516-5662 x54142;2021-01-18T07:58:15;2021-01-18T02:15:03
+8;Chair Computer ROI;Melvin;Parisian;Hegmann Club;Lake Rebeca;redefine Rhode Island systematic;Ukraine;1-764-404-5025 x527;2021-01-18T02:17:58;2021-01-18T23:17:11
+9;Function-based bluetooth;Cameron;Stroman;Kessler Estate;Olsonhaven;Netherlands Antilles Specialist;Israel;115.549.6699 x9281;2021-01-18T09:29:12;2021-01-18T22:24:14
+10;expedite national;Vivian;Blick;McLaughlin Wells;Wittingstad;Dynamic New Mexico Buckinghamshire;Antarctica (the territory South of 60 deg S);(378) 278-2675 x702;2021-01-18T15:42:47;2021-01-18T01:23:07

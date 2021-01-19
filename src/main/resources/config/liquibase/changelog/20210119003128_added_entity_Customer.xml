@@ -15,40 +15,40 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="email" type="varchar(255)">
+            <column name="email" type="varchar(255)" remarks="E-mail">
                 <constraints nullable="false" />
             </column>
-            <column name="email_copy" type="varchar(255)" remarks="E-mail">
+            <column name="email_copy" type="varchar(255)" remarks="Kopie E-mailu">
                 <constraints nullable="true" />
             </column>
-            <column name="email_blind_copy" type="varchar(255)" remarks="Kopie E-mailu">
+            <column name="email_blind_copy" type="varchar(255)" remarks="Slepá kopie E-mailu">
                 <constraints nullable="true" />
             </column>
-            <column name="telephone" type="varchar(255)" remarks="Slepá kopie E-mailu">
+            <column name="telephone" type="varchar(255)" remarks="Telefon">
                 <constraints nullable="true" />
             </column>
-            <column name="invoice_due_period" type="integer" remarks="Telefon">
+            <column name="invoice_due_period" type="integer" remarks="Splatnost faktury ve dnech">
                 <constraints nullable="false" />
             </column>
-            <column name="invoice_language" type="varchar(255)" remarks="Splatnost faktury ve dnech">
+            <column name="invoice_language" type="varchar(255)" remarks="Jazyk faktury">
                 <constraints nullable="true" />
             </column>
-            <column name="comment" type="${clobType}" remarks="Jazyk faktury">
+            <column name="comment" type="${clobType}" remarks="Netisknutelná poznámka">
                 <constraints nullable="true" />
             </column>
-            <column name="supplementary_text" type="${clobType}" remarks="Netisknutelná poznámka">
+            <column name="supplementary_text" type="${clobType}" remarks="Doplňkový text">
                 <constraints nullable="true" />
             </column>
-            <column name="before_invoice_items_text" type="${clobType}" remarks="Doplňkový text">
+            <column name="before_invoice_items_text" type="${clobType}" remarks="Text před položkami na faktuře">
                 <constraints nullable="true" />
             </column>
-            <column name="invoice_footer_text" type="${clobType}" remarks="Text před položkami na faktuře">
+            <column name="invoice_footer_text" type="${clobType}" remarks="Text v patičce faktury">
                 <constraints nullable="true" />
             </column>
-            <column name="created_date" type="datetime" remarks="Text v patičce faktury">
+            <column name="created_date" type="datetime" remarks="Datum vytvoření">
                 <constraints nullable="true" />
             </column>
-            <column name="updated_date" type="datetime" remarks="Datum vytvoření">
+            <column name="updated_date" type="datetime" remarks="Datum úpravy">
                 <constraints nullable="true" />
             </column>
             <column name="customer_invoice_data_id" type="bigint">

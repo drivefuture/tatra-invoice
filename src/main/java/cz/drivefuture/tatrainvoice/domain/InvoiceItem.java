@@ -11,6 +11,7 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.Instant;
 
 /**
  * Invoice entity.\nPoložka faktury\n@author DriveFuture s.r.o. team
@@ -28,41 +29,59 @@ public class InvoiceItem implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @NotNull
-    @Column(name = "sequence", nullable = false)
-    private Integer sequence;
-
     /**
      * Pořadí
      */
     @NotNull
     @ApiModelProperty(value = "Pořadí", required = true)
-    @Column(name = "quantity", nullable = false)
-    private Double quantity;
+    @Column(name = "sequence", nullable = false)
+    private Integer sequence;
 
     /**
      * Počet
      */
     @NotNull
     @ApiModelProperty(value = "Počet", required = true)
-    @Column(name = "measure_unit", nullable = false)
-    private String measureUnit;
+    @Column(name = "quantity", nullable = false)
+    private Double quantity;
 
     /**
      * Měrná jednotka
      */
     @NotNull
     @ApiModelProperty(value = "Měrná jednotka", required = true)
-    @Column(name = "description", nullable = false)
-    private String description;
+    @Column(name = "measure_unit", nullable = false)
+    private String measureUnit;
 
     /**
      * Popis
      */
     @NotNull
     @ApiModelProperty(value = "Popis", required = true)
+    @Column(name = "description", nullable = false)
+    private String description;
+
+    /**
+     * Cena za měrnú jednotku
+     */
+    @NotNull
+    @ApiModelProperty(value = "Cena za měrnú jednotku", required = true)
     @Column(name = "measure_unit_price", precision = 21, scale = 2, nullable = false)
     private BigDecimal measureUnitPrice;
+
+    /**
+     * Datum vytvoření
+     */
+    @ApiModelProperty(value = "Datum vytvoření")
+    @Column(name = "created_date")
+    private Instant createdDate;
+
+    /**
+     * Datum úpravy
+     */
+    @ApiModelProperty(value = "Datum úpravy")
+    @Column(name = "updated_date")
+    private Instant updatedDate;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "items", allowSetters = true)
@@ -142,6 +161,32 @@ public class InvoiceItem implements Serializable {
         this.measureUnitPrice = measureUnitPrice;
     }
 
+    public Instant getCreatedDate() {
+        return createdDate;
+    }
+
+    public InvoiceItem createdDate(Instant createdDate) {
+        this.createdDate = createdDate;
+        return this;
+    }
+
+    public void setCreatedDate(Instant createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Instant getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public InvoiceItem updatedDate(Instant updatedDate) {
+        this.updatedDate = updatedDate;
+        return this;
+    }
+
+    public void setUpdatedDate(Instant updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
     public Invoice getInvoice() {
         return invoice;
     }
@@ -182,6 +227,8 @@ public class InvoiceItem implements Serializable {
             ", measureUnit='" + getMeasureUnit() + "'" +
             ", description='" + getDescription() + "'" +
             ", measureUnitPrice=" + getMeasureUnitPrice() +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 }

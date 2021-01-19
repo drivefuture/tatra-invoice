@@ -29,6 +29,9 @@ export const InvoiceDetail = (props: IInvoiceDetailProps) => {
             <span id="number">
               <Translate contentKey="tatraInvoiceApp.invoice.number">Number</Translate>
             </span>
+            <UncontrolledTooltip target="number">
+              <Translate contentKey="tatraInvoiceApp.invoice.help.number" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{invoiceEntity.number}</dd>
           <dt>
@@ -127,9 +130,6 @@ export const InvoiceDetail = (props: IInvoiceDetailProps) => {
             <span id="specialSymbol">
               <Translate contentKey="tatraInvoiceApp.invoice.specialSymbol">Special Symbol</Translate>
             </span>
-            <UncontrolledTooltip target="specialSymbol">
-              <Translate contentKey="tatraInvoiceApp.invoice.help.specialSymbol" />
-            </UncontrolledTooltip>
           </dt>
           <dd>{invoiceEntity.specialSymbol}</dd>
           <dt>
@@ -142,6 +142,9 @@ export const InvoiceDetail = (props: IInvoiceDetailProps) => {
             <span id="language">
               <Translate contentKey="tatraInvoiceApp.invoice.language">Language</Translate>
             </span>
+            <UncontrolledTooltip target="language">
+              <Translate contentKey="tatraInvoiceApp.invoice.help.language" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{invoiceEntity.language}</dd>
           <dt>

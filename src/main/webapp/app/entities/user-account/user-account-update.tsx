@@ -7,10 +7,10 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
-import { ICompany } from 'app/shared/model/company.model';
-import { getEntities as getCompanies } from 'app/entities/company/company.reducer';
 import { IUser } from 'app/shared/model/user.model';
 import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
+import { ICompany } from 'app/shared/model/company.model';
+import { getEntities as getCompanies } from 'app/entities/company/company.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './user-account.reducer';
 import { IUserAccount } from 'app/shared/model/user-account.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -19,12 +19,11 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface IUserAccountUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const UserAccountUpdate = (props: IUserAccountUpdateProps) => {
-  const [currentCompanyId, setCurrentCompanyId] = useState('0');
-  const [companyId, setCompanyId] = useState('0');
   const [userId, setUserId] = useState('0');
+  const [companyId, setCompanyId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { userAccountEntity, companies, users, loading, updating } = props;
+  const { userAccountEntity, users, companies, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/user-account');
@@ -37,8 +36,8 @@ export const UserAccountUpdate = (props: IUserAccountUpdateProps) => {
       props.getEntity(props.match.params.id);
     }
 
-    props.getCompanies();
     props.getUsers();
+    props.getCompanies();
   }, []);
 
   useEffect(() => {
@@ -104,21 +103,6 @@ export const UserAccountUpdate = (props: IUserAccountUpdateProps) => {
                 </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
-                <Label for="user-account-currentCompany">
-                  <Translate contentKey="tatraInvoiceApp.userAccount.currentCompany">Current Company</Translate>
-                </Label>
-                <AvInput id="user-account-currentCompany" type="select" className="form-control" name="currentCompany.id">
-                  <option value="" key="0" />
-                  {companies
-                    ? companies.map(otherEntity => (
-                        <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
-                        </option>
-                      ))
-                    : null}
-                </AvInput>
-              </AvGroup>
-              <AvGroup>
                 <Label for="user-account-user">
                   <Translate contentKey="tatraInvoiceApp.userAccount.user">User</Translate>
                 </Label>
@@ -155,8 +139,8 @@ export const UserAccountUpdate = (props: IUserAccountUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
-  companies: storeState.company.entities,
   users: storeState.userManagement.users,
+  companies: storeState.company.entities,
   userAccountEntity: storeState.userAccount.entity,
   loading: storeState.userAccount.loading,
   updating: storeState.userAccount.updating,
@@ -164,8 +148,8 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
-  getCompanies,
   getUsers,
+  getCompanies,
   getEntity,
   updateEntity,
   createEntity,

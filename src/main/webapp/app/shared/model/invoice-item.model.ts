@@ -1,3 +1,4 @@
+import { Moment } from 'moment';
 import { IInvoice } from 'app/shared/model/invoice.model';
 
 export interface IInvoiceItem {
@@ -7,6 +8,8 @@ export interface IInvoiceItem {
   measureUnit?: string;
   description?: string;
   measureUnitPrice?: number;
+  createdDate?: string;
+  updatedDate?: string;
   invoice?: IInvoice;
 }
 

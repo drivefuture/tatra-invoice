@@ -15,26 +15,34 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="sequence" type="integer">
+            <column name="sequence" type="integer" remarks="Pořadí">
                 <constraints nullable="false" />
             </column>
-            <column name="quantity" type="double" remarks="Pořadí">
+            <column name="quantity" type="double" remarks="Počet">
                 <constraints nullable="false" />
             </column>
-            <column name="measure_unit" type="varchar(255)" remarks="Počet">
+            <column name="measure_unit" type="varchar(255)" remarks="Měrná jednotka">
                 <constraints nullable="false" />
             </column>
-            <column name="description" type="varchar(255)" remarks="Měrná jednotka">
+            <column name="description" type="varchar(255)" remarks="Popis">
                 <constraints nullable="false" />
             </column>
-            <column name="measure_unit_price" type="decimal(21,2)" remarks="Popis">
+            <column name="measure_unit_price" type="decimal(21,2)" remarks="Cena za měrnú jednotku">
                 <constraints nullable="false" />
+            </column>
+            <column name="created_date" type="datetime" remarks="Datum vytvoření">
+                <constraints nullable="true" />
+            </column>
+            <column name="updated_date" type="datetime" remarks="Datum úpravy">
+                <constraints nullable="true" />
             </column>
             <column name="invoice_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
+        <dropDefaultValue tableName="invoice_item" columnName="created_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="invoice_item" columnName="updated_date" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20210119002828-1-relations" author="jhipster">
@@ -61,6 +69,8 @@
             <column name="measure_unit" type="string"/>
             <column name="description" type="string"/>
             <column name="measure_unit_price" type="numeric"/>
+            <column name="created_date" type="datetime"/>
+            <column name="updated_date" type="datetime"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

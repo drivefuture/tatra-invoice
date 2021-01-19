@@ -14,6 +14,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -53,6 +55,12 @@ public class CustomerDeliveryDataResourceIT {
     private static final String DEFAULT_TELEPHONE = "AAAAAAAAAA";
     private static final String UPDATED_TELEPHONE = "BBBBBBBBBB";
 
+    private static final Instant DEFAULT_CREATED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Instant DEFAULT_UPDATED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_UPDATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     @Autowired
     private CustomerDeliveryDataRepository customerDeliveryDataRepository;
 
@@ -79,7 +87,9 @@ public class CustomerDeliveryDataResourceIT {
             .city(DEFAULT_CITY)
             .postalCode(DEFAULT_POSTAL_CODE)
             .country(DEFAULT_COUNTRY)
-            .telephone(DEFAULT_TELEPHONE);
+            .telephone(DEFAULT_TELEPHONE)
+            .createdDate(DEFAULT_CREATED_DATE)
+            .updatedDate(DEFAULT_UPDATED_DATE);
         return customerDeliveryData;
     }
     /**
@@ -97,7 +107,9 @@ public class CustomerDeliveryDataResourceIT {
             .city(UPDATED_CITY)
             .postalCode(UPDATED_POSTAL_CODE)
             .country(UPDATED_COUNTRY)
-            .telephone(UPDATED_TELEPHONE);
+            .telephone(UPDATED_TELEPHONE)
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
         return customerDeliveryData;
     }
 
@@ -128,6 +140,8 @@ public class CustomerDeliveryDataResourceIT {
         assertThat(testCustomerDeliveryData.getPostalCode()).isEqualTo(DEFAULT_POSTAL_CODE);
         assertThat(testCustomerDeliveryData.getCountry()).isEqualTo(DEFAULT_COUNTRY);
         assertThat(testCustomerDeliveryData.getTelephone()).isEqualTo(DEFAULT_TELEPHONE);
+        assertThat(testCustomerDeliveryData.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testCustomerDeliveryData.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
     }
 
     @Test
@@ -168,7 +182,9 @@ public class CustomerDeliveryDataResourceIT {
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
             .andExpect(jsonPath("$.[*].postalCode").value(hasItem(DEFAULT_POSTAL_CODE)))
             .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
-            .andExpect(jsonPath("$.[*].telephone").value(hasItem(DEFAULT_TELEPHONE)));
+            .andExpect(jsonPath("$.[*].telephone").value(hasItem(DEFAULT_TELEPHONE)))
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
+            .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(DEFAULT_UPDATED_DATE.toString())));
     }
     
     @Test
@@ -189,7 +205,9 @@ public class CustomerDeliveryDataResourceIT {
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY))
             .andExpect(jsonPath("$.postalCode").value(DEFAULT_POSTAL_CODE))
             .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY))
-            .andExpect(jsonPath("$.telephone").value(DEFAULT_TELEPHONE));
+            .andExpect(jsonPath("$.telephone").value(DEFAULT_TELEPHONE))
+            .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
+            .andExpect(jsonPath("$.updatedDate").value(DEFAULT_UPDATED_DATE.toString()));
     }
     @Test
     @Transactional
@@ -219,7 +237,9 @@ public class CustomerDeliveryDataResourceIT {
             .city(UPDATED_CITY)
             .postalCode(UPDATED_POSTAL_CODE)
             .country(UPDATED_COUNTRY)
-            .telephone(UPDATED_TELEPHONE);
+            .telephone(UPDATED_TELEPHONE)
+            .createdDate(UPDATED_CREATED_DATE)
+            .updatedDate(UPDATED_UPDATED_DATE);
 
         restCustomerDeliveryDataMockMvc.perform(put("/api/customer-delivery-data")
             .contentType(MediaType.APPLICATION_JSON)
@@ -238,6 +258,8 @@ public class CustomerDeliveryDataResourceIT {
         assertThat(testCustomerDeliveryData.getPostalCode()).isEqualTo(UPDATED_POSTAL_CODE);
         assertThat(testCustomerDeliveryData.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testCustomerDeliveryData.getTelephone()).isEqualTo(UPDATED_TELEPHONE);
+        assertThat(testCustomerDeliveryData.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testCustomerDeliveryData.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);
     }
 
     @Test

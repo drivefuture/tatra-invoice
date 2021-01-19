@@ -15,67 +15,67 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="number" type="varchar(255)">
+            <column name="number" type="varchar(255)" remarks="Číslo dokumentu">
                 <constraints nullable="true" />
             </column>
-            <column name="issue_date" type="datetime" remarks="Číslo dokumentu">
+            <column name="issue_date" type="datetime" remarks="Datum vystavení">
                 <constraints nullable="false" />
             </column>
-            <column name="payment_method" type="varchar(255)" remarks="Datum vystavení">
+            <column name="payment_method" type="varchar(255)" remarks="Způsob platby">
                 <constraints nullable="false" />
             </column>
-            <column name="due_period" type="integer" remarks="Způsob platby">
+            <column name="due_period" type="integer" remarks="Splatnost ve dnech">
                 <constraints nullable="false" />
             </column>
-            <column name="due_date" type="datetime" remarks="Splatnost ve dnech">
+            <column name="due_date" type="datetime" remarks="Datum splatnosti">
                 <constraints nullable="false" />
             </column>
-            <column name="payment_date" type="datetime" remarks="Datum splatnosti">
+            <column name="payment_date" type="datetime" remarks="Datum úhrady">
                 <constraints nullable="true" />
             </column>
-            <column name="tax_point" type="datetime" remarks="Datum úhrady">
+            <column name="tax_point" type="datetime" remarks="Datum zdanitelného plnění">
                 <constraints nullable="true" />
             </column>
-            <column name="total_amount" type="decimal(21,2)" remarks="Datum zdanitelného plnění">
+            <column name="total_amount" type="decimal(21,2)" remarks="Celková částka">
                 <constraints nullable="true" />
             </column>
-            <column name="currency" type="varchar(255)" remarks="Celková částka">
+            <column name="currency" type="varchar(255)" remarks="Měna">
                 <constraints nullable="false" />
             </column>
-            <column name="variable_symbol" type="varchar(255)" remarks="Měna">
+            <column name="variable_symbol" type="varchar(255)" remarks="VS">
                 <constraints nullable="true" />
             </column>
-            <column name="constant_symbol" type="varchar(255)" remarks="VS">
+            <column name="constant_symbol" type="varchar(255)" remarks="KS">
                 <constraints nullable="true" />
             </column>
-            <column name="special_symbol" type="varchar(255)" remarks="KS">
+            <column name="special_symbol" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="order_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="language" type="varchar(255)">
+            <column name="language" type="varchar(255)" remarks="Jazyk faktury">
                 <constraints nullable="false" />
             </column>
-            <column name="comment" type="${clobType}" remarks="Jazyk faktury">
+            <column name="comment" type="${clobType}" remarks="Netisknutelná poznámka">
                 <constraints nullable="true" />
             </column>
-            <column name="before_invoice_items_text" type="${clobType}" remarks="Netisknutelná poznámka">
+            <column name="before_invoice_items_text" type="${clobType}" remarks="Text před položkami na faktuře">
                 <constraints nullable="true" />
             </column>
-            <column name="invoice_footer_text" type="${clobType}" remarks="Text před položkami na faktuře">
+            <column name="invoice_footer_text" type="${clobType}" remarks="Text v patičce faktury">
                 <constraints nullable="true" />
             </column>
-            <column name="pdf_file" type="longblob" remarks="Text v patičce faktury">
+            <column name="pdf_file" type="longblob" remarks="Pdf soubor">
                 <constraints nullable="true" />
             </column>
             <column name="pdf_file_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="created_date" type="datetime" remarks="Pdf soubor">
+            <column name="created_date" type="datetime" remarks="Datum vytvoření">
                 <constraints nullable="true" />
             </column>
-            <column name="updated_date" type="datetime" remarks="Datum vytvoření">
+            <column name="updated_date" type="datetime" remarks="Datum úpravy">
                 <constraints nullable="true" />
             </column>
             <column name="company_id" type="bigint">
