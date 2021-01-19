@@ -293,12 +293,12 @@ relationship OneToOne {
 
 relationship ManyToOne {
 	Invoice{company required} to Company,
-	Invoice{customer required} to Customer,
-    Company{userAccount} to UserAccount
+	Invoice{customer required} to Customer
 }
 
 relationship OneToMany {
-	Invoice{item(description)} to InvoiceItem{invoice}
+	Invoice{item(description)} to InvoiceItem{invoice},
+    UserAccount{currentCompany(name)} to Company
 }
 
 relationship ManyToMany {
