@@ -1,0 +1,27 @@
+{
+  "tatraInvoiceApp": {
+    "invoiceDesignSettings": {
+      "home": {
+        "title": "Invoice Design Settings",
+        "createLabel": "Dodaj Invoice Design Settings",
+        "createOrEditLabel": "Dodaj lub edytuj: Invoice Design Settings",
+        "notFound": "No Invoice Design Settings found"
+      },
+      "created": "Utworzono nowy obiekt typu Invoice Design Settings z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Invoice Design Settings z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Invoice Design Settings z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Invoice Design Settings {{ id }}?"
+      },
+      "detail": {
+        "title": "Invoice Design Settings"
+      },
+      "logo": "Logo",
+      "signatureAndStamp": "Signature And Stamp",
+      "template": "Template",
+      "help": {
+        "signatureAndStamp": "Datum vytvoření"
+      }
+    }
+  }
+}

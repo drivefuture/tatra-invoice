@@ -1,0 +1,85 @@
+{
+  "name": "CustomerInvoiceData",
+  "fields": [
+    {
+      "fieldName": "companyName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ownName",
+      "fieldType": "String",
+      "javadoc": "Název společnosti",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "javadoc": "Vlastní název"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "javadoc": "Jméno"
+    },
+    {
+      "fieldName": "street",
+      "fieldType": "String",
+      "javadoc": "Příjmení"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String",
+      "javadoc": "Ulice"
+    },
+    {
+      "fieldName": "postalCode",
+      "fieldType": "String",
+      "javadoc": "Město"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "String",
+      "javadoc": "PSČ"
+    },
+    {
+      "fieldName": "registrationNumber",
+      "fieldType": "String",
+      "javadoc": "Země"
+    },
+    {
+      "fieldName": "vatNumber",
+      "fieldType": "String",
+      "javadoc": "IČ"
+    },
+    {
+      "fieldName": "bankAccountNumber",
+      "fieldType": "String",
+      "javadoc": "DIČ"
+    },
+    {
+      "fieldName": "iban",
+      "fieldType": "String",
+      "javadoc": "Číslo účtu"
+    },
+    {
+      "fieldName": "webUrl",
+      "fieldType": "String",
+      "javadoc": "IBAN"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210119003228",
+  "javadoc": "CustomerInvoiceData entity.\\nFakturační údaje zákazníka\\n@author DriveFuture s.r.o. team",
+  "entityTableName": "customer_invoice_data",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

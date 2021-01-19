@@ -47,6 +47,18 @@ public class CacheConfiguration {
             createCache(cm, cz.drivefuture.tatrainvoice.domain.User.class.getName());
             createCache(cm, cz.drivefuture.tatrainvoice.domain.Authority.class.getName());
             createCache(cm, cz.drivefuture.tatrainvoice.domain.User.class.getName() + ".authorities");
+            createCache(cm, cz.drivefuture.tatrainvoice.domain.Invoice.class.getName());
+            createCache(cm, cz.drivefuture.tatrainvoice.domain.Invoice.class.getName() + ".items");
+            createCache(cm, cz.drivefuture.tatrainvoice.domain.InvoiceItem.class.getName());
+            createCache(cm, cz.drivefuture.tatrainvoice.domain.Company.class.getName());
+            createCache(cm, cz.drivefuture.tatrainvoice.domain.Company.class.getName() + ".userAccounts");
+            createCache(cm, cz.drivefuture.tatrainvoice.domain.InvoiceDesignSettings.class.getName());
+            createCache(cm, cz.drivefuture.tatrainvoice.domain.Customer.class.getName());
+            createCache(cm, cz.drivefuture.tatrainvoice.domain.CustomerInvoiceData.class.getName());
+            createCache(cm, cz.drivefuture.tatrainvoice.domain.CustomerDeliveryData.class.getName());
+            createCache(cm, cz.drivefuture.tatrainvoice.domain.InvoiceDesignTemplate.class.getName());
+            createCache(cm, cz.drivefuture.tatrainvoice.domain.UserAccount.class.getName());
+            createCache(cm, cz.drivefuture.tatrainvoice.domain.UserAccount.class.getName() + ".companies");
             // jhipster-needle-ehcache-add-entry
         };
     }

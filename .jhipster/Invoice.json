@@ -1,0 +1,162 @@
+{
+  "name": "Invoice",
+  "fields": [
+    {
+      "fieldName": "number",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "issueDate",
+      "fieldType": "Instant",
+      "javadoc": "Číslo dokumentu",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "paymentMethod",
+      "fieldType": "PaymentMethod",
+      "javadoc": "Datum vystavení",
+      "fieldValues": "BANK_TRANSFER,CASH,CASH_ON_DELIVERY",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "duePeriod",
+      "fieldType": "Integer",
+      "javadoc": "Způsob platby",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "dueDate",
+      "fieldType": "Instant",
+      "javadoc": "Splatnost ve dnech",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "paymentDate",
+      "fieldType": "Instant",
+      "javadoc": "Datum splatnosti"
+    },
+    {
+      "fieldName": "taxPoint",
+      "fieldType": "Instant",
+      "javadoc": "Datum úhrady"
+    },
+    {
+      "fieldName": "totalAmount",
+      "fieldType": "BigDecimal",
+      "javadoc": "Datum zdanitelného plnění"
+    },
+    {
+      "fieldName": "currency",
+      "fieldType": "String",
+      "javadoc": "Celková částka",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "variableSymbol",
+      "fieldType": "String",
+      "javadoc": "Měna"
+    },
+    {
+      "fieldName": "constantSymbol",
+      "fieldType": "String",
+      "javadoc": "VS"
+    },
+    {
+      "fieldName": "specialSymbol",
+      "fieldType": "String",
+      "javadoc": "KS"
+    },
+    {
+      "fieldName": "orderNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "language",
+      "fieldType": "Language",
+      "fieldValues": "CZECH,SLOVAK,POLISH,RUSSIAN,ENGLISH,GERMAN",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "byte[]",
+      "javadoc": "Jazyk faktury",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "beforeInvoiceItemsText",
+      "fieldType": "byte[]",
+      "javadoc": "Netisknutelná poznámka",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "invoiceFooterText",
+      "fieldType": "byte[]",
+      "javadoc": "Text před položkami na faktuře",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "pdfFile",
+      "fieldType": "byte[]",
+      "javadoc": "Text v patičce faktury",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "javadoc": "Pdf soubor"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant",
+      "javadoc": "Datum vytvoření"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "invoiceItem",
+      "otherEntityRelationshipName": "invoice",
+      "relationshipName": "item"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "company",
+      "otherEntityRelationshipName": "invoice",
+      "relationshipValidateRules": "required",
+      "relationshipName": "company",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "invoice",
+      "relationshipValidateRules": "required",
+      "relationshipName": "customer",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210119002728",
+  "javadoc": "Invoice entity.\\nFaktura\\n@author DriveFuture s.r.o. team",
+  "entityTableName": "invoice",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,38 @@
+{
+  "tatraInvoiceApp": {
+    "customerDeliveryData": {
+      "home": {
+        "title": "Customer Delivery Data",
+        "createLabel": "Vytvořit Customer Delivery Data",
+        "createOrEditLabel": "Vytvořit nebo upravit Customer Delivery Data",
+        "notFound": "No Customer Delivery Data found"
+      },
+      "created": "Byl vytvořen potomek entity Customer Delivery Data s identifikátorem {{ param }}",
+      "updated": "Potomek entity Customer Delivery Data s identifikátorem {{ param }} byl upravený.",
+      "deleted": "Potomek entity Customer Delivery Data s identifikátorem {{ param }} bol smazaný.",
+      "delete": {
+        "question": "Jste si jisti, že chcete smazat Customer Delivery Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Customer Delivery Data"
+      },
+      "companyName": "Company Name",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "street": "Street",
+      "city": "City",
+      "postalCode": "Postal Code",
+      "country": "Country",
+      "telephone": "Telephone",
+      "help": {
+        "firstName": "Název společnosti",
+        "lastName": "Jméno",
+        "street": "Příjmení",
+        "city": "Ulice",
+        "postalCode": "Město",
+        "country": "PSČ",
+        "telephone": "Země"
+      }
+    }
+  }
+}

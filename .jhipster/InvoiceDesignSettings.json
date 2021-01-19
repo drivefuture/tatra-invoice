@@ -1,0 +1,39 @@
+{
+  "name": "InvoiceDesignSettings",
+  "fields": [
+    {
+      "fieldName": "logo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "signatureAndStamp",
+      "fieldType": "byte[]",
+      "javadoc": "Datum vytvoření",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "invoiceDesignTemplate",
+      "otherEntityRelationshipName": "invoiceDesignSettings",
+      "relationshipValidateRules": "required",
+      "relationshipName": "template",
+      "otherEntityField": "name",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20210119003028",
+  "javadoc": "InvoiceDesignSettings entity.\\nNastavení vzhledu faktury\\n@author DriveFuture s.r.o. team",
+  "entityTableName": "invoice_design_settings",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,28 @@
+{
+  "tatraInvoiceApp": {
+    "userAccount": {
+      "home": {
+        "title": "User Accounts",
+        "createLabel": "Создать новый User Account",
+        "createOrEditLabel": "Создать или отредактировать User Account",
+        "notFound": "No User Accounts found"
+      },
+      "created": "Новый User Account создан с идентификатором {{ param }}",
+      "updated": "User Account обновлен с идентификатором {{ param }}",
+      "deleted": "User Account удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить User Account {{ id }}?"
+      },
+      "detail": {
+        "title": "User Account"
+      },
+      "plan": "Plan",
+      "currentCompany": "Current Company",
+      "user": "User",
+      "company": "Company",
+      "help": {
+        "plan": "Plán"
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "tatraInvoiceApp": {
+    "invoice": {
+      "home": {
+        "title": "Invoices",
+        "createLabel": "Create a new Invoice",
+        "createOrEditLabel": "Create or edit a Invoice",
+        "notFound": "No Invoices found"
+      },
+      "created": "A new Invoice is created with identifier {{ param }}",
+      "updated": "A Invoice is updated with identifier {{ param }}",
+      "deleted": "A Invoice is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Invoice {{ id }}?"
+      },
+      "detail": {
+        "title": "Invoice"
+      },
+      "number": "Number",
+      "issueDate": "Issue Date",
+      "paymentMethod": "Payment Method",
+      "duePeriod": "Due Period",
+      "dueDate": "Due Date",
+      "paymentDate": "Payment Date",
+      "taxPoint": "Tax Point",
+      "totalAmount": "Total Amount",
+      "currency": "Currency",
+      "variableSymbol": "Variable Symbol",
+      "constantSymbol": "Constant Symbol",
+      "specialSymbol": "Special Symbol",
+      "orderNumber": "Order Number",
+      "language": "Language",
+      "comment": "Comment",
+      "beforeInvoiceItemsText": "Before Invoice Items Text",
+      "invoiceFooterText": "Invoice Footer Text",
+      "pdfFile": "Pdf File",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "item": "Item",
+      "company": "Company",
+      "customer": "Customer",
+      "help": {
+        "issueDate": "Číslo dokumentu",
+        "paymentMethod": "Datum vystavení",
+        "duePeriod": "Způsob platby",
+        "dueDate": "Splatnost ve dnech",
+        "paymentDate": "Datum splatnosti",
+        "taxPoint": "Datum úhrady",
+        "totalAmount": "Datum zdanitelného plnění",
+        "currency": "Celková částka",
+        "variableSymbol": "Měna",
+        "constantSymbol": "VS",
+        "specialSymbol": "KS",
+        "comment": "Jazyk faktury",
+        "beforeInvoiceItemsText": "Netisknutelná poznámka",
+        "invoiceFooterText": "Text před položkami na faktuře",
+        "pdfFile": "Text v patičce faktury",
+        "createdDate": "Pdf soubor",
+        "updatedDate": "Datum vytvoření"
+      }
+    }
+  }
+}

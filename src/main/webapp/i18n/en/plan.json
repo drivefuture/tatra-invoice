@@ -1,0 +1,9 @@
+{
+  "tatraInvoiceApp": {
+    "Plan": {
+      "null": "",
+      "BASIC": "BASIC",
+      "PRO": "PRO"
+    }
+  }
+}

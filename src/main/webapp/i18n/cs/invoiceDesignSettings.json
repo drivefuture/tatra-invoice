@@ -1,0 +1,27 @@
+{
+  "tatraInvoiceApp": {
+    "invoiceDesignSettings": {
+      "home": {
+        "title": "Invoice Design Settings",
+        "createLabel": "Vytvořit Invoice Design Settings",
+        "createOrEditLabel": "Vytvořit nebo upravit Invoice Design Settings",
+        "notFound": "No Invoice Design Settings found"
+      },
+      "created": "Byl vytvořen potomek entity Invoice Design Settings s identifikátorem {{ param }}",
+      "updated": "Potomek entity Invoice Design Settings s identifikátorem {{ param }} byl upravený.",
+      "deleted": "Potomek entity Invoice Design Settings s identifikátorem {{ param }} bol smazaný.",
+      "delete": {
+        "question": "Jste si jisti, že chcete smazat Invoice Design Settings {{ id }}?"
+      },
+      "detail": {
+        "title": "Invoice Design Settings"
+      },
+      "logo": "Logo",
+      "signatureAndStamp": "Signature And Stamp",
+      "template": "Template",
+      "help": {
+        "signatureAndStamp": "Datum vytvoření"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+id;name;description;image;image_content_type;jrxml_template_file;jrxml_template_file_content_type;created_date;updated_date
+1;parsing grey Profound;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;2021-01-18T06:03:17;2021-01-18T17:42:39
+2;instruction set;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;2021-01-18T04:02:50;2021-01-18T07:08:39
+3;overriding Down-sized;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;2021-01-18T02:41:05;2021-01-18T23:29:35
+4;Developer;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;2021-01-18T23:46:33;2021-01-18T12:16:11
+5;circuit Realigned;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;2021-01-18T10:36:26;2021-01-18T21:43:43
+6;Sports Steel;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;2021-01-18T08:30:49;2021-01-18T20:19:00
+7;indexing flexibility navigate;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;2021-01-18T14:02:26;2021-01-18T13:54:38
+8;Identity Strategist Automotive;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;2021-01-18T02:50:34;2021-01-18T21:36:13
+9;Tenge;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;2021-01-18T09:32:37;2021-01-18T10:08:29
+10;out-of-the-box clicks-and-mortar;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;2021-01-18T08:36:57;2021-01-18T16:24:08

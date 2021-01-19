@@ -1,0 +1,59 @@
+{
+  "tatraInvoiceApp": {
+    "company": {
+      "home": {
+        "title": "Companies",
+        "createLabel": "Create a new Company",
+        "createOrEditLabel": "Create or edit a Company",
+        "notFound": "No Companies found"
+      },
+      "created": "A new Company is created with identifier {{ param }}",
+      "updated": "A Company is updated with identifier {{ param }}",
+      "deleted": "A Company is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Company {{ id }}?"
+      },
+      "detail": {
+        "title": "Company"
+      },
+      "name": "Name",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "street": "Street",
+      "city": "City",
+      "postalCode": "Postal Code",
+      "country": "Country",
+      "registrationNumber": "Registration Number",
+      "vatNumber": "Vat Number",
+      "registeredMark": "Registered Mark",
+      "supplementaryText": "Supplementary Text",
+      "bankAccountNumber": "Bank Account Number",
+      "iban": "Iban",
+      "email": "Email",
+      "telephone": "Telephone",
+      "webUrl": "Web Url",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "invoiceDesignSettings": "Invoice Design Settings",
+      "userAccount": "User Account",
+      "help": {
+        "firstName": "Název společnosti",
+        "lastName": "Jméno",
+        "street": "Příjmení",
+        "city": "Ulice",
+        "postalCode": "Město",
+        "country": "PSČ",
+        "registrationNumber": "Země",
+        "registeredMark": "DIČ",
+        "supplementaryText": "Spisová značka",
+        "bankAccountNumber": "Doplňkový text",
+        "iban": "Číslo účtu",
+        "email": "IBAN",
+        "telephone": "E-mail",
+        "webUrl": "Telefon",
+        "createdDate": "Url webu",
+        "updatedDate": "Datum vytvoření"
+      }
+    }
+  }
+}

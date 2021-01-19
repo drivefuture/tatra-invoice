@@ -1,0 +1,127 @@
+{
+  "name": "Company",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "javadoc": "Název společnosti"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "javadoc": "Jméno"
+    },
+    {
+      "fieldName": "street",
+      "fieldType": "String",
+      "javadoc": "Příjmení"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String",
+      "javadoc": "Ulice"
+    },
+    {
+      "fieldName": "postalCode",
+      "fieldType": "String",
+      "javadoc": "Město"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "String",
+      "javadoc": "PSČ"
+    },
+    {
+      "fieldName": "registrationNumber",
+      "fieldType": "String",
+      "javadoc": "Země"
+    },
+    {
+      "fieldName": "vatNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "registeredMark",
+      "fieldType": "String",
+      "javadoc": "DIČ"
+    },
+    {
+      "fieldName": "supplementaryText",
+      "fieldType": "byte[]",
+      "javadoc": "Spisová značka",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "bankAccountNumber",
+      "fieldType": "String",
+      "javadoc": "Doplňkový text"
+    },
+    {
+      "fieldName": "iban",
+      "fieldType": "String",
+      "javadoc": "Číslo účtu"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "javadoc": "IBAN",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "String",
+      "javadoc": "E-mail"
+    },
+    {
+      "fieldName": "webUrl",
+      "fieldType": "String",
+      "javadoc": "Telefon"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "javadoc": "Url webu"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant",
+      "javadoc": "Datum vytvoření"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "invoiceDesignSettings",
+      "otherEntityRelationshipName": "company",
+      "relationshipName": "invoiceDesignSettings",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "userAccount",
+      "otherEntityRelationshipName": "company",
+      "relationshipName": "userAccount",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20210119002928",
+  "javadoc": "Company entity.\\nSpolečnost\\n@author DriveFuture s.r.o. team",
+  "entityTableName": "company",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
