@@ -1,6 +1,7 @@
 package cz.drivefuture.tatrainvoice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Cache;
@@ -44,8 +45,9 @@ public class UserAccount implements Serializable {
     @JoinColumn(name = "id")
     private User user;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties(value = "userAccounts", allowSetters = true)
     private Company currentCompany;
 
     @ManyToMany(mappedBy = "userAccounts")

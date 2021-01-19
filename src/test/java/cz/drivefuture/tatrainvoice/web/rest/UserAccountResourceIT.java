@@ -3,6 +3,7 @@ package cz.drivefuture.tatrainvoice.web.rest;
 import cz.drivefuture.tatrainvoice.TatraInvoiceApp;
 import cz.drivefuture.tatrainvoice.domain.UserAccount;
 import cz.drivefuture.tatrainvoice.domain.User;
+import cz.drivefuture.tatrainvoice.domain.Company;
 import cz.drivefuture.tatrainvoice.repository.UserAccountRepository;
 import cz.drivefuture.tatrainvoice.repository.UserRepository;
 
@@ -62,6 +63,16 @@ public class UserAccountResourceIT {
         em.persist(user);
         em.flush();
         userAccount.setUser(user);
+        // Add required entity
+        Company company;
+        if (TestUtil.findAll(em, Company.class).isEmpty()) {
+            company = CompanyResourceIT.createEntity(em);
+            em.persist(company);
+            em.flush();
+        } else {
+            company = TestUtil.findAll(em, Company.class).get(0);
+        }
+        userAccount.setCurrentCompany(company);
         return userAccount;
     }
     /**
@@ -78,6 +89,16 @@ public class UserAccountResourceIT {
         em.persist(user);
         em.flush();
         userAccount.setUser(user);
+        // Add required entity
+        Company company;
+        if (TestUtil.findAll(em, Company.class).isEmpty()) {
+            company = CompanyResourceIT.createUpdatedEntity(em);
+            em.persist(company);
+            em.flush();
+        } else {
+            company = TestUtil.findAll(em, Company.class).get(0);
+        }
+        userAccount.setCurrentCompany(company);
         return userAccount;
     }
 
