@@ -42,13 +42,20 @@ public class UserAccount implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = "userAccounts", allowSetters = true)
+    //@JsonIgnoreProperties(value = "userAccounts", allowSetters = true)
     private Company currentCompany;
 
-    @ManyToMany(mappedBy = "userAccounts")
+    @ManyToMany(mappedBy = "userAccounts", cascade = CascadeType.ALL)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     //@JsonIgnore
     private Set<Company> companies = new HashSet<>();
+
+    /*@ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JoinTable(name = "company_user_account",
+               joinColumns = @JoinColumn(name = "user_account_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"))
+    private Set<Company> companies = new HashSet<>();*/
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
