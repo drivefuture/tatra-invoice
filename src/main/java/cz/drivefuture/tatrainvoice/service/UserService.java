@@ -2,6 +2,7 @@ package cz.drivefuture.tatrainvoice.service;
 
 import cz.drivefuture.tatrainvoice.config.Constants;
 import cz.drivefuture.tatrainvoice.domain.Authority;
+import cz.drivefuture.tatrainvoice.domain.Company;
 import cz.drivefuture.tatrainvoice.domain.User;
 import cz.drivefuture.tatrainvoice.domain.UserAccount;
 import cz.drivefuture.tatrainvoice.repository.AuthorityRepository;
@@ -9,7 +10,10 @@ import cz.drivefuture.tatrainvoice.repository.UserAccountRepository;
 import cz.drivefuture.tatrainvoice.repository.UserRepository;
 import cz.drivefuture.tatrainvoice.security.AuthoritiesConstants;
 import cz.drivefuture.tatrainvoice.security.SecurityUtils;
+import cz.drivefuture.tatrainvoice.service.dto.CompanyDTO;
+import cz.drivefuture.tatrainvoice.service.dto.CurrentCompanyChangeDTO;
 import cz.drivefuture.tatrainvoice.service.dto.UserDTO;
+import cz.drivefuture.tatrainvoice.web.rest.errors.CompanyNotExistsException;
 import io.github.jhipster.security.RandomUtil;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -289,6 +293,31 @@ public class UserService {
                     user.setPassword(encryptedPassword);
                     this.clearUserCaches(user);
                     log.debug("Changed password for User: {}", user);
+                }
+            );
+    }
+
+    @Transactional
+    public void changeCurrentCompany(CurrentCompanyChangeDTO currentCompanyChangeDTO) {
+        SecurityUtils
+            .getCurrentUserLogin()
+            .flatMap(userRepository::findOneByLogin)
+            .ifPresent(
+                user -> {
+                    userAccountRepository
+                        .findById(user.getId())
+                        .ifPresent(
+                            userAccount -> {
+                                Company newCurrentCompany = userAccount
+                                    .getCompanies()
+                                    .stream()
+                                    .filter(company -> company.getId().equals(currentCompanyChangeDTO.getId()))
+                                    .findFirst()
+                                    .orElseThrow(CompanyNotExistsException::new);
+                                userAccount.currentCompany(newCurrentCompany);
+                                log.debug("Changed currentCompany for UserAccount: {}", userAccount);
+                            }
+                        );
                 }
             );
     }

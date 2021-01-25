@@ -1,11 +1,11 @@
 package cz.drivefuture.tatrainvoice.web.rest;
 
 import cz.drivefuture.tatrainvoice.domain.User;
-import cz.drivefuture.tatrainvoice.domain.UserAccount;
 import cz.drivefuture.tatrainvoice.repository.UserRepository;
 import cz.drivefuture.tatrainvoice.security.SecurityUtils;
 import cz.drivefuture.tatrainvoice.service.MailService;
 import cz.drivefuture.tatrainvoice.service.UserService;
+import cz.drivefuture.tatrainvoice.service.dto.CurrentCompanyChangeDTO;
 import cz.drivefuture.tatrainvoice.service.dto.PasswordChangeDTO;
 import cz.drivefuture.tatrainvoice.service.dto.UserAccountDTO;
 import cz.drivefuture.tatrainvoice.service.dto.UserDTO;
@@ -138,6 +138,11 @@ public class AccountResource {
             userDTO.getLangKey(),
             userDTO.getImageUrl()
         );
+    }
+
+    @PostMapping(path = "/account/change-current-company")
+    public void changeCurrentCompany(@Valid @RequestBody CurrentCompanyChangeDTO currentCompanyChangeDTO) {
+        userService.changeCurrentCompany(currentCompanyChangeDTO);
     }
 
     /**
